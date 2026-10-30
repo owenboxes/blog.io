@@ -191,10 +191,10 @@ function showList(show) {
   window.scrollTo({top:0, behavior:'instant'}); return true;
 }
 document.querySelectorAll('[data-home]').forEach(a => a.onclick = event => { event.preventDefault(); if (showList(true)) history.replaceState(null, '', '#notes'); });
-$('open-article').onclick = event => { event.preventDefault(); if (showList(false)) history.replaceState(null, '', '#article'); };
 if (!canStep) {
   $('support-note').hidden = false;
   $('support-note').textContent = '한 단계 실행에는 cross-origin isolation이 필요합니다. 제공된 serve.py로 localhost:8765를 여세요. 이 환경에서는 전체 실행만 사용할 수 있습니다. 공개 배포 전 별도 설정이 필요합니다.';
 }
-if (location.hash === '#notes') showList(true);
+if (location.hash === '#notes' || location.hash.startsWith('#category-')) showList(true);
 gutter(); setControls(); syncDock();
+

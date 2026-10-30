@@ -1,4 +1,5 @@
 const fs = require('node:fs');
+require('./test_catalog.cjs');
 const vm = require('node:vm');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
@@ -22,5 +23,6 @@ vm.runInContext(read('tests/test_app.js'),setup);
 const fixture = vm.runInContext('appFixture()',setup);
 vm.createContext(fixture);
 console.log(vm.runInContext(read('site/dock.js')+'\n'+read('site/input-channel.js')+'\n'+read('site/app.js')+'\n'+vm.runInContext('appChecks',setup),fixture));
-for (const file of ['app.js','worker.js','dock.js','input-channel.js']) new vm.Script(read('site/'+file));
+for (const file of ['app.js','worker.js','dock.js','input-channel.js','catalog.js']) new vm.Script(read('site/'+file));
 console.log('All JS syntax checks PASS');
+
