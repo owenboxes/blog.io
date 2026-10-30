@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="직접 만들고, 막히고, 이해한 것을 기록하는 OWEN의 개발 노트.">
+  <title>OWEN — Build Notes</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="coi-config.js"></script>
+  <script src="coi-serviceworker.js"></script>
+  <script src="dock.js" defer></script>
+  <script src="input-channel.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+<header class="site-header"><a class="brand" href="#" data-home>OWEN<span> / BUILD NOTES</span></a><nav aria-label="주 메뉴"><a href="#about">소개</a><a href="https://github.com/owenboxes" target="_blank" rel="noopener">GitHub ↗</a></nav></header>
+<main>
+  <section id="listing" hidden class="listing">
+    <p class="eyebrow">A PERSONAL ENGINEERING JOURNAL</p><h1>작게 만들고,<br>깊게 이해하는 기록.</h1><p class="lede">배운 문법 너머, 코드가 움직이는 이유를 찾아갑니다.</p>
+    <div class="list-label"><span>RECENT NOTES</span><span>01개의 예시 글</span></div>
+    <a class="post-card" href="#article" id="open-article"><div class="post-meta">PYTHON · LEARNING NOTES <span>2026.10.30</span></div><h2>반복문을 이해하는<br>가장 좋은 방법</h2><p>한 번에 실행하던 코드를 잠시 멈추고, 변수와 흐름을 한 줄씩 따라가 봅니다.</p><span class="read-link">글 읽기 <b>↗</b></span></a>
+    <p class="sample-note">첫 버전의 예시 콘텐츠입니다. 노션 자동 발행은 아직 연결하지 않았습니다.</p>
+  </section>
+  <div id="article-view" class="article-layout">
+    <aside class="toc"><a class="toc-home" href="#notes" data-home>← 글 목록</a><p>ON THIS PAGE</p><a href="#flow">01 흐름으로 이해하기</a><a href="#loop">02 반복과 변수의 변화</a><a href="#practice">03 직접 실행해 보기</a><div class="aside-note">한 줄씩 따라가면<br>코드의 이유가 보입니다.</div></aside>
+    <article id="article">
+      <a class="mobile-back" href="#notes" data-home>← 글 목록</a><div class="post-meta">PYTHON <span class="meta-dot">·</span> LEARNING NOTES <span class="article-date">2026.10.30 · 예시 글</span></div>
+      <h1>반복문을 이해하는<br>가장 좋은 방법</h1><p class="lede">문법을 외우는 대신, 코드가 지나가는 길을 따라가 보기.</p>
+      <div class="author"><span class="avatar">O</span><span>문영성 <small>배우고 만드는 사람</small></span><span class="read-time">3 MIN READ</span></div>
+      <details class="mobile-toc"><summary>이 글의 목차</summary><a href="#flow">흐름으로 이해하기</a><a href="#loop">반복과 변수의 변화</a><a href="#practice">직접 실행해 보기</a></details>
+      <section id="flow"><p class="section-kicker">01 / UNDERSTANDING</p><h2>조건이 아니라 흐름으로 이해하기</h2><p>반복문을 처음 배우면 “이 줄은 몇 번 실행될까?”보다 “이 문법이 맞을까?”부터 생각하게 됩니다. 하지만 코드를 이해하려면, 지금 어느 줄에 있고 다음에는 어디로 이동하는지 보는 것도 중요합니다.</p><p>다음 코드는 1부터 3까지 더합니다. 짧은 코드 안에서도 변수의 값은 여러 번 바뀝니다.</p><div class="static-code"><div>PYTHON <span>01</span></div><pre><code>total = 0
+for number in range(1, 4):
+    total += number
+print(total)</code></pre></div><blockquote>같은 줄로 돌아오지만, 같은 상태로 돌아오는 것은 아닙니다.</blockquote></section>
+      <section id="loop"><p class="section-kicker">02 / FOLLOW THE CHANGE</p><h2>반복되는 줄, 달라지는 값</h2><p>처음에는 <code>total</code>이 0입니다. 첫 번째 반복에서 1을 더하고, 다음에는 2를 더하고, 마지막에는 3을 더합니다. 반복이 끝나면 합계 6을 출력합니다.</p><div class="value-strip"><div><small>START</small><b>0</b></div><span>→</span><div><small>+ 1</small><b>1</b></div><span>→</span><div><small>+ 2</small><b>3</b></div><span>→</span><div><small>+ 3</small><b>6</b></div></div><p>아래 실습창에서 <strong>한 단계</strong>를 누르면 실행할 줄 앞에서 멈춥니다. 강조된 줄은 <em>다음에 실행할 줄</em>이고, 변수 패널에는 그 직전까지 실행된 결과가 표시됩니다.</p></section>
+      <section id="practice"><p class="section-kicker">03 / TRY IT YOURSELF</p><h2>읽은 것을, 직접 움직여 보기</h2><p>숫자를 바꾸거나 조건을 추가해 보세요. 실습은 이 페이지 안에서만 진행되며 다른 기기와 동기화되지 않습니다.</p>
+      <div id="lab" class="lab">
+        <div class="lab-head"><button id="toggle-lab" aria-expanded="false" aria-controls="lab-body"><span class="lab-icon">&gt;_</span><span>Python 실습실<small>직접 수정하고 한 줄씩 따라가 보세요</small></span><span id="chevron">＋</span></button></div>
+        <div id="lab-body" hidden>
+          <div class="toolbar"><div class="run-controls"><button id="run" class="primary">▶ 전체 실행</button><button id="step">↳ 한 단계</button><button id="stop" disabled>■ 중단</button></div><div class="view-controls"><button id="expand" aria-pressed="false">⤢ 확대</button><button id="fullscreen">전체화면</button><button id="reset">환경 리셋</button><button id="restore">예제 복원</button></div></div>
+          <div class="status-row"><span id="status" role="status" aria-live="polite">준비됨 · 실행 시 Python을 불러옵니다</span><span id="position">LINE —</span></div>
+          <div id="support-note" class="support-note" hidden></div>
+          <div class="workbench"><div class="editor-pane"><div class="pane-title"><span>lesson.py</span><small>PYTHON</small></div><div class="editor-shell"><div id="gutter" aria-hidden="true"></div><textarea id="editor" aria-label="Python 코드 편집기" spellcheck="false" autocapitalize="off" autocorrect="off" wrap="off"></textarea></div></div>
+          <div class="inspect-pane"><div class="pane-title">변수 <small>직전 단계까지의 값</small></div><div id="variables" class="variables"><p class="empty">실행하면 변수의 변화가 여기에 나타납니다.</p></div><div class="pane-title console-title">실행 결과 <small>프로그램 출력 · 오류</small><button id="clear-output">지우기</button></div><pre id="output" aria-label="프로그램 출력 및 오류" tabindex="0"></pre><form id="console-input" hidden><span id="input-prompt"></span><label for="stdin">입력 대기 ›</label><input id="stdin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Python input 입력값"><button type="submit">입력 ↵</button><small>Enter로 전송 · 빈 입력도 가능</small></form><details id="input-history" hidden><summary>입력 기록 · 실행 결과와 별도</summary><pre id="input-log" aria-label="입력 안내 및 입력값 기록"></pre></details></div></div>
+          <p class="lab-foot">실행 시간 10초 · 최대 20,000단계/출력 20,000자 · 환경 리셋은 코드를 지우지 않습니다. <span>Python powered by Pyodide</span></p>
+        </div>
+      </div></section>
+      <div class="article-end"><span>END OF NOTE</span><p>작은 이해가 쌓여, 다음 코드를 만듭니다.</p></div>
+    </article>
+  </div>
+  <section id="about" class="about"><span>ABOUT THIS JOURNAL</span><p>음악에서 개발로. 문영성이 배우고, 시도하고, 이해해 가는 과정을 남기는 개인 기술 블로그입니다.</p></section>
+</main>
+<footer><a class="brand" href="#" data-home>OWEN<span> / BUILD NOTES</span></a><span>LEARN. BUILD. UNDERSTAND.</span></footer>
+</body></html>
