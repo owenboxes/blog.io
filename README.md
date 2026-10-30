@@ -29,6 +29,8 @@ The Pages workflow tests Python and JavaScript, then uploads only `site/` as the
 Administrator authentication and Notion publishing are not enabled. The article is demo content, not a claim about a user's execution results. Client-side hiding is not privacy protection; raw/private TIL data must never be committed or deployed.
 
 ## Public article catalog
+Changed UI assets use `?v=<first 12 characters of SHA-256>` in `index.html`. Update the key when app.js, catalog.js or style.css changes; the deployment test rejects stale keys to prevent mixed cached versions after release.
+
 `site/catalog.js` contains only approved public entries. Registration timestamps (`publishedAt`) sort newest first, with `sequence` as a tie breaker; the article's displayed learning date is separate. The desktop sidebar and mobile disclosure use the same catalog as the list page. A compact newest learning note sits above topic-grouped rows with all/note/practice filters.
 
 For a newly approved article, first create its public static HTML page under `site/posts/`, then add its catalog entry with `kind: 'note'` or `'practice'`, category, title, summary, display date and registration timestamp. The existing embedded demo uses `#article`. Catalog links accept only that target or `posts/<slug>.html`. Do not add unpublished entries: filtering a row is not privacy protection because this file is publicly downloadable. Notion drafts and their metadata remain outside this repository.
