@@ -76,3 +76,6 @@
   #mobile-published-posts{max-height:35vh;overflow:auto;margin-top:10px}
 }
 
+
+.table-scroll{overflow:auto;margin:24px 0}.table-scroll table{width:100%;border-collapse:collapse;font-size:13px;line-height:1.8}.table-scroll th,.table-scroll td{border-bottom:1px solid var(--line);padding:12px;text-align:left;vertical-align:top}.table-scroll th{background:#eee9df}.practice-environment{border-left:3px solid var(--accent);padding:12px 16px;background:#eee9df;font-size:12px}article li{font-size:14px;line-height:2}article .static-code code{font:inherit}
+

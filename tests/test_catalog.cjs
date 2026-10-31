@@ -60,3 +60,11 @@ assert.equal(opened,1,'sidebar article opens the article view');
 render(doc,[],()=>{});
 assert.ok(ids['post-groups'].textContent.includes('아직 공개된 글이 없습니다.'));
 console.log('Catalog DOM: sidebar/list rendering, topic targets, filters, navigation, empty states PASS');
+
+doc.body={dataset:{siteRoot:'../',postId:'new'}};
+render(doc,rows,()=>{throw Error('nested page must not open its own body as the demo');});
+assert.equal(ids['published-posts'].children[0].href,'../posts/new.html');
+assert.equal(ids['published-posts'].children[0].attrs['aria-current'],'page');
+assert.equal(ids['published-posts'].children[1].href,'../index.html#article');
+assert.ok(!ids['published-posts'].children[1].attrs['aria-current']);
+console.log('Nested article navigation resolves site-root links and current page PASS');

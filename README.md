@@ -26,7 +26,7 @@ The Pages workflow tests Python and JavaScript, then uploads only `site/` as the
 
 `coi-serviceworker.js` v0.1.7 (MIT, Guido Zuidhof and contributors) is vendored unchanged alongside its license. Source blob: `9901474cc3175733262abb208b1f9e39e1c99595` from https://github.com/gzuidhof/coi-serviceworker. It adds isolation headers through a service worker for static hosts; initial loading can refresh once to activate it. Configuration uses require-corp, like local preview, and the registration scope is `/blog.io/`. This mechanism has local protocol tests, not a claim of hosted-browser verification. Unsupported/private browser modes may not allow interactive stepping/input. Do not enter sensitive data in the runner.
 
-Administrator authentication and Notion publishing are not enabled. The article is demo content, not a claim about a user's execution results. Client-side hiding is not privacy protection; raw/private TIL data must never be committed or deployed.
+Administrator authentication and automatic Notion publishing are not enabled. On 2026-10-31 the user approved publication of 10 learning notes and 5 practice articles, in addition to the original demo. Only the approved public bodies are stored under site/posts; internal sources and review metadata remain outside this repository. Learning records retain their execution/verification limits, and AI practice proposals are not claims of user completion. Client-side hiding is not privacy protection; raw/private TIL data must never be committed or deployed.
 
 ## Public article catalog
 Changed UI assets use `?v=<first 12 characters of SHA-256>` in `index.html`. Update the key when app.js, catalog.js or style.css changes; the deployment test rejects stale keys to prevent mixed cached versions after release.
@@ -43,4 +43,3 @@ For a newly approved article, first create its public static HTML page under `si
 `node tests/run-js.cjs` checks the UTF-8 input channel, dock logic, app state transitions and JS syntax. Input echo is shortened after 1,000 characters for display; Python receives the complete submitted line.
 
 Tests use the exact engine.py loaded by the worker, on native CPython. Browser/Pyodide integration requires separate validation. See docs/implementation.md for decisions and verification log.
-

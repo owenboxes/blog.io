@@ -1,6 +1,6 @@
 'use strict';
 const $ = id => document.getElementById(id);
-const example = 'total = 0\nfor number in range(1, 4):\n    total += number\nprint(total)';
+const example = $('editor').value.trim() || 'total = 0\nfor number in range(1, 4):\n    total += number\nprint(total)';
 const lab = $('lab');
 let worker = null, control = null, active = false, paused = false;
 let timer = null, selectedLine = null, previousVars = {}, expanded = false;
@@ -82,7 +82,7 @@ function start(stepping) {
   stepMode = stepping;
   clearConsole(); variables({}); gutter(); setControls();
   status('Python 실행환경 불러오는 중… 첫 실행은 잠시 걸릴 수 있습니다.');
-  const current = new Worker('./worker.js?v=executed-step-1'); worker = current;
+  const current = new Worker((document.body.dataset?.siteRoot || './')+'worker.js?v=executed-step-1'); worker = current;
   // Initialization is allowed more time than student code execution.
   timer = setTimeout(() => stop('실행환경 로딩 시간 초과 · 인터넷 연결 후 다시 시도해 주세요.'), 60000);
   current.onerror = event => { if (worker !== current) return; stop('실행환경 로딩 실패 · 인터넷/CDN 연결을 확인해 주세요.'); $('output').textContent = event.message || 'Worker error'; };
@@ -137,7 +137,7 @@ function expand(value) {
   syncDock();
 }
 function syncDock() {
-  const shown = !$('article-view').hidden;
+  const shown = !$('article-view').hidden && document.body.dataset?.lab !== 'off';
   lab.classList.toggle('docked', shown && !expanded && !document.fullscreenElement);
   const layout = dockLayout(shown, expanded, !!document.fullscreenElement, lab.getBoundingClientRect().height);
   document.body.style.paddingBottom = `${layout.padding}px`;
@@ -205,6 +205,5 @@ if (!canStep) {
   $('support-note').hidden = false;
   $('support-note').textContent = '한 단계 실행에는 cross-origin isolation이 필요합니다. 제공된 serve.py로 localhost:8765를 여세요. 이 환경에서는 전체 실행만 사용할 수 있습니다. 공개 배포 전 별도 설정이 필요합니다.';
 }
-if (location.hash === '#notes' || location.hash.startsWith('#category-')) showList(true);
+if (location.hash === '#notes' || location.hash.startsWith('#category-') || (!location.hash && !document.body.dataset?.postId)) showList(true);
 gutter(); setControls(); syncDock();
-
