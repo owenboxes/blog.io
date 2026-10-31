@@ -79,3 +79,25 @@
 
 .table-scroll{overflow:auto;margin:24px 0}.table-scroll table{width:100%;border-collapse:collapse;font-size:13px;line-height:1.8}.table-scroll th,.table-scroll td{border-bottom:1px solid var(--line);padding:12px;text-align:left;vertical-align:top}.table-scroll th{background:#eee9df}.practice-environment{border-left:3px solid var(--accent);padding:12px 16px;background:#eee9df;font-size:12px}article li{font-size:14px;line-height:2}article .static-code code{font:inherit}
 
+/* Short reading lines and two-line paragraph separation; never constrain the lab. */
+article section > p:not(.section-kicker){
+  max-width:34em;
+  font-size:16px;
+  line-height:2.15;
+  margin-block:0 4.3em;
+  word-break:keep-all;
+  overflow-wrap:anywhere;
+  text-wrap:pretty;
+}
+article section > :is(ul,ol){
+  max-width:34em;
+  font-size:16px;
+}
+article section > :is(ul,ol) li{font-size:inherit;line-height:2.15}
+@media(max-width:760px){
+  article section > p:not(.section-kicker),
+  article section > :is(ul,ol){font-size:15px}
+}
+
+
+
