@@ -26,6 +26,10 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: JavaScript tests
         run: node tests/run-js.cjs
+      - name: Owner editor tests
+        run: node --test tests/admin/*.test.mjs
+      - name: Build owner editor Worker
+        run: node admin/build.mjs
       - name: Install pinned Python runtime for integration tests
         run: npm install --prefix "$RUNNER_TEMP/python-runtime" --no-save pyodide@0.27.7
       - name: Real Pyodide worker integration tests
@@ -48,3 +52,4 @@ jobs:
           path: site
       - uses: actions/deploy-pages@v4
         id: deployment
+

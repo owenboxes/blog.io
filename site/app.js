@@ -3,7 +3,7 @@ const $ = id => document.getElementById(id);
 const example = $('editor').value.trim() || 'total = 0\nfor number in range(1, 4):\n    total += number\nprint(total)';
 const lab = $('lab');
 let worker = null, control = null, active = false, paused = false;
-let timer = null, selectedLine = null, previousVars = {}, expanded = false;
+let timer = null, selectedLine = null, errorLine = null, previousVars = {}, expanded = false;
 let inputBuffer = null, waitingInput = false;
 let stepMode = false;
 const canStep = self.crossOriginIsolated && typeof SharedArrayBuffer !== 'undefined';
@@ -13,6 +13,32 @@ function status(message) { $('status').textContent = message; }
 function clearConsole() {
   $('output').textContent = ''; $('input-log').textContent = '';
   $('input-history').hidden = true; $('input-prompt').textContent = '';
+  clearProblem();
+}
+function clearProblem() {
+  errorLine = null; $('problems').hidden = true;
+  $('problem-location').onclick = null;
+  gutter();
+}
+function showProblem(diagnostic, fallback) {
+  const d = diagnostic || {type:'실행환경 오류',message:fallback};
+  const lines = $('editor').value.split('\n');
+  errorLine = Number.isInteger(d.line) && d.line >= 1 && d.line <= lines.length ? d.line : null;
+  $('problem-type').textContent = d.type || '오류';
+  $('problem-message').textContent = d.message || fallback || '오류 정보를 확인하지 못했습니다.';
+  $('problem-source').textContent = errorLine ? lines[errorLine-1] : '';
+  $('problem-location').textContent = errorLine ? `lesson.py:${errorLine}${d.column ? ':'+d.column : ''}` : '위치 정보 없음';
+  $('problem-location').disabled = errorLine === null;
+  $('problem-location').onclick = () => {
+    if (errorLine === null) return;
+    const start = lines.slice(0,errorLine-1).reduce((sum,line)=>sum+line.length+1,0);
+    $('editor').focus({preventScroll:true});
+    $('editor').setSelectionRange(start,start+lines[errorLine-1].length);
+    $('editor').scrollTop = Math.max(0,(errorLine-1)*24-48);
+    gutter();
+  };
+  $('problems').hidden = false; gutter();
+  status(errorLine ? `오류 · lesson.py:${errorLine} · ${d.type || '오류'}` : '실행환경 오류 · 문제 패널을 확인해 주세요.');
 }
 function setControls() {
   $('run').disabled = active && !paused;
@@ -28,13 +54,15 @@ function gutter() {
     const row = document.createElement('div');
     row.textContent = i + 1;
     if (i + 1 === selectedLine) row.className = 'current';
+    if (i + 1 === errorLine) row.className = 'error';
     return row;
   }));
   $('gutter').scrollTop = $('editor').scrollTop;
   // The active stripe scrolls with the text, independently of the toolbar.
-  $('editor').style.backgroundImage = selectedLine ? `linear-gradient(to bottom, transparent ${(selectedLine-1)*24+16}px, #f1dfb6 ${(selectedLine-1)*24+16}px, #f1dfb6 ${selectedLine*24+16}px, transparent ${selectedLine*24+16}px)` : 'none';
+  const markedLine = errorLine || selectedLine, color = errorLine ? '#f6d4d2' : '#f1dfb6';
+  $('editor').style.backgroundImage = markedLine ? `linear-gradient(to bottom, transparent ${(markedLine-1)*24+16}px, ${color} ${(markedLine-1)*24+16}px, ${color} ${markedLine*24+16}px, transparent ${markedLine*24+16}px)` : 'none';
   $('editor').style.backgroundAttachment = 'local';
-  $('position').textContent = selectedLine ? `LINE ${selectedLine}` : 'LINE —';
+  $('position').textContent = errorLine ? `ERROR ${errorLine}` : selectedLine ? `LINE ${selectedLine}` : 'LINE —';
 }
 function variables(values) {
   const entries = Object.entries(values);
@@ -82,10 +110,10 @@ function start(stepping) {
   stepMode = stepping;
   clearConsole(); variables({}); gutter(); setControls();
   status('Python 실행환경 불러오는 중… 첫 실행은 잠시 걸릴 수 있습니다.');
-  const current = new Worker((document.body.dataset?.siteRoot || './')+'worker.js?v=executed-step-1'); worker = current;
+  const current = new Worker((document.body.dataset?.siteRoot || './')+'worker.js?v=b00a81622d11'); worker = current;
   // Initialization is allowed more time than student code execution.
   timer = setTimeout(() => stop('실행환경 로딩 시간 초과 · 인터넷 연결 후 다시 시도해 주세요.'), 60000);
-  current.onerror = event => { if (worker !== current) return; stop('실행환경 로딩 실패 · 인터넷/CDN 연결을 확인해 주세요.'); $('output').textContent = event.message || 'Worker error'; };
+  current.onerror = event => { if (worker !== current) return; stop('실행환경 로딩 실패 · 인터넷/CDN 연결을 확인해 주세요.'); $('output').textContent = event.message || 'Worker error'; showProblem(null,event.message || 'Python 실행환경을 불러오지 못했습니다.'); };
   current.onmessage = ({data}) => {
     if (worker !== current) return;
     if (data.type === 'ready') {
@@ -124,8 +152,10 @@ function start(stepping) {
     } else if (data.type === 'done') {
       $('output').textContent = data.output + (data.error ? '\n'+data.error : '');
       variables(data.variables); stop(data.error ? '오류로 종료 · 아래 메시지를 확인해 주세요.' : '실행 완료 · 변수와 출력 결과를 확인해 보세요.');
+      if (data.error) showProblem(data.diagnostic,data.error);
     } else if (data.type === 'error') {
       $('output').textContent += '\n'+data.message; stop('실행 오류 · 작성한 코드는 유지했습니다.');
+      showProblem(null,data.message);
     }
   };
 }
@@ -184,12 +214,12 @@ $('fullscreen').onclick = async () => {
 document.addEventListener('fullscreenchange', () => { $('fullscreen').textContent = document.fullscreenElement ? '전체화면 종료' : '전체화면'; syncDock(); });
 document.addEventListener('keydown', event => { if (event.key === 'Escape' && expanded && !document.fullscreenElement) expand(false); });
 $('clear-output').onclick = clearConsole;
-$('editor').oninput = () => { selectedLine = null; gutter(); };
+$('editor').oninput = () => { selectedLine = null; clearProblem(); };
 $('editor').onscroll = () => { $('gutter').scrollTop = $('editor').scrollTop; };
 $('editor').onkeydown = event => {
   if (event.key !== 'Tab' || event.shiftKey) return;
   event.preventDefault();
-  const e = event.target; e.setRangeText('    ', e.selectionStart, e.selectionEnd, 'end'); gutter();
+  const e = event.target; e.setRangeText('    ', e.selectionStart, e.selectionEnd, 'end'); selectedLine = null; clearProblem();
 };
 function showList(show) {
   if (active) {

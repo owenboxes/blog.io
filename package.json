@@ -1,0 +1,11 @@
+{
+  "name": "owner-blog-editor",
+  "private": true,
+  "version": "1.0.0",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "test": "node --test tests/admin/*.test.mjs",
+    "build:admin": "node admin/build.mjs",
+    "prepare:articles": "node admin/prepare.mjs"
+  }
+}

@@ -4,13 +4,14 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Python 실행창에서 문제를 나누어 풀고 무한 반복이 생기면 중단 버튼을 사용한다. 실제 인증·보안 시스템이나 결제 코드를 만드는 예제가 아니다.">
   <title>입력 횟수·반복 종료·중첩 컴프리헨션 — OWEN</title>
-  <link rel="stylesheet" href="../style.css?v=5edf70b1cfdb">
+  <link rel="stylesheet" href="../style.css?v=aa5c9f4bad7c">
   <script src="../coi-config.js"></script>
   <script src="../coi-serviceworker.js"></script>
   <script src="../dock.js" defer></script>
   <script src="../input-channel.js" defer></script>
-  <script src="../app.js?v=15c26aa2ff36" defer></script>
+  <script src="../app.js?v=0f6da4f4085e" defer></script>
   <script src="../catalog.js?v=947c77aa3c4e" defer></script>
+<script src="../editor-config.js" defer></script><script src="../edit-link.js" defer></script>
 </head>
 <body data-site-root="../" data-post-id="practice-python-loops" data-lab="python">
 <header class="site-header"><a class="brand" href="#" data-home>OWEN<span> / BUILD NOTES</span></a><nav aria-label="주 메뉴"><a href="#about">소개</a><a href="https://github.com/owenboxes" target="_blank" rel="noopener">GitHub ↗</a></nav></header>
@@ -34,31 +35,20 @@
 <details class="mobile-toc"><summary>이 글의 목차</summary><a href="#section-1">실습 환경</a><a href="#section-2">1. 쿠폰 입력 경계값</a><a href="#section-3">2. 비밀번호 종료 조건 설계</a><a href="#section-4">3. for문을 먼저 쓰고 컴프리헨션으로 바꾸기</a></details>
 <details class="mobile-published"><summary>다른 글 보기 · 최근 등록순</summary><div id="mobile-published-posts"></div></details>
 <p class="practice-environment">웹 Python 실습 · AI가 제안한 연습 문제이며 작성자의 완료 기록이 아닙니다.</p>
-<section id="section-1"><h2>실습 환경</h2>
-<p>Python 실행창에서 문제를 나누어 풀고 무한 반복이 생기면 중단 버튼을 사용한다. 실제 인증·보안 시스템이나 결제 코드를 만드는 예제가 아니다.</p>
-</section>
-<section id="section-2"><h2>1. 쿠폰 입력 경계값</h2>
-<p>TIL의 쿠폰 코드를 읽고 첫 시도 성공, 다섯 번째 성공, 다섯 번 실패, 문자 입력의 네 경우를 분리해 확인한다. 입력 횟수 증가 위치와 break에 도달하는 분기를 기록한다. 안내 문구만으로 실제 할인이 계산되는지 단정하지 않는다.</p>
-</section>
-<section id="section-3"><h2>2. 비밀번호 종료 조건 설계</h2>
-<p>성공 시 종료와 정해진 실패 횟수에서 종료를 먼저 분리해 작성한다. ‘10분 잠금’이라는 출력과 실제 시간 기반 차단을 구분한다. 실제 계정 비밀번호는 입력하지 않는다. 완성 풀이를 본인의 수행 결과로 대신 기록하지 않는다.</p>
-</section>
-<section id="section-4"><h2>3. for문을 먼저 쓰고 컴프리헨션으로 바꾸기</h2>
-<div class="static-code"><div>py</div><pre><code># AI가 만든 교육용 데이터. 실제 주문 데이터가 아니다.
+<!-- editor-body:start --><section id="section-1"><h2>실습 환경</h2><p>Python 실행창에서 문제를 나누어 풀고 무한 반복이 생기면 중단 버튼을 사용한다. 실제 인증·보안 시스템이나 결제 코드를 만드는 예제가 아니다.</p></section><section id="section-2"><h2>1. 쿠폰 입력 경계값</h2><p>TIL의 쿠폰 코드를 읽고 첫 시도 성공, 다섯 번째 성공, 다섯 번 실패, 문자 입력의 네 경우를 분리해 확인한다. 입력 횟수 증가 위치와 break에 도달하는 분기를 기록한다. 안내 문구만으로 실제 할인이 계산되는지 단정하지 않는다.</p></section><section id="section-3"><h2>2. 비밀번호 종료 조건 설계</h2><p>성공 시 종료와 정해진 실패 횟수에서 종료를 먼저 분리해 작성한다. ‘10분 잠금’이라는 출력과 실제 시간 기반 차단을 구분한다. 실제 계정 비밀번호는 입력하지 않는다. 완성 풀이를 본인의 수행 결과로 대신 기록하지 않는다.</p></section><section id="section-4"><h2>3. for문을 먼저 쓰고 컴프리헨션으로 바꾸기</h2><div class="static-code"><div>py</div><pre><code># AI가 만든 교육용 데이터. 실제 주문 데이터가 아니다.
 orders = [
     {&quot;paid&quot;: True, &quot;items&quot;: [{&quot;name&quot;: &quot;커피&quot;}, {&quot;name&quot;: &quot;빵&quot;}]},
     {&quot;paid&quot;: False, &quot;items&quot;: [{&quot;name&quot;: &quot;주스&quot;}]},
 ]
 result = []
 # TODO: 결제된 주문의 상품 이름만 result에 모으기
-print(result)</code></pre></div>
-<p>먼저 일반 for문으로 완성하고, 같은 결과를 내는 컴프리헨션으로 바꾼다. <code>order</code>를 꺼내기 전에 <code>order[&quot;items&quot;]</code>를 쓸 수 있는지 설명해 본다. TODO 상태의 코드가 정답인 것은 아니다.</p>
-</section>
+print(result)</code></pre></div><p>먼저 일반 for문으로 완성하고, 같은 결과를 내는 컴프리헨션으로 바꾼다. <code>order</code>를 꺼내기 전에 <code>order[&quot;items&quot;]</code>를 쓸 수 있는지 설명해 본다. TODO 상태의 코드가 정답인 것은 아니다.</p></section><!-- editor-body:end -->
 <div id="lab" class="lab">
         <div class="lab-head"><button id="toggle-lab" aria-expanded="false" aria-controls="lab-body"><span class="lab-icon">&gt;_</span><span>Python 실습실<small>직접 수정하고 한 줄씩 따라가 보세요</small></span><span id="chevron">＋</span></button></div>
         <div id="lab-body" hidden>
           <div class="toolbar"><div class="run-controls"><button id="run" class="primary">▶ 전체 실행</button><button id="step">↳ 한 단계</button><button id="stop" disabled>■ 중단</button></div><div class="view-controls"><button id="expand" aria-pressed="false">⤢ 확대</button><button id="fullscreen">전체화면</button><button id="reset">환경 리셋</button><button id="restore">예제 복원</button></div></div>
           <div class="status-row"><span id="status" role="status" aria-live="polite">준비됨 · 실행 시 Python을 불러옵니다</span><span id="position">LINE —</span></div>
+<section id="problems" class="problems" aria-label="실행 문제" aria-live="polite" hidden><div class="problem-heading">문제 · 1 <small>실행 시 확인된 오류</small></div><div class="problem-detail"><button id="problem-location" type="button" title="오류 줄로 이동"></button><strong id="problem-type"></strong><span id="problem-message"></span></div><pre id="problem-source"></pre></section>
           <div id="support-note" class="support-note" hidden></div>
           <div class="workbench"><div class="editor-pane"><div class="pane-title"><span>lesson.py</span><small>PYTHON</small></div><div class="editor-shell"><div id="gutter" aria-hidden="true"></div><textarea id="editor" aria-label="Python 코드 편집기" spellcheck="false" autocapitalize="off" autocorrect="off" wrap="off"># AI가 만든 교육용 데이터. 실제 주문 데이터가 아니다.
 orders = [

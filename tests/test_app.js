@@ -6,8 +6,9 @@ function appFixture() {
     if (!nodes.has(id)) nodes.set(id, {
       value:'', textContent:'', hidden:false, disabled:false, style:{}, scrollTop:0,
       clientHeight:300, scrollHeight:300, classList:{toggle(){},add(){}},
-      setAttribute(){}, replaceChildren(){}, append(){}, focus(){}, scrollIntoView(){},
+      setAttribute(name,value){this[name]=value;}, replaceChildren(...children){this.children=children;}, append(){}, focus(){this.focused=true;}, scrollIntoView(){},setSelectionRange(a,b){this.selectionStart=a;this.selectionEnd=b;},
       getBoundingClientRect(){ return {height:74}; }
+      ,setRangeText(text,a,b){this.value=this.value.slice(0,a)+text+this.value.slice(b);this.selectionStart=this.selectionEnd=a+text.length;}
     });
     return nodes.get(id);
   }
@@ -62,6 +63,21 @@ function checkApp() {
   assert($('input-log').textContent==='' && $('input-history').hidden, 'old input history leaked into new run');
   assert(Atomics.load(control,0)===2 && inputBuffer, 'full run missing input channel');
   stop();
+  $('editor').value='orders = []\\nresult = [menu for menu in order]';
+  start(false); const broken=worker; broken.onmessage({data:{type:'ready'}});
+  broken.onmessage({data:{type:'done',output:'',variables:{},error:'NameError: order',diagnostic:{kind:'runtime',type:'NameError',message:"name 'order' is not defined",file:'lesson.py',line:2,column:null,source:'result = [menu for menu in order]'}}});
+  assert(!$('problems').hidden && $('problem-location').textContent.includes('lesson.py:2'), 'missing error location panel');
+  assert($('problem-type').textContent==='NameError' && $('problem-message').textContent.includes('order'), 'missing diagnostic details');
+  assert(selectedLine===null && errorLine===2 && $('editor').style.backgroundImage.includes('#f6d4d2'), 'error stripe is not independent from step highlight');
+  $('problem-location').onclick();
+  assert($('editor').focused && $('editor').selectionStart===12, 'error link did not navigate to exact source line');
+  $('editor').onkeydown({key:'Tab',shiftKey:false,preventDefault(){},target:$('editor')});
+  assert($('problems').hidden && errorLine===null, 'Tab editing retained stale diagnostic');
+  $('editor').value+=' '; $('editor').oninput();
+  assert($('problems').hidden && errorLine===null, 'stale error markers survived edits');
+  start(false);worker.onmessage({data:{type:'ready'}});worker.onmessage({data:{type:'done',output:'ok',variables:{},error:'',diagnostic:null}});
+  assert($('problems').hidden && errorLine===null && selectedLine===null, 'success retained stale error');
   return 'app input/step/full-run/timer/stop/stale-worker checks PASS';
 }
 checkApp();`;
+

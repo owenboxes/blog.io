@@ -4,13 +4,14 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="add와 commit을 비슷하게 생각했던 부분을 ‘변경 선택 → 버전 기록 → 원격 공유’로 나누어 정리했다.">
   <title>add·commit·gitignore와 되돌리기를 상태로 구분하기 — OWEN</title>
-  <link rel="stylesheet" href="../style.css?v=5edf70b1cfdb">
+  <link rel="stylesheet" href="../style.css?v=aa5c9f4bad7c">
   <script src="../coi-config.js"></script>
   <script src="../coi-serviceworker.js"></script>
   <script src="../dock.js" defer></script>
   <script src="../input-channel.js" defer></script>
-  <script src="../app.js?v=15c26aa2ff36" defer></script>
+  <script src="../app.js?v=0f6da4f4085e" defer></script>
   <script src="../catalog.js?v=947c77aa3c4e" defer></script>
+<script src="../editor-config.js" defer></script><script src="../edit-link.js" defer></script>
 </head>
 <body data-site-root="../" data-post-id="git-tracking-and-history" data-lab="off">
 <header class="site-header"><a class="brand" href="#" data-home>OWEN<span> / BUILD NOTES</span></a><nav aria-label="주 메뉴"><a href="#about">소개</a><a href="https://github.com/owenboxes" target="_blank" rel="noopener">GitHub ↗</a></nav></header>
@@ -34,30 +35,13 @@
 <details class="mobile-toc"><summary>이 글의 목차</summary><a href="#section-1">저장이라는 말 하나로 묶지 않기</a><a href="#section-2">.gitignore는 이미 추적 중인 파일을 자동 해제하지 않는다</a><a href="#section-3">reset과 revert도 결과가 다르다</a><a href="#section-4">부분 스테이징에서 남은 질문</a></details>
 <details class="mobile-published"><summary>다른 글 보기 · 최근 등록순</summary><div id="mobile-published-posts"></div></details>
 
-<section id="section-1"><h2>저장이라는 말 하나로 묶지 않기</h2>
-<p>add와 commit을 비슷하게 생각했던 부분을 ‘변경 선택 → 버전 기록 → 원격 공유’로 나누어 정리했다.</p>
-<div class="table-scroll"><table><thead><tr><th>목적</th><th>명령</th></tr></thead><tbody>
-<tr><td>다음 커밋의 변경 선택</td><td><code>git add 파일명</code></td></tr>
-<tr><td>선택한 내용을 커밋으로 기록</td><td><code>git commit -m &quot;변경 설명&quot;</code></td></tr>
-<tr><td>원격에 커밋 공유</td><td><code>git push</code></td></tr>
-</tbody></table></div>
-<p>파일은 add 후에도 작업 폴더에 남는다. 커밋 메시지도 별도로 저장할 파일이 아니라 그 변경을 설명하는 내용이다.</p>
-</section>
-<section id="section-2"><h2>.gitignore는 이미 추적 중인 파일을 자동 해제하지 않는다</h2>
-<p>파일의 존재 여부, Git의 추적 여부, 무시 규칙 적용 여부를 나누어 보아야 했다. <code>git status --ignored</code>, <code>git ls-files 파일명</code>, <code>git check-ignore -v 파일명</code>은 서로 다른 것을 확인한다. check-ignore에 출력이 없다는 것만으로 모든 상태를 결론 내리지 않는다.</p>
-<p>인덱스에서 제외하는 일과 과거 이력의 비밀 정보를 지우는 일도 별개다. 이미 노출된 인증 정보는 ignore 규칙만 추가해서 해결되는 문제가 아니다.</p>
-</section>
-<section id="section-3"><h2>reset과 revert도 결과가 다르다</h2>
-<p>일반적인 브랜치 전체 reset에서는 soft·mixed·hard에 따라 브랜치가 가리키는 커밋, 인덱스, 작업 파일 중 어디까지 맞추는지가 다르다. hard는 미커밋 변경을 잃을 수 있어 실제 프로젝트에서 시험하지 않는다. revert는 지정 커밋의 변경을 취소하는 새 커밋을 만든다.</p>
-</section>
-<section id="section-4"><h2>부분 스테이징에서 남은 질문</h2>
-<p><code>git add -p</code>의 hunk 표시를 질문하고 <code>e</code>로 수동 편집 화면에 들어간 기록도 있다. 다만 편집 저장·패치 적용·스테이징 성공은 확인되지 않았다. 화면에 진입한 사실과 원하는 변경을 기록한 결과는 구분한다.</p>
-</section>
+<!-- editor-body:start --><section id="section-1"><h2>저장이라는 말 하나로 묶지 않기</h2><p>add와 commit을 비슷하게 생각했던 부분을 ‘변경 선택 → 버전 기록 → 원격 공유’로 나누어 정리했다.</p><div class="table-scroll"><table><tbody><tr><th>목적</th><th>명령</th></tr><tr><td>다음 커밋의 변경 선택</td><td><code>git add 파일명</code></td></tr><tr><td>선택한 내용을 커밋으로 기록</td><td><code>git commit -m &quot;변경 설명&quot;</code></td></tr><tr><td>원격에 커밋 공유</td><td><code>git push</code></td></tr></tbody></table></div><p>파일은 add 후에도 작업 폴더에 남는다. 커밋 메시지도 별도로 저장할 파일이 아니라 그 변경을 설명하는 내용이다.</p></section><section id="section-2"><h2>.gitignore는 이미 추적 중인 파일을 자동 해제하지 않는다</h2><p>파일의 존재 여부, Git의 추적 여부, 무시 규칙 적용 여부를 나누어 보아야 했다. <code>git status --ignored</code>, <code>git ls-files 파일명</code>, <code>git check-ignore -v 파일명</code>은 서로 다른 것을 확인한다. check-ignore에 출력이 없다는 것만으로 모든 상태를 결론 내리지 않는다.</p><p>인덱스에서 제외하는 일과 과거 이력의 비밀 정보를 지우는 일도 별개다. 이미 노출된 인증 정보는 ignore 규칙만 추가해서 해결되는 문제가 아니다.</p></section><section id="section-3"><h2>reset과 revert도 결과가 다르다</h2><p>일반적인 브랜치 전체 reset에서는 soft·mixed·hard에 따라 브랜치가 가리키는 커밋, 인덱스, 작업 파일 중 어디까지 맞추는지가 다르다. hard는 미커밋 변경을 잃을 수 있어 실제 프로젝트에서 시험하지 않는다. revert는 지정 커밋의 변경을 취소하는 새 커밋을 만든다.</p></section><section id="section-4"><h2>부분 스테이징에서 남은 질문</h2><p><code>git add -p</code>의 hunk 표시를 질문하고 <code>e</code>로 수동 편집 화면에 들어간 기록도 있다. 다만 편집 저장·패치 적용·스테이징 성공은 확인되지 않았다. 화면에 진입한 사실과 원하는 변경을 기록한 결과는 구분한다.</p></section><!-- editor-body:end -->
 <div id="lab" class="lab" hidden>
         <div class="lab-head"><button id="toggle-lab" aria-expanded="false" aria-controls="lab-body"><span class="lab-icon">&gt;_</span><span>Python 실습실<small>직접 수정하고 한 줄씩 따라가 보세요</small></span><span id="chevron">＋</span></button></div>
         <div id="lab-body" hidden>
           <div class="toolbar"><div class="run-controls"><button id="run" class="primary">▶ 전체 실행</button><button id="step">↳ 한 단계</button><button id="stop" disabled>■ 중단</button></div><div class="view-controls"><button id="expand" aria-pressed="false">⤢ 확대</button><button id="fullscreen">전체화면</button><button id="reset">환경 리셋</button><button id="restore">예제 복원</button></div></div>
           <div class="status-row"><span id="status" role="status" aria-live="polite">준비됨 · 실행 시 Python을 불러옵니다</span><span id="position">LINE —</span></div>
+<section id="problems" class="problems" aria-label="실행 문제" aria-live="polite" hidden><div class="problem-heading">문제 · 1 <small>실행 시 확인된 오류</small></div><div class="problem-detail"><button id="problem-location" type="button" title="오류 줄로 이동"></button><strong id="problem-type"></strong><span id="problem-message"></span></div><pre id="problem-source"></pre></section>
           <div id="support-note" class="support-note" hidden></div>
           <div class="workbench"><div class="editor-pane"><div class="pane-title"><span>lesson.py</span><small>PYTHON</small></div><div class="editor-shell"><div id="gutter" aria-hidden="true"></div><textarea id="editor" aria-label="Python 코드 편집기" spellcheck="false" autocapitalize="off" autocorrect="off" wrap="off"></textarea></div></div>
           <div class="inspect-pane"><div class="pane-title">변수 <small>현재 멈춘 시점의 값</small></div><div id="variables" class="variables"><p class="empty">실행하면 변수의 변화가 여기에 나타납니다.</p></div><div class="pane-title console-title">실행 결과 <small>프로그램 출력 · 오류</small><button id="clear-output">지우기</button></div><pre id="output" aria-label="프로그램 출력 및 오류" tabindex="0"></pre><form id="console-input" hidden><span id="input-prompt"></span><label for="stdin">입력 대기 ›</label><input id="stdin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Python input 입력값"><button type="submit">입력 ↵</button><small>Enter로 전송 · 빈 입력도 가능</small></form><details id="input-history" hidden><summary>입력 기록 · 실행 결과와 별도</summary><pre id="input-log" aria-label="입력 안내 및 입력값 기록"></pre></details></div></div>

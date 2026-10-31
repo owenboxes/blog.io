@@ -1,0 +1,2174 @@
+{
+  "version": 1,
+  "posts": [
+    {
+      "id": "loop-demo",
+      "title": "반복문을 이해하는 가장 좋은 방법",
+      "category": "Python",
+      "kind": "note",
+      "published": true,
+      "publishedAt": "2026-10-30T15:32:22Z",
+      "sequence": 1,
+      "date": "2026.10.30",
+      "href": "#article",
+      "summary": "코드를 잠시 멈추고, 변수와 흐름을 한 줄씩 따라가 봅니다.",
+      "sample": true,
+      "document": {
+        "version": 1,
+        "blocks": [
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "01 / UNDERSTANDING"
+              }
+            ],
+            "role": "kicker"
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "조건이 아니라 흐름으로 이해하기"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "반복문을 처음 배우면 “이 줄은 몇 번 실행될까?”보다 “이 문법이 맞을까?”부터 생각하게 됩니다."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "하지만 코드를 이해하려면, 지금 어느 줄에 있고 다음에는 어디로 이동하는지 보는 것도 중요합니다."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "다음 코드는 1부터 3까지 더합니다. 짧은 코드 안에서도 변수의 값은 여러 번 바뀝니다."
+              }
+            ]
+          },
+          {
+            "type": "code",
+            "text": "total = 0\nfor number in range(1, 4):\n    total += number\nprint(total)",
+            "language": "PYTHON",
+            "label": "01"
+          },
+          {
+            "type": "quote",
+            "content": [
+              {
+                "type": "text",
+                "text": "같은 줄로 돌아오지만, 같은 상태로 돌아오는 것은 아닙니다."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "02 / FOLLOW THE CHANGE"
+              }
+            ],
+            "role": "kicker"
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "반복되는 줄, 달라지는 값"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "처음에는 "
+              },
+              {
+                "type": "code",
+                "text": "total"
+              },
+              {
+                "type": "text",
+                "text": "이 0입니다. 첫 번째 반복에서 1을 더하고, 다음에는 2를 더하고, 마지막에는 3을 더합니다. 반복이 끝나면 합계 6을 출력합니다."
+              }
+            ]
+          },
+          {
+            "type": "steps",
+            "items": [
+              {
+                "label": "START",
+                "value": "0"
+              },
+              {
+                "label": "+ 1",
+                "value": "1"
+              },
+              {
+                "label": "+ 2",
+                "value": "3"
+              },
+              {
+                "label": "+ 3",
+                "value": "6"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "아래 실습창에서 "
+              },
+              {
+                "type": "strong",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "한 단계"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": "를 누르면 실행 위치를 하나씩 진행하고 멈춥니다. 강조된 줄은 "
+              },
+              {
+                "type": "emphasis",
+                "content": [
+                  {
+                    "type": "text",
+                    "text": "방금 실행한 위치"
+                  }
+                ]
+              },
+              {
+                "type": "text",
+                "text": "이고, 변수 패널에는 현재 멈춘 시점의 값이 표시됩니다. 함수 호출은 함수 내부로 들어가며, 반복문은 같은 줄을 다시 방문할 수 있습니다. 전체 실행에서는 줄을 강조하지 않습니다."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "03 / TRY IT YOURSELF"
+              }
+            ],
+            "role": "kicker"
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "읽은 것을, 직접 움직여 보기"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "숫자를 바꾸거나 조건을 추가해 보세요. 실습은 이 페이지 안에서만 진행되며 다른 기기와 동기화되지 않습니다."
+              }
+            ]
+          }
+        ]
+      },
+      "pageHash": "9qxpqUDZJO4UOhpDnLPGx8ezhLurci2clDdUDzJ3Yuw"
+    },
+    {
+      "id": "python-data-exceptions",
+      "title": "데이터 공부 중 다시 만난 반복문과 예외 처리",
+      "category": "Python",
+      "kind": "note",
+      "date": "2026.10.20",
+      "published": true,
+      "publishedAt": "2026-10-31T05:18:45Z",
+      "sequence": 2,
+      "href": "posts/python-data-exceptions.html",
+      "summary": "NumPy와 pandas를 공부하다가 조건문·반복문과 예외 처리 예제가 함께 나오면서 흐름을 이해하기 어려웠다. for, float(), try/except가 각각 무슨 역할을 하는지 상세한…",
+      "document": {
+        "version": 1,
+        "blocks": [
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "데이터 도구를 배우다 기초 문법으로 돌아왔다"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "NumPy와 pandas를 공부하다가 조건문·반복문과 예외 처리 예제가 함께 나오면서 흐름을 이해하기 어려웠다. "
+              },
+              {
+                "type": "code",
+                "text": "for"
+              },
+              {
+                "type": "text",
+                "text": ", "
+              },
+              {
+                "type": "code",
+                "text": "float()"
+              },
+              {
+                "type": "text",
+                "text": ", "
+              },
+              {
+                "type": "code",
+                "text": "try/except"
+              },
+              {
+                "type": "text",
+                "text": "가 각각 무슨 역할을 하는지 상세한 설명을 요청했다."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "당시 남은 기록은 질문과 AI 설명의 요약이다. 코드를 실행해 결과를 확인했거나 혼란을 해소했다는 기록은 없다. 그래서 이번 글은 해결 후기보다, 내가 어디에서 막혔는지를 남기는 학습 기록이다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "다시 구분해야 할 역할"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "기존 TIL에 정리된 AI 설명은 세 역할을 나눈다. 반복문은 항목을 순서대로 처리하고, "
+              },
+              {
+                "type": "code",
+                "text": "float()"
+              },
+              {
+                "type": "text",
+                "text": "는 값을 실수로 변환하며, 예외 처리는 변환 도중 발생한 오류에 대응하는 흐름이다. 이 설명을 내가 실제 코드에 적용한 결과는 아직 확인되지 않았다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "남아 있는 확인"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "같은 예제를 직접 실행하면서 어떤 값에서 변환이 실패하는지, 실패한 뒤 프로그램 흐름이 어디로 이어지는지를 확인할 필요가 있다. 별도 실행 결과 없이 이해 완료나 문제 해결로 표현하지 않는다."
+              }
+            ]
+          }
+        ]
+      },
+      "pageHash": "8DrONY9Mlix5pweVIbilVSByedpfJjIEay28D-1bhhA"
+    },
+    {
+      "id": "agent-ui-and-runtime",
+      "title": "에이전트 UI가 보이는 것과 연구가 돌아가는 것은 달랐다",
+      "category": "AI 에이전트",
+      "kind": "note",
+      "date": "2026.10.21",
+      "published": true,
+      "publishedAt": "2026-10-31T05:18:45Z",
+      "sequence": 3,
+      "href": "posts/agent-ui-and-runtime.html",
+      "summary": "Hermes 기반 R&D Lab을 구성하면서 PowerShell 설정 스크립트 오류와 프로필별 플러그인 불일치를 겪었다. 설정 단계를 다시 진행했고, 플러그인을 동기화한 뒤에는 UI가 표시된다고…",
+      "document": {
+        "version": 1,
+        "blocks": [
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "자율 연구 도구를 구성하며 만난 문제"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Hermes 기반 R&D Lab을 구성하면서 PowerShell 설정 스크립트 오류와 프로필별 플러그인 불일치를 겪었다. 설정 단계를 다시 진행했고, 플러그인을 동기화한 뒤에는 UI가 표시된다고 보고했다."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "다만 UI가 보인다는 것과 연구 흐름 전체가 정상 실행된다는 것은 다른 확인이었다. 탐색 결과가 있어도 기대했던 Probe·Deep Dive로 이어졌다는 근거는 아직 없었다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "오류를 구체적으로 남기기"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Cron 편집 명령을 실행했을 때 "
+              },
+              {
+                "type": "code",
+                "text": "unrecognized arguments"
+              },
+              {
+                "type": "text",
+                "text": " 오류를 확인했다. AI는 편집 대상의 ID나 이름을 지정하는 방식을 제안했지만, 수정 명령의 실행 성공은 기록에 남아 있지 않다. 버전에 민감한 명령이므로 이 글에서 검증된 설치 가이드로 제시하지 않는다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "확인 범위를 나누어 기록했다"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "내가 확인·보고한 것은 설정 재시도, 프로필 동기화와 UI 표시, 명령 오류다. AI가 제시한 연구 구조나 수정 방법을 모두 적용했다고 쓰지는 않는다. 다음 확인 대상은 화면 유무가 아니라 연구 단계별 실행 로그와 실제 산출물이다."
+              }
+            ]
+          }
+        ]
+      },
+      "pageHash": "aiJ9Z59KwwufaV21xMJ-0iaGYEeP13MOXowpPi_McQM"
+    },
+    {
+      "id": "agent-results-and-usage",
+      "title": "완료 건수보다 실제 산출물과 사용량을 확인하고 싶었다",
+      "category": "AI 에이전트",
+      "kind": "note",
+      "date": "2026.10.22",
+      "published": true,
+      "publishedAt": "2026-10-31T05:18:45Z",
+      "sequence": 4,
+      "href": "posts/agent-results-and-usage.html",
+      "summary": "R&D Lab 상태를 보다가 완료 작업은 표시되지만 프로젝트로 이어진 결과가 부족하다고 느꼈다. 완료 숫자만 보는 대신 어떤 산출물이 만들어졌는지, 어떤 기준으로 심화 작업으로 넘어가는지 점검을…",
+      "document": {
+        "version": 1,
+        "blocks": [
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "완료 표시와 프로젝트 전환 사이"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "R&D Lab 상태를 보다가 완료 작업은 표시되지만 프로젝트로 이어진 결과가 부족하다고 느꼈다. 완료 숫자만 보는 대신 어떤 산출물이 만들어졌는지, 어떤 기준으로 심화 작업으로 넘어가는지 점검을 요청했다."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "동시에 자동 운영이 개인 사용 여유를 모두 소진하지 않도록 사용량 제약을 정했다. 효율화 제안을 받았다는 사실과 실제 사용량이 줄었다는 결과는 구분해야 했다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "전달까지 끝나야 적용 여부를 확인할 수 있었다"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "생성된 플러그인 파일을 내려받으려 했지만 반복해서 실패했다. 파일이 생성됐다는 안내만으로 내 환경에 설치되거나 실행됐다고 볼 수 없었다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "아직 성과로 쓰지 않는 것"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "당시 AI가 제시한 사용량 분석 수치는 원본 로그로 다시 계산하지 못했다. 다운로드·설치 성공과 효율화 효과도 확인되지 않았다. 이 기록에서는 구체적인 사용량 개선 수치나 운영 성공을 주장하지 않는다. 관찰한 문제와 요청한 점검까지만 남긴다."
+              }
+            ]
+          }
+        ]
+      },
+      "pageHash": "uyQhLZuME9xUrVEzfWjOZocFzZm4dRD4pfc_P8Ff6q8"
+    },
+    {
+      "id": "application-flow",
+      "title": "만든 결과물 너머 프로그램의 공통 흐름을 질문했다",
+      "category": "개발 구조",
+      "kind": "note",
+      "date": "2026.10.23",
+      "published": true,
+      "publishedAt": "2026-10-31T05:18:45Z",
+      "sequence": 5,
+      "href": "posts/application-flow.html",
+      "summary": "AI와 함께 결과물을 만드는 경험이 쌓여도, 다음 작업에서 같은 구조를 스스로 설명할 수 있는지는 별개의 문제였다. 그래서 지금까지 만든 것들을 공통 로직 관점에서 분석해 달라고 요청했다.",
+      "document": {
+        "version": 1,
+        "blocks": [
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "다시 만들 수 있으려면 뼈대를 알아야 했다"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "AI와 함께 결과물을 만드는 경험이 쌓여도, 다음 작업에서 같은 구조를 스스로 설명할 수 있는지는 별개의 문제였다. 그래서 지금까지 만든 것들을 공통 로직 관점에서 분석해 달라고 요청했다."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "내가 먼저 정리한 흐름은 ‘입력 → 데이터 전처리 → 조건 → 검증 → 출력’이었다. 실제 애플리케이션에서는 여기에 어떤 단계가 추가되는지 궁금했다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "게임도 같은 구조일까"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "일반 프로그램과 게임의 차이, 게임 최적화가 이루어지는 방식을 이어서 질문했다. 기존 TIL에는 AI가 저장·상태·실행·피드백, 게임 루프·이벤트·렌더링, 병목 측정의 관점으로 설명했다는 요약이 남아 있다."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "이것을 내가 게임에 구현하거나 프로파일러로 확인한 것은 아니다. 현재 확인되는 것은 구조를 비교하려고 질문했다는 학습 과정이다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "남은 질문"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "내 프로젝트 하나를 골라 입력·상태·저장·실행·검증 단계로 나누어 설명할 수 있는가? 성능 문제라고 생각한 부분을 실제 측정 결과로 뒷받침할 수 있는가? 아직 수행 결과가 없는 질문으로 남긴다."
+              }
+            ]
+          }
+        ]
+      },
+      "pageHash": "E1Bx6r1qoWxhCYxzPmK7fNbXUf7foHhKdpP5OuJOyks"
+    },
+    {
+      "id": "python-loop-scope",
+      "title": "for문 밖에서 변수를 쓸 수 있는 이유가 궁금했다",
+      "category": "Python",
+      "kind": "note",
+      "date": "2026.10.25",
+      "published": true,
+      "publishedAt": "2026-10-31T05:18:45Z",
+      "sequence": 6,
+      "href": "posts/python-loop-scope.html",
+      "summary": "지점별 매출을 집계하는 예제를 읽다가, 반복문 밖의 print(total)이 왜 반복문에서 다룬 값을 사용할 수 있는지 질문했다. total[branch]를 별도의 지역변수처럼 생각한 부분도…",
+      "document": {
+        "version": 1,
+        "blocks": [
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "들여쓰기와 변수 범위를 혼동했다"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "지점별 매출을 집계하는 예제를 읽다가, 반복문 밖의 "
+              },
+              {
+                "type": "code",
+                "text": "print(total)"
+              },
+              {
+                "type": "text",
+                "text": "이 왜 반복문에서 다룬 값을 사용할 수 있는지 질문했다. "
+              },
+              {
+                "type": "code",
+                "text": "total[branch]"
+              },
+              {
+                "type": "text",
+                "text": "를 별도의 지역변수처럼 생각한 부분도 있었다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "이름과 키 접근을 구분하기"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "기존 TIL에 남은 AI 설명에서는 "
+              },
+              {
+                "type": "code",
+                "text": "total"
+              },
+              {
+                "type": "text",
+                "text": "이 딕셔너리를 가리키는 이름이고, "
+              },
+              {
+                "type": "code",
+                "text": "total[branch]"
+              },
+              {
+                "type": "text",
+                "text": "는 그 딕셔너리의 키에 접근하는 표현이라고 구분했다. 대괄호가 새 변수 범위를 만든다는 뜻은 아니다."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "또 일반적인 "
+              },
+              {
+                "type": "code",
+                "text": "for"
+              },
+              {
+                "type": "text",
+                "text": ", "
+              },
+              {
+                "type": "code",
+                "text": "if"
+              },
+              {
+                "type": "text",
+                "text": ", "
+              },
+              {
+                "type": "code",
+                "text": "while"
+              },
+              {
+                "type": "text",
+                "text": " 블록은 함수처럼 별도의 지역 스코프를 만들지 않는다고 설명을 받았다. 다만 함수·클래스·컴프리헨션 등 다른 문법의 범위를 모두 같은 것으로 일반화하지 않는다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "질문을 넓힌 지점"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "첫 설명 뒤에는 함수 외에도 새로운 범위를 만드는 경우가 있는지 물었다. 코드를 다시 실행하거나 설명을 적용해 검증한 결과는 아직 없다. 따라서 이번 글은 스코프 문제를 해결했다는 후기보다, 들여쓰기와 변수 유효 범위를 구분하려고 한 질문 기록이다."
+              }
+            ]
+          }
+        ]
+      },
+      "pageHash": "WhkJ0gBX7ShxAp1FSrHUFLawfze0E_9w4HJ0eq5WqZE"
+    },
+    {
+      "id": "git-config-scope",
+      "title": "Git 설정의 범위와 우선순위를 다르게 읽기",
+      "category": "Git·개발환경",
+      "kind": "note",
+      "date": "2026.10.26",
+      "published": true,
+      "publishedAt": "2026-10-31T05:18:45Z",
+      "sequence": 7,
+      "href": "posts/git-config-scope.html",
+      "summary": "Git의 system·global·local 설정을 공부하면서 범위가 넓은 것과 우선 적용되는 것을 혼동했다. system은 회사 전체, global은 개인 계정, local은 특정 저장소에…",
+      "document": {
+        "version": 1,
+        "blocks": [
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "넓게 적용되는 설정이 항상 우선은 아니었다"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Git의 system·global·local 설정을 공부하면서 범위가 넓은 것과 우선 적용되는 것을 혼동했다. system은 회사 전체, global은 개인 계정, local은 특정 저장소에 비유해 다시 설명해 보았다."
+              }
+            ]
+          },
+          {
+            "type": "table",
+            "header": true,
+            "rows": [
+              [
+                [
+                  {
+                    "type": "text",
+                    "text": "설정"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "text": "적용 범위"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "text": "이 셋 사이의 우선순위"
+                  }
+                ]
+              ],
+              [
+                [
+                  {
+                    "type": "text",
+                    "text": "system"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "text": "시스템의 모든 사용자·저장소"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "text": "낮음"
+                  }
+                ]
+              ],
+              [
+                [
+                  {
+                    "type": "text",
+                    "text": "global"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "text": "현재 OS 사용자의 여러 저장소"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "text": "중간"
+                  }
+                ]
+              ],
+              [
+                [
+                  {
+                    "type": "text",
+                    "text": "local"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "text": "현재 저장소"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "text": "높음"
+                  }
+                ]
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "기존 TIL의 AI 보충 설명에서는 같은 항목에 local 값이 있으면 그 값을 우선 사용한다고 구분했다. 다른 설정 파일을 지우거나 값을 가져온다는 뜻은 아니다. Git에는 다른 설정 출처도 있으므로 이 표를 모든 설정 출처의 전체 순서로 보지는 않는다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "작업 폴더·스테이징·커밋"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "파일을 편집하는 것, 다음 커밋에 담을 변경을 고르는 것, 버전으로 기록하는 것을 나누어 정리했다. 복습 메모에는 설정 출처 출력과 작업 폴더 경계 확인 결과가 남아 있다. 개인정보·개인 경로가 포함된 실제 출력 전체는 이 글에 복제하지 않는다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "확인되지 않은 문제는 별도로 남겼다"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "PowerShell에서 uv 설치 후 버전 확인 명령이 실행되지 않아 원인을 질문했다. PATH 문제는 당시 AI의 추정이었고 수정 성공은 확인되지 않았다. 이 문제를 Git 설정 학습의 해결 성과와 섞지 않는다. SSH와 PAT의 차이도 추가 확인 대상으로 남아 있다."
+              }
+            ]
+          }
+        ]
+      },
+      "pageHash": "qNDKcnjKI208SnKs_k2WLasuI12l0HuAcQ5t-lFTVMo"
+    },
+    {
+      "id": "practice-git-config",
+      "title": "Git 설정 출처와 저장소 경계 확인",
+      "category": "Git·개발환경",
+      "kind": "practice",
+      "date": "2026.10.26",
+      "published": true,
+      "publishedAt": "2026-10-31T05:18:45Z",
+      "sequence": 8,
+      "href": "posts/practice-git-config.html",
+      "summary": "PC의 별도 연습 저장소에서 사용하는 Git 터미널 실습이다. 블로그 Python 실행창에서 실행하지 않는다. 이 문제는 연습 제안이며 작성자의 완료 성과를 뜻하지 않는다.",
+      "document": {
+        "version": 1,
+        "blocks": [
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "실습 환경"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "PC의 별도 연습 저장소에서 사용하는 Git 터미널 실습이다. 블로그 Python 실행창에서 실행하지 않는다. 이 문제는 연습 제안이며 작성자의 완료 성과를 뜻하지 않는다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "1. 설정의 출처 구분"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "code",
+            "text": "git config --list --show-origin --show-scope\ngit rev-parse --show-toplevel",
+            "language": "bash"
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "어느 설정이 system·global·local에서 왔는지, 현재 저장소의 최상위 경로가 무엇인지 구분한다. 출력에는 이메일·경로·인증 설정 등이 포함될 수 있으므로 전체를 공개 게시하지 않는다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "2. 같은 항목의 적용값 비교"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "현재 사용 중인 프로젝트 설정을 바꾸지 말고, 예제용 이름을 사용하는 별도 저장소에서 global 값과 local 값이 다를 때 적용 결과를 비교한다. 넓은 범위가 높은 우선순위인지 말로 설명해 본다. 기존 사용자 설정 변경은 필수가 아니다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "3. 상태와 이력 구분"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "작은 텍스트 변경에 대해 저장·add·commit 전후의 "
+              },
+              {
+                "type": "code",
+                "text": "git status"
+              },
+              {
+                "type": "text",
+                "text": "를 비교한다. 어떤 상태에서 커밋 이력이 생겼는지 적는다. SSH·PAT 인증 실습은 비밀키·토큰 없이, 별도의 환경 확인 뒤 진행한다."
+              }
+            ]
+          }
+        ]
+      },
+      "pageHash": "vPT-OGI-KyGzVIHHMBOu9ucNfyA8tHmA9ljw3dyolp0"
+    },
+    {
+      "id": "git-tracking-and-history",
+      "title": "add·commit·gitignore와 되돌리기를 상태로 구분하기",
+      "category": "Git·개발환경",
+      "kind": "note",
+      "date": "2026.10.27",
+      "published": true,
+      "publishedAt": "2026-10-31T05:18:45Z",
+      "sequence": 9,
+      "href": "posts/git-tracking-and-history.html",
+      "summary": "add와 commit을 비슷하게 생각했던 부분을 ‘변경 선택 → 버전 기록 → 원격 공유’로 나누어 정리했다.",
+      "document": {
+        "version": 1,
+        "blocks": [
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "저장이라는 말 하나로 묶지 않기"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "add와 commit을 비슷하게 생각했던 부분을 ‘변경 선택 → 버전 기록 → 원격 공유’로 나누어 정리했다."
+              }
+            ]
+          },
+          {
+            "type": "table",
+            "header": true,
+            "rows": [
+              [
+                [
+                  {
+                    "type": "text",
+                    "text": "목적"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "text": "명령"
+                  }
+                ]
+              ],
+              [
+                [
+                  {
+                    "type": "text",
+                    "text": "다음 커밋의 변경 선택"
+                  }
+                ],
+                [
+                  {
+                    "type": "code",
+                    "text": "git add 파일명"
+                  }
+                ]
+              ],
+              [
+                [
+                  {
+                    "type": "text",
+                    "text": "선택한 내용을 커밋으로 기록"
+                  }
+                ],
+                [
+                  {
+                    "type": "code",
+                    "text": "git commit -m \"변경 설명\""
+                  }
+                ]
+              ],
+              [
+                [
+                  {
+                    "type": "text",
+                    "text": "원격에 커밋 공유"
+                  }
+                ],
+                [
+                  {
+                    "type": "code",
+                    "text": "git push"
+                  }
+                ]
+              ]
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "파일은 add 후에도 작업 폴더에 남는다. 커밋 메시지도 별도로 저장할 파일이 아니라 그 변경을 설명하는 내용이다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": ".gitignore는 이미 추적 중인 파일을 자동 해제하지 않는다"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "파일의 존재 여부, Git의 추적 여부, 무시 규칙 적용 여부를 나누어 보아야 했다. "
+              },
+              {
+                "type": "code",
+                "text": "git status --ignored"
+              },
+              {
+                "type": "text",
+                "text": ", "
+              },
+              {
+                "type": "code",
+                "text": "git ls-files 파일명"
+              },
+              {
+                "type": "text",
+                "text": ", "
+              },
+              {
+                "type": "code",
+                "text": "git check-ignore -v 파일명"
+              },
+              {
+                "type": "text",
+                "text": "은 서로 다른 것을 확인한다. check-ignore에 출력이 없다는 것만으로 모든 상태를 결론 내리지 않는다."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "인덱스에서 제외하는 일과 과거 이력의 비밀 정보를 지우는 일도 별개다. 이미 노출된 인증 정보는 ignore 규칙만 추가해서 해결되는 문제가 아니다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "reset과 revert도 결과가 다르다"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "일반적인 브랜치 전체 reset에서는 soft·mixed·hard에 따라 브랜치가 가리키는 커밋, 인덱스, 작업 파일 중 어디까지 맞추는지가 다르다. hard는 미커밋 변경을 잃을 수 있어 실제 프로젝트에서 시험하지 않는다. revert는 지정 커밋의 변경을 취소하는 새 커밋을 만든다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "부분 스테이징에서 남은 질문"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "code",
+                "text": "git add -p"
+              },
+              {
+                "type": "text",
+                "text": "의 hunk 표시를 질문하고 "
+              },
+              {
+                "type": "code",
+                "text": "e"
+              },
+              {
+                "type": "text",
+                "text": "로 수동 편집 화면에 들어간 기록도 있다. 다만 편집 저장·패치 적용·스테이징 성공은 확인되지 않았다. 화면에 진입한 사실과 원하는 변경을 기록한 결과는 구분한다."
+              }
+            ]
+          }
+        ]
+      },
+      "pageHash": "XWT4p8NDcIlHZIJVtBMpQR7S8KSQabkVMAj_23u0A1Y"
+    },
+    {
+      "id": "practice-git-history",
+      "title": "Git 추적·이력 비교·되돌리기 구분",
+      "category": "Git·개발환경",
+      "kind": "practice",
+      "date": "2026.10.27",
+      "published": true,
+      "publishedAt": "2026-10-31T05:18:45Z",
+      "sequence": 10,
+      "href": "posts/practice-git-history.html",
+      "summary": "PC 터미널에서, 원격 연결이 없고 버려도 되는 새 연습 저장소만 사용한다. 실제 프로젝트에서 reset --hard를 시험하지 않는다. Python 실행창용 코드가 아니다.",
+      "document": {
+        "version": 1,
+        "blocks": [
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "실습 환경과 안전 범위"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "PC 터미널에서, 원격 연결이 없고 버려도 되는 새 연습 저장소만 사용한다. 실제 프로젝트에서 reset --hard를 시험하지 않는다. Python 실행창용 코드가 아니다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "1. ignore와 추적 상태 비교"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "가짜 로그 파일을 만들어 .gitignore 규칙 적용 전후를 비교한다. 처음 만든 파일과 이미 추적한 파일을 나누어 "
+              },
+              {
+                "type": "code",
+                "text": "git status --ignored"
+              },
+              {
+                "type": "text",
+                "text": ", "
+              },
+              {
+                "type": "code",
+                "text": "git ls-files 파일명"
+              },
+              {
+                "type": "text",
+                "text": ", "
+              },
+              {
+                "type": "code",
+                "text": "git check-ignore -v 파일명"
+              },
+              {
+                "type": "text",
+                "text": "의 차이를 설명한다. 출력이 없을 때도 다른 명령으로 상태를 함께 확인한다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "2. 한 커밋과 두 시점의 차이"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "두 번의 작은 텍스트 변경을 각각 커밋한다. "
+              },
+              {
+                "type": "code",
+                "text": "git log --oneline"
+              },
+              {
+                "type": "text",
+                "text": "에서 메시지와 ID를 확인하고, "
+              },
+              {
+                "type": "code",
+                "text": "git show ID"
+              },
+              {
+                "type": "text",
+                "text": "와 "
+              },
+              {
+                "type": "code",
+                "text": "git diff 이전ID 이후ID"
+              },
+              {
+                "type": "text",
+                "text": "가 각각 무엇을 보여주는지 기록한다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "3. 되돌리기 결과 먼저 예측"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "같은 출발 상태에서 soft·mixed·hard가 HEAD·인덱스·작업 파일에 미치는 영향을 표로 예측한다. 원본 변경을 잃을 수 있는 명령은 실습용 저장소 외에서 실행하지 않는다. revert가 기존 이력을 이동하는지, 취소 커밋을 추가하는지도 비교한다. 여기에는 아직 수행 결과가 없다."
+              }
+            ]
+          }
+        ]
+      },
+      "pageHash": "b6U_hYxaQWQxM9SJkCCpcVQyhpI2UdjPwCYU0jlXz74"
+    },
+    {
+      "id": "python-values-and-formatting",
+      "title": "변수의 값과 화면에 표시하는 형식을 구분하기",
+      "category": "Python",
+      "kind": "note",
+      "date": "2026.10.28",
+      "published": true,
+      "publishedAt": "2026-10-31T05:18:45Z",
+      "sequence": 11,
+      "href": "posts/python-values-and-formatting.html",
+      "summary": "Python의 변수 이름, int·float·str·bool, 비교·논리 연산과 문자열 출력 형식을 공부했다. 편집기인 VS Code와 Python 인터프리터도 구분했다.",
+      "document": {
+        "version": 1,
+        "blocks": [
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "변수·자료형·연산자를 묶어 복습했다"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Python의 변수 이름, int·float·str·bool, 비교·논리 연산과 문자열 출력 형식을 공부했다. 편집기인 VS Code와 Python 인터프리터도 구분했다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "0과 빈 값, 문자열을 다르게 보기"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "기존 메모에는 참·거짓 판정이 뒤바뀐 부분이 있어 AI 보충 설명으로 정정했다. 숫자 0과 빈 리스트·빈 문자열은 거짓으로 판정되지만, 문자열 "
+              },
+              {
+                "type": "code",
+                "text": "\"0\""
+              },
+              {
+                "type": "text",
+                "text": "과 리스트 "
+              },
+              {
+                "type": "code",
+                "text": "[0]"
+              },
+              {
+                "type": "text",
+                "text": "은 비어 있지 않으므로 참으로 판정된다. 정정된 표를 본 사실을 직접 실행해 확인한 결과로 바꾸지는 않는다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "출력 형식은 원래 값을 바꾸지 않는다"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "학습 예시를 정리하면 다음 두 출력은 목적이 다르다."
+              }
+            ]
+          },
+          {
+            "type": "code",
+            "text": "# TIL을 바탕으로 편집한 설명 예제. 당시 내 실행 로그는 아니다.\navg = 79.753\nprint(f\"{avg:.1f}\")\nprint(avg)",
+            "language": "py"
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "첫 줄은 표시 자릿수를 지정하고, 둘째 줄은 원래 변수 값을 출력한다. "
+              },
+              {
+                "type": "code",
+                "text": ".1f"
+              },
+              {
+                "type": "text",
+                "text": "를 사용했다고 avg 자체가 새 숫자로 대입되는 것은 아니다. 숫자 반올림은 언제나 ‘5 이상 올림’이라는 한 문장으로 일반화하지 않는다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "질문과 수행 결과를 구분했다"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "중괄호의 의미와 분수 약분 방법도 질문했지만, 구현·채점 결과는 남아 있지 않다. 같은 날 네트워크 용어와 프로토콜을 질문한 기록은 있으나 실제 통신 실험을 한 기록은 아니다. 개인 성찰과 취업 관련 메모는 이 기술 글에서 제외했다."
+              }
+            ]
+          }
+        ]
+      },
+      "pageHash": "MyxHELVsCYW9OftAxz6LKedrx_43xdcquhfcGYIxrZk"
+    },
+    {
+      "id": "practice-python-values",
+      "title": "변수 재할당·bool·출력 형식 비교",
+      "category": "Python",
+      "kind": "practice",
+      "date": "2026.10.28",
+      "published": true,
+      "publishedAt": "2026-10-31T05:18:45Z",
+      "sequence": 12,
+      "href": "posts/practice-python-values.html",
+      "summary": "블로그 Python 실행창에서 예제를 하나씩 실행할 수 있다. 먼저 결과를 예상하고 실제 실행 결과와 비교한다. 작성자의 기존 수행 결과가 아닌 교육용 실습이다.",
+      "document": {
+        "version": 1,
+        "blocks": [
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "실습 환경"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "블로그 Python 실행창에서 예제를 하나씩 실행할 수 있다. 먼저 결과를 예상하고 실제 실행 결과와 비교한다. 작성자의 기존 수행 결과가 아닌 교육용 실습이다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "1. 재할당과 여러 값 할당"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "code",
+            "text": "a = 1\na = 2\nprint(a)\na, b = 1, 2\nvalues = 1, 2\nprint(a, b)\nprint(type(values).__name__, values)",
+            "language": "py"
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "재사용한 이름에 새 값이 대입되는 것과 예약어를 변수 이름으로 쓰는 것을 구분한다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "2. 숫자 0과 문자열 0"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "code",
+            "text": "for value in [0, 1, [], [0], {}, \"\", \"0\"]:\n    print(repr(value), bool(value))",
+            "language": "py"
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "리스트 안에 0이 있다는 것과 리스트가 비었다는 것이 왜 다른지 설명해 본다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "3. 표시와 원래 값"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "code",
+            "text": "avg = 79.753\nprint(f\"{avg=:.1f}\")\nprint(avg)\nname = \"Alice\"\nprint(f\"|{name:<10}|\")\nprint(f\"|{name:>10}|\")\nprint(f\"|{name:^10}|\")",
+            "language": "py"
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "소수 표시와 변수 값 변경을 구분하고, 폭 10보다 긴 문자열도 넣어 최소 폭의 의미를 확인한다. 예상과 달랐다면 실제 출력과 이유를 따로 적는다."
+              }
+            ]
+          }
+        ]
+      },
+      "pageHash": "kJmpeHO0w3AXsEnCeNIj5s3PblTUhjV-sRlH6JpQDmg"
+    },
+    {
+      "id": "python-collections-and-input",
+      "title": "리스트의 추가, 딕셔너리의 키, 입력 검증을 구분하기",
+      "category": "Python",
+      "kind": "note",
+      "date": "2026.10.29",
+      "published": true,
+      "publishedAt": "2026-10-31T05:18:45Z",
+      "sequence": 13,
+      "href": "posts/python-collections-and-input.html",
+      "summary": "원소가 세 개인 리스트의 인덱스 3에 대입하면 새 항목이 생기는지 질문했다. 기존 TIL의 AI 정정에서는 일반 인덱스 대입은 기존 항목 수정이며 새 원소는 append나 extend로 추가한다고…",
+      "document": {
+        "version": 1,
+        "blocks": [
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "리스트에서 기존 칸 수정과 추가는 다르다"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "원소가 세 개인 리스트의 인덱스 3에 대입하면 새 항목이 생기는지 질문했다. 기존 TIL의 AI 정정에서는 일반 인덱스 대입은 기존 항목 수정이며 새 원소는 append나 extend로 추가한다고 구분했다."
+              }
+            ]
+          },
+          {
+            "type": "table",
+            "header": true,
+            "rows": [
+              [
+                [
+                  {
+                    "type": "text",
+                    "text": "표현"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "text": "구분"
+                  }
+                ]
+              ],
+              [
+                [
+                  {
+                    "type": "code",
+                    "text": "items[i] = value"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "text": "기존 위치의 값 변경"
+                  }
+                ]
+              ],
+              [
+                [
+                  {
+                    "type": "code",
+                    "text": "items.append(value)"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "text": "원소 하나 추가"
+                  }
+                ]
+              ],
+              [
+                [
+                  {
+                    "type": "code",
+                    "text": "items.extend(values)"
+                  }
+                ],
+                [
+                  {
+                    "type": "text",
+                    "text": "iterable의 원소들을 추가"
+                  }
+                ]
+              ]
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "딕셔너리에서 중복되지 않는 것은 키다"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "서로 다른 키가 같은 값을 가질 수 있다는 점, "
+              },
+              {
+                "type": "code",
+                "text": "keys()"
+              },
+              {
+                "type": "text",
+                "text": "·"
+              },
+              {
+                "type": "code",
+                "text": "values()"
+              },
+              {
+                "type": "text",
+                "text": "·"
+              },
+              {
+                "type": "code",
+                "text": "items()"
+              },
+              {
+                "type": "text",
+                "text": "가 각각 뷰를 반환한다는 점을 정리했다. "
+              },
+              {
+                "type": "code",
+                "text": "get()"
+              },
+              {
+                "type": "text",
+                "text": "은 값을 반환하며 화면 출력 자체를 담당하지 않는다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "input의 문자열과 숫자 검증"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "code",
+                "text": "input()"
+              },
+              {
+                "type": "text",
+                "text": "의 반환값은 문자열이므로 숫자가 필요하면 별도로 변환한다. 문자열을 숫자로 바꾸는 단계의 실패와 변환한 숫자의 범위 검사는 다르다. 잘못된 입력 처리 방법을 질문했지만 수정·실행 결과까지 확인된 것은 아니다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "과제 코드를 남기며 발견한 확인 과제"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "가위바위보·할인 계산·메뉴 선택 등의 코드가 TIL에 남아 있고, 가위바위보 판정을 반복 검수 요청한 기록도 있다. 다만 두 검수 사이의 정확한 코드 차이나 입력별 테스트 결과는 남아 있지 않다. 가위바위보의 잘못된 입력 처리와 반복문의 종료는 별도 실습에서 확인할 항목으로 둔다."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Git 브랜치 병합에 대한 질문도 같은 날 남겼다. 브랜치 이름이 값의 우선권을 자동 결정한다는 규칙은 없으며, 실제 병합·충돌 해결 성공은 기록에서 확인되지 않았다."
+              }
+            ]
+          }
+        ]
+      },
+      "pageHash": "7iP5e_PdEJMeEOzY2bHwQg-rWqTuO2Z_JdFTwA0WmAY"
+    },
+    {
+      "id": "practice-python-input",
+      "title": "컬렉션 변경과 숫자 입력 검증",
+      "category": "Python",
+      "kind": "practice",
+      "date": "2026.10.29",
+      "published": true,
+      "publishedAt": "2026-10-31T05:18:45Z",
+      "sequence": 14,
+      "href": "posts/practice-python-input.html",
+      "summary": "블로그 Python 실행창에서 실행할 수 있는 작은 예제로 나누었다. 각 문제는 연습 제안이며 본인의 실제 결과는 별도로 기록한다.",
+      "document": {
+        "version": 1,
+        "blocks": [
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "실습 환경"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "블로그 Python 실행창에서 실행할 수 있는 작은 예제로 나누었다. 각 문제는 연습 제안이며 본인의 실제 결과는 별도로 기록한다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "1. 수정·append·extend"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "code",
+            "text": "items = [1, 2, 3]\nitems[1] = 20\nitems.append([4, 5])\nprint(items)\nitems.extend([6, 7])\nprint(items)",
+            "language": "py"
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "리스트 하나를 원소로 추가하는 것과 리스트의 원소들을 추가하는 것의 차이를 설명한다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "2. 키와 값"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "code",
+            "text": "data = {\"a\": 1, \"b\": 1}\ndata[\"a\"] = 2\nprint(data)\nprint(type(data.items()).__name__)\nprint(list(data.items()))",
+            "language": "py"
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "같을 수 있는 것은 키인지 값인지, 뷰와 리스트가 같은 형태인지 구분한다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "3. 변환 실패와 범위 초과"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "code",
+            "text": "text = input(\"0~100 점수: \")\ntry:\n    score = float(text)\nexcept ValueError:\n    print(\"숫자로 변환할 수 없습니다\")\nelse:\n    if 0 <= score <= 100:\n        print(\"유효 범위\")\n    else:\n        print(\"범위 밖\")",
+            "language": "py"
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "code",
+                "text": "50"
+              },
+              {
+                "type": "text",
+                "text": ", "
+              },
+              {
+                "type": "code",
+                "text": "101"
+              },
+              {
+                "type": "text",
+                "text": ", "
+              },
+              {
+                "type": "code",
+                "text": "abc"
+              },
+              {
+                "type": "text",
+                "text": "를 각각 새로 실행해 비교한다. 이 예제는 기존 검증 코드를 복원한 것이 아니라 AI가 편집한 독립 학습 예제다."
+              }
+            ]
+          }
+        ]
+      },
+      "pageHash": "aI4dkcvYK3g-Cy2Zcht0IHb8YI5j2OI0-uyP9JGpMY4"
+    },
+    {
+      "id": "python-loops-and-comprehensions",
+      "title": "반복 종료 조건과 중첩 컴프리헨션의 순서를 읽기",
+      "category": "Python",
+      "kind": "note",
+      "date": "2026.10.30",
+      "published": true,
+      "publishedAt": "2026-10-31T05:18:45Z",
+      "sequence": 15,
+      "href": "posts/python-loops-and-comprehensions.html",
+      "summary": "문자열 출력 형식을 공부한 뒤 for·while을 작성하고, 컴프리헨션으로 변환·필터링·조건별 값을 만드는 실습을 했다. 수업 예시와 개인 작성 코드는 구분했고, 당시 실행 출력은 별도로 남기지…",
+      "document": {
+        "version": 1,
+        "blocks": [
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "같은 작업을 반복하는 코드에서 데이터 추출로"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "문자열 출력 형식을 공부한 뒤 for·while을 작성하고, 컴프리헨션으로 변환·필터링·조건별 값을 만드는 실습을 했다. 수업 예시와 개인 작성 코드는 구분했고, 당시 실행 출력은 별도로 남기지 않았다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "컴프리헨션의 if 위치"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "뒤쪽 if는 항목을 남길지 결정하는 필터이고, 앞쪽 if/else는 남길 항목의 값을 고르는 표현이다. 주문별 상품을 모으는 개인 코드에서는 주문을 먼저 꺼내야 그 주문의 items를 순회할 수 있었다."
+              }
+            ]
+          },
+          {
+            "type": "code",
+            "text": "# 내 작성 코드를 이름만 읽기 쉽게 편집. 데이터 정의는 별도 필요하다.\npaid_products = [\n    item[\"name\"]\n    for order in orders\n    if order[\"paid\"] == True\n    for item in order[\"items\"]\n]",
+            "language": "py"
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "이 조각만 실행하면 orders가 정의되지 않았으므로 독립 실행 예제가 아니다. 실습에는 별도 교육용 데이터를 제공해야 한다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "종료 문구와 실제 종료를 구분하기"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "쿠폰 번호를 최대 다섯 번 입력받는 코드와 비밀번호 코드를 작성했다. 기존 TIL의 AI 정적 점검에서는 쿠폰 코드가 정수 입력을 전제로 횟수 종료를 처리하지만 문자 입력 예외는 다루지 않는다고 구분했다."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "비밀번호 코드에는 성공 시 break가 없었고, ‘10분 잠금’ 문구에 대응하는 시간 측정·차단 구현도 없었다. 안내 출력만으로 실제 잠금을 구현했다고 말할 수는 없다. 남은 실습은 성공·실패의 종료 시점과 숫자가 아닌 입력을 분리해 확인하는 것이다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "반복 코드를 검토받으며 남긴 질문"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "누적 while·for 연습 코드를 확인해 달라고 요청했고, 이어서 운동 챌린지와 저금통 풀이의 반복 종료 지점을 검토받으려 했다. 저금통 문제에서는 break 위치도 질문했다."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "빈 좌석 문제에서는 코드를 어디서 시작해야 할지 어려워 좌석 상태를 필터링하는 방식을 물었다. 이 과정은 질문과 풀이 검토 요청의 기록이다. 최종 수정본과 실행 결과가 확인되지 않아 해결한 경험으로 정리하지는 않는다."
+              }
+            ]
+          }
+        ]
+      },
+      "pageHash": "2ynICNPQesPSt85PQao143m6kuGYy6-qGy2XxNnWQwo"
+    },
+    {
+      "id": "practice-python-loops",
+      "title": "입력 횟수·반복 종료·중첩 컴프리헨션",
+      "category": "Python",
+      "kind": "practice",
+      "date": "2026.10.30",
+      "published": true,
+      "publishedAt": "2026-10-31T05:18:45Z",
+      "sequence": 16,
+      "href": "posts/practice-python-loops.html",
+      "summary": "Python 실행창에서 문제를 나누어 풀고 무한 반복이 생기면 중단 버튼을 사용한다. 실제 인증·보안 시스템이나 결제 코드를 만드는 예제가 아니다.",
+      "document": {
+        "version": 1,
+        "blocks": [
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "실습 환경"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "Python 실행창에서 문제를 나누어 풀고 무한 반복이 생기면 중단 버튼을 사용한다. 실제 인증·보안 시스템이나 결제 코드를 만드는 예제가 아니다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "1. 쿠폰 입력 경계값"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "TIL의 쿠폰 코드를 읽고 첫 시도 성공, 다섯 번째 성공, 다섯 번 실패, 문자 입력의 네 경우를 분리해 확인한다. 입력 횟수 증가 위치와 break에 도달하는 분기를 기록한다. 안내 문구만으로 실제 할인이 계산되는지 단정하지 않는다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "2. 비밀번호 종료 조건 설계"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "성공 시 종료와 정해진 실패 횟수에서 종료를 먼저 분리해 작성한다. ‘10분 잠금’이라는 출력과 실제 시간 기반 차단을 구분한다. 실제 계정 비밀번호는 입력하지 않는다. 완성 풀이를 본인의 수행 결과로 대신 기록하지 않는다."
+              }
+            ]
+          },
+          {
+            "type": "heading",
+            "content": [
+              {
+                "type": "text",
+                "text": "3. for문을 먼저 쓰고 컴프리헨션으로 바꾸기"
+              }
+            ],
+            "level": 2
+          },
+          {
+            "type": "code",
+            "text": "# AI가 만든 교육용 데이터. 실제 주문 데이터가 아니다.\norders = [\n    {\"paid\": True, \"items\": [{\"name\": \"커피\"}, {\"name\": \"빵\"}]},\n    {\"paid\": False, \"items\": [{\"name\": \"주스\"}]},\n]\nresult = []\n# TODO: 결제된 주문의 상품 이름만 result에 모으기\nprint(result)",
+            "language": "py"
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "먼저 일반 for문으로 완성하고, 같은 결과를 내는 컴프리헨션으로 바꾼다. "
+              },
+              {
+                "type": "code",
+                "text": "order"
+              },
+              {
+                "type": "text",
+                "text": "를 꺼내기 전에 "
+              },
+              {
+                "type": "code",
+                "text": "order[\"items\"]"
+              },
+              {
+                "type": "text",
+                "text": "를 쓸 수 있는지 설명해 본다. TODO 상태의 코드가 정답인 것은 아니다."
+              }
+            ]
+          }
+        ]
+      },
+      "pageHash": "AL0SpWJPRAs3rcY_-KWKF4HUZikZvmAtbdhNIrL2LQg"
+    }
+  ]
+}

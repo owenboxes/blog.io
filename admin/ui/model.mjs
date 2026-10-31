@@ -1,0 +1,18 @@
+import {validateDocument,safeLink} from '../shared/document.mjs';
+export function enterAction(event,canSplit){if(event.key!=='Enter'||event.isComposing||event.keyCode===229)return null;return event.shiftKey||!canSplit?'break':'split';}
+export function syncInlineField(field,onchange,markDirty=()=>{}){markDirty();const content=inlineFromDOM(field);onchange(content);return content;}
+export function publicationTracker(){let generation=0;return {start:()=>++generation,isCurrent:value=>value===generation};}
+export function acceptPublished(state,fresh){const post=fresh.post;if(post.id!==state.postId||post.title!==state.title||post.summary!==state.summary||JSON.stringify(post.document)!==JSON.stringify(state.document))throw Error('저장 후 다른 수정이 확인됐습니다. 현재 입력은 보존했습니다. 최신 글과 비교한 뒤 다시 편집해주세요.');return {...state,revision:fresh.revision,intent:null};}
+export function draftKey(userId,postId){if(!/^\d+$/.test(String(userId))||!/^[a-zA-Z0-9_-]{1,80}$/.test(postId))throw Error('잘못된 임시 저장 대상');return 'owner-editor:v1:'+userId+':'+postId;}
+export function importDraft(text,userId,postId){if(typeof text!=='string'||new TextEncoder().encode(text).length>300000)throw Error('임시 저장 파일 크기 오류');const d=JSON.parse(text);if(String(d.userId)!==String(userId)||d.postId!==postId||typeof d.title!=='string'||d.title.length>200||typeof d.summary!=='string'||d.summary.length>1000||typeof d.revision!=='string')throw Error('이 계정·글의 임시 저장 파일이 아닙니다.');validateDocument(d.document);return {userId,postId,title:d.title,summary:d.summary,revision:d.revision,document:d.document,...(d.intent?{intent:d.intent}:{})};}
+export function saveDraft(storage,state){try{const clean=importDraft(JSON.stringify(state),state.userId,state.postId);storage.setItem(draftKey(state.userId,state.postId),JSON.stringify(clean));return {ok:true};}catch{return {ok:false,error:'이 브라우저에 저장하지 못했습니다. 파일로 내보내 백업해주세요.'};}}
+export function loadDraft(storage,userId,postId){try{const raw=storage.getItem(draftKey(userId,postId));return raw?importDraft(raw,userId,postId):null;}catch{return null;}}
+export function splitParagraph(document,index,before,after){const result=structuredClone(document),old=result.blocks[index];if(!old||!['paragraph','heading','quote'].includes(old.type))throw Error('문단 분리 대상 오류');result.blocks.splice(index,1,{...old,content:before},{type:'paragraph',content:after});return validateDocument(result);}
+export function inlineFromDOM(root){
+ const walk=node=>{if(node.nodeType===3)return [{type:'text',text:node.textContent||''}];if(node.nodeType!==1)throw Error('지원하지 않는 편집 내용');const tag=node.tagName.toLowerCase();
+ if(tag==='br')return [{type:'lineBreak'}];if(tag==='code')return [{type:'code',text:node.textContent||''}];
+ if(['strong','b','em','i','a'].includes(tag)){const item={type:{strong:'strong',b:'strong',em:'emphasis',i:'emphasis',a:'link'}[tag],content:Array.from(node.childNodes).flatMap(walk)};if(tag==='a')item.href=safeLink(node.getAttribute('href'));return [item];}
+ if(tag==='div'||tag==='p')return Array.from(node.childNodes).flatMap(walk);throw Error('지원하지 않는 서식입니다. 일반 텍스트로 붙여넣어 주세요.');};
+ const result=Array.from(root.childNodes).flatMap(walk);validateDocument({version:1,blocks:[{type:'paragraph',content:result}]});return result;
+}
+export function publishIntent(state,previous){validateDocument(state.document);const payload={id:state.postId,title:state.title,summary:state.summary,document:state.document,revision:state.revision};const fingerprint=JSON.stringify(payload);return {...payload,operationId:previous?.fingerprint===fingerprint?previous.operationId:crypto.randomUUID(),fingerprint};}

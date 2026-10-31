@@ -96,14 +96,43 @@ def run_lesson(code, inputs, on_step, on_output=None, on_input=None, on_interact
         return trace
 
     error = ''
+    diagnostic = None
     old_trace = sys.gettrace()
     try:
         compiled = compile(code, 'lesson.py', 'exec')
         with contextlib.redirect_stdout(sink), contextlib.redirect_stderr(sink):
             sys.settrace(trace)
             exec(compiled, namespace)
-    except BaseException:
+    except BaseException as exc:
         error = traceback.format_exc(limit=5)
+        # Report the student's innermost frame, not the engine/Worker wrapper.
+        line = None
+        column = None
+        if isinstance(exc, SyntaxError) and exc.filename == 'lesson.py':
+            line, column = exc.lineno, exc.offset
+        else:
+            tb = exc.__traceback__
+            while tb is not None:
+                if tb.tb_frame.f_code.co_filename == 'lesson.py':
+                    line = tb.tb_lineno
+                tb = tb.tb_next
+        source_lines = code.splitlines()
+        if not isinstance(line, int) or not 1 <= line <= len(source_lines):
+            line, column = None, None
+        try:
+            message = str(exc.msg if isinstance(exc, SyntaxError) else exc)[:2000]
+        except BaseException:
+            message = '오류 메시지를 문자열로 표시할 수 없습니다.'
+        diagnostic = {
+            'kind': 'syntax' if isinstance(exc, SyntaxError) else 'runtime',
+            'type': type(exc).__name__,
+            'message': message,
+            'file': 'lesson.py' if line is not None else None,
+            'line': line,
+            'column': column,
+            'source': source_lines[line - 1] if line is not None else '',
+        }
     finally:
         sys.settrace(old_trace)
-    return {'output': ''.join(output), 'variables': snapshot(namespace), 'error': error}
+    return {'output': ''.join(output), 'variables': snapshot(namespace), 'error': error, 'diagnostic': diagnostic}
+

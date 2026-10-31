@@ -3,6 +3,7 @@ from pathlib import Path
 import unittest
 from urllib.parse import urljoin, urlsplit, parse_qs
 import hashlib
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -19,6 +20,22 @@ class Assets(HTMLParser):
             self.styles.append(attrs['href'])
 
 class StaticDeploymentTests(unittest.TestCase):
+    def test_all_runner_pages_include_accessible_error_panel(self):
+        pages = [ROOT / 'site/index.html', *(ROOT / 'site/posts').glob('*.html')]
+        for page in pages:
+            doc = page.read_text()
+            with self.subTest(page=page.name):
+                self.assertIn('id="problems"', doc)
+                self.assertIn('id="problem-location"', doc)
+                self.assertIn('id="problem-message"', doc)
+
+    def test_worker_and_engine_cache_keys_follow_actual_contents(self):
+        app = (ROOT / 'site/app.js').read_text()
+        worker = (ROOT / 'site/worker.js').read_text()
+        for src, name in ((app, 'worker.js'), (worker, 'engine.py')):
+            digest = hashlib.sha256((ROOT / 'site' / name).read_bytes()).hexdigest()[:12]
+            self.assertIn(name + '?v=' + digest, src)
+
     def test_isolation_bootstrap_precedes_application_and_stays_in_project_scope(self):
         doc = Assets()
         doc.feed((ROOT / 'site/index.html').read_text())
@@ -39,4 +56,5 @@ class StaticDeploymentTests(unittest.TestCase):
                 url = next(src for src in doc.scripts + doc.styles if urlsplit(src).path == name)
                 digest = hashlib.sha256((ROOT / 'site' / name).read_bytes()).hexdigest()[:12]
                 self.assertEqual(parse_qs(urlsplit(url).query).get('v'), [digest])
+
 

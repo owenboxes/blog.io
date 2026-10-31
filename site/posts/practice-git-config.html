@@ -4,13 +4,14 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="PC의 별도 연습 저장소에서 사용하는 Git 터미널 실습이다. 블로그 Python 실행창에서 실행하지 않는다. 이 문제는 연습 제안이며 작성자의 완료 성과를 뜻하지 않는다.">
   <title>Git 설정 출처와 저장소 경계 확인 — OWEN</title>
-  <link rel="stylesheet" href="../style.css?v=5edf70b1cfdb">
+  <link rel="stylesheet" href="../style.css?v=aa5c9f4bad7c">
   <script src="../coi-config.js"></script>
   <script src="../coi-serviceworker.js"></script>
   <script src="../dock.js" defer></script>
   <script src="../input-channel.js" defer></script>
-  <script src="../app.js?v=15c26aa2ff36" defer></script>
+  <script src="../app.js?v=0f6da4f4085e" defer></script>
   <script src="../catalog.js?v=947c77aa3c4e" defer></script>
+<script src="../editor-config.js" defer></script><script src="../edit-link.js" defer></script>
 </head>
 <body data-site-root="../" data-post-id="practice-git-config" data-lab="off">
 <header class="site-header"><a class="brand" href="#" data-home>OWEN<span> / BUILD NOTES</span></a><nav aria-label="주 메뉴"><a href="#about">소개</a><a href="https://github.com/owenboxes" target="_blank" rel="noopener">GitHub ↗</a></nav></header>
@@ -34,25 +35,14 @@
 <details class="mobile-toc"><summary>이 글의 목차</summary><a href="#section-1">실습 환경</a><a href="#section-2">1. 설정의 출처 구분</a><a href="#section-3">2. 같은 항목의 적용값 비교</a><a href="#section-4">3. 상태와 이력 구분</a></details>
 <details class="mobile-published"><summary>다른 글 보기 · 최근 등록순</summary><div id="mobile-published-posts"></div></details>
 <p class="practice-environment">PC 터미널 실습 · 별도 연습 저장소에서 진행합니다. 웹 Python 실행창용이 아닙니다.</p>
-<section id="section-1"><h2>실습 환경</h2>
-<p>PC의 별도 연습 저장소에서 사용하는 Git 터미널 실습이다. 블로그 Python 실행창에서 실행하지 않는다. 이 문제는 연습 제안이며 작성자의 완료 성과를 뜻하지 않는다.</p>
-</section>
-<section id="section-2"><h2>1. 설정의 출처 구분</h2>
-<div class="static-code"><div>bash</div><pre><code>git config --list --show-origin --show-scope
-git rev-parse --show-toplevel</code></pre></div>
-<p>어느 설정이 system·global·local에서 왔는지, 현재 저장소의 최상위 경로가 무엇인지 구분한다. 출력에는 이메일·경로·인증 설정 등이 포함될 수 있으므로 전체를 공개 게시하지 않는다.</p>
-</section>
-<section id="section-3"><h2>2. 같은 항목의 적용값 비교</h2>
-<p>현재 사용 중인 프로젝트 설정을 바꾸지 말고, 예제용 이름을 사용하는 별도 저장소에서 global 값과 local 값이 다를 때 적용 결과를 비교한다. 넓은 범위가 높은 우선순위인지 말로 설명해 본다. 기존 사용자 설정 변경은 필수가 아니다.</p>
-</section>
-<section id="section-4"><h2>3. 상태와 이력 구분</h2>
-<p>작은 텍스트 변경에 대해 저장·add·commit 전후의 <code>git status</code>를 비교한다. 어떤 상태에서 커밋 이력이 생겼는지 적는다. SSH·PAT 인증 실습은 비밀키·토큰 없이, 별도의 환경 확인 뒤 진행한다.</p>
-</section>
+<!-- editor-body:start --><section id="section-1"><h2>실습 환경</h2><p>PC의 별도 연습 저장소에서 사용하는 Git 터미널 실습이다. 블로그 Python 실행창에서 실행하지 않는다. 이 문제는 연습 제안이며 작성자의 완료 성과를 뜻하지 않는다.</p></section><section id="section-2"><h2>1. 설정의 출처 구분</h2><div class="static-code"><div>bash</div><pre><code>git config --list --show-origin --show-scope
+git rev-parse --show-toplevel</code></pre></div><p>어느 설정이 system·global·local에서 왔는지, 현재 저장소의 최상위 경로가 무엇인지 구분한다. 출력에는 이메일·경로·인증 설정 등이 포함될 수 있으므로 전체를 공개 게시하지 않는다.</p></section><section id="section-3"><h2>2. 같은 항목의 적용값 비교</h2><p>현재 사용 중인 프로젝트 설정을 바꾸지 말고, 예제용 이름을 사용하는 별도 저장소에서 global 값과 local 값이 다를 때 적용 결과를 비교한다. 넓은 범위가 높은 우선순위인지 말로 설명해 본다. 기존 사용자 설정 변경은 필수가 아니다.</p></section><section id="section-4"><h2>3. 상태와 이력 구분</h2><p>작은 텍스트 변경에 대해 저장·add·commit 전후의 <code>git status</code>를 비교한다. 어떤 상태에서 커밋 이력이 생겼는지 적는다. SSH·PAT 인증 실습은 비밀키·토큰 없이, 별도의 환경 확인 뒤 진행한다.</p></section><!-- editor-body:end -->
 <div id="lab" class="lab" hidden>
         <div class="lab-head"><button id="toggle-lab" aria-expanded="false" aria-controls="lab-body"><span class="lab-icon">&gt;_</span><span>Python 실습실<small>직접 수정하고 한 줄씩 따라가 보세요</small></span><span id="chevron">＋</span></button></div>
         <div id="lab-body" hidden>
           <div class="toolbar"><div class="run-controls"><button id="run" class="primary">▶ 전체 실행</button><button id="step">↳ 한 단계</button><button id="stop" disabled>■ 중단</button></div><div class="view-controls"><button id="expand" aria-pressed="false">⤢ 확대</button><button id="fullscreen">전체화면</button><button id="reset">환경 리셋</button><button id="restore">예제 복원</button></div></div>
           <div class="status-row"><span id="status" role="status" aria-live="polite">준비됨 · 실행 시 Python을 불러옵니다</span><span id="position">LINE —</span></div>
+<section id="problems" class="problems" aria-label="실행 문제" aria-live="polite" hidden><div class="problem-heading">문제 · 1 <small>실행 시 확인된 오류</small></div><div class="problem-detail"><button id="problem-location" type="button" title="오류 줄로 이동"></button><strong id="problem-type"></strong><span id="problem-message"></span></div><pre id="problem-source"></pre></section>
           <div id="support-note" class="support-note" hidden></div>
           <div class="workbench"><div class="editor-pane"><div class="pane-title"><span>lesson.py</span><small>PYTHON</small></div><div class="editor-shell"><div id="gutter" aria-hidden="true"></div><textarea id="editor" aria-label="Python 코드 편집기" spellcheck="false" autocapitalize="off" autocorrect="off" wrap="off"></textarea></div></div>
           <div class="inspect-pane"><div class="pane-title">변수 <small>현재 멈춘 시점의 값</small></div><div id="variables" class="variables"><p class="empty">실행하면 변수의 변화가 여기에 나타납니다.</p></div><div class="pane-title console-title">실행 결과 <small>프로그램 출력 · 오류</small><button id="clear-output">지우기</button></div><pre id="output" aria-label="프로그램 출력 및 오류" tabindex="0"></pre><form id="console-input" hidden><span id="input-prompt"></span><label for="stdin">입력 대기 ›</label><input id="stdin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Python input 입력값"><button type="submit">입력 ↵</button><small>Enter로 전송 · 빈 입력도 가능</small></form><details id="input-history" hidden><summary>입력 기록 · 실행 결과와 별도</summary><pre id="input-log" aria-label="입력 안내 및 입력값 기록"></pre></details></div></div>

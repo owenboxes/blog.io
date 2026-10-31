@@ -4,13 +4,14 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="블로그 Python 실행창에서 예제를 하나씩 실행할 수 있다. 먼저 결과를 예상하고 실제 실행 결과와 비교한다. 작성자의 기존 수행 결과가 아닌 교육용 실습이다.">
   <title>변수 재할당·bool·출력 형식 비교 — OWEN</title>
-  <link rel="stylesheet" href="../style.css?v=5edf70b1cfdb">
+  <link rel="stylesheet" href="../style.css?v=aa5c9f4bad7c">
   <script src="../coi-config.js"></script>
   <script src="../coi-serviceworker.js"></script>
   <script src="../dock.js" defer></script>
   <script src="../input-channel.js" defer></script>
-  <script src="../app.js?v=15c26aa2ff36" defer></script>
+  <script src="../app.js?v=0f6da4f4085e" defer></script>
   <script src="../catalog.js?v=947c77aa3c4e" defer></script>
+<script src="../editor-config.js" defer></script><script src="../edit-link.js" defer></script>
 </head>
 <body data-site-root="../" data-post-id="practice-python-values" data-lab="python">
 <header class="site-header"><a class="brand" href="#" data-home>OWEN<span> / BUILD NOTES</span></a><nav aria-label="주 메뉴"><a href="#about">소개</a><a href="https://github.com/owenboxes" target="_blank" rel="noopener">GitHub ↗</a></nav></header>
@@ -34,39 +35,26 @@
 <details class="mobile-toc"><summary>이 글의 목차</summary><a href="#section-1">실습 환경</a><a href="#section-2">1. 재할당과 여러 값 할당</a><a href="#section-3">2. 숫자 0과 문자열 0</a><a href="#section-4">3. 표시와 원래 값</a></details>
 <details class="mobile-published"><summary>다른 글 보기 · 최근 등록순</summary><div id="mobile-published-posts"></div></details>
 <p class="practice-environment">웹 Python 실습 · AI가 제안한 연습 문제이며 작성자의 완료 기록이 아닙니다.</p>
-<section id="section-1"><h2>실습 환경</h2>
-<p>블로그 Python 실행창에서 예제를 하나씩 실행할 수 있다. 먼저 결과를 예상하고 실제 실행 결과와 비교한다. 작성자의 기존 수행 결과가 아닌 교육용 실습이다.</p>
-</section>
-<section id="section-2"><h2>1. 재할당과 여러 값 할당</h2>
-<div class="static-code"><div>py</div><pre><code>a = 1
+<!-- editor-body:start --><section id="section-1"><h2>실습 환경</h2><p>블로그 Python 실행창에서 예제를 하나씩 실행할 수 있다. 먼저 결과를 예상하고 실제 실행 결과와 비교한다. 작성자의 기존 수행 결과가 아닌 교육용 실습이다.</p></section><section id="section-2"><h2>1. 재할당과 여러 값 할당</h2><div class="static-code"><div>py</div><pre><code>a = 1
 a = 2
 print(a)
 a, b = 1, 2
 values = 1, 2
 print(a, b)
-print(type(values).__name__, values)</code></pre></div>
-<p>재사용한 이름에 새 값이 대입되는 것과 예약어를 변수 이름으로 쓰는 것을 구분한다.</p>
-</section>
-<section id="section-3"><h2>2. 숫자 0과 문자열 0</h2>
-<div class="static-code"><div>py</div><pre><code>for value in [0, 1, [], [0], {}, &quot;&quot;, &quot;0&quot;]:
-    print(repr(value), bool(value))</code></pre></div>
-<p>리스트 안에 0이 있다는 것과 리스트가 비었다는 것이 왜 다른지 설명해 본다.</p>
-</section>
-<section id="section-4"><h2>3. 표시와 원래 값</h2>
-<div class="static-code"><div>py</div><pre><code>avg = 79.753
+print(type(values).__name__, values)</code></pre></div><p>재사용한 이름에 새 값이 대입되는 것과 예약어를 변수 이름으로 쓰는 것을 구분한다.</p></section><section id="section-3"><h2>2. 숫자 0과 문자열 0</h2><div class="static-code"><div>py</div><pre><code>for value in [0, 1, [], [0], {}, &quot;&quot;, &quot;0&quot;]:
+    print(repr(value), bool(value))</code></pre></div><p>리스트 안에 0이 있다는 것과 리스트가 비었다는 것이 왜 다른지 설명해 본다.</p></section><section id="section-4"><h2>3. 표시와 원래 값</h2><div class="static-code"><div>py</div><pre><code>avg = 79.753
 print(f&quot;{avg=:.1f}&quot;)
 print(avg)
 name = &quot;Alice&quot;
 print(f&quot;|{name:&lt;10}|&quot;)
 print(f&quot;|{name:&gt;10}|&quot;)
-print(f&quot;|{name:^10}|&quot;)</code></pre></div>
-<p>소수 표시와 변수 값 변경을 구분하고, 폭 10보다 긴 문자열도 넣어 최소 폭의 의미를 확인한다. 예상과 달랐다면 실제 출력과 이유를 따로 적는다.</p>
-</section>
+print(f&quot;|{name:^10}|&quot;)</code></pre></div><p>소수 표시와 변수 값 변경을 구분하고, 폭 10보다 긴 문자열도 넣어 최소 폭의 의미를 확인한다. 예상과 달랐다면 실제 출력과 이유를 따로 적는다.</p></section><!-- editor-body:end -->
 <div id="lab" class="lab">
         <div class="lab-head"><button id="toggle-lab" aria-expanded="false" aria-controls="lab-body"><span class="lab-icon">&gt;_</span><span>Python 실습실<small>직접 수정하고 한 줄씩 따라가 보세요</small></span><span id="chevron">＋</span></button></div>
         <div id="lab-body" hidden>
           <div class="toolbar"><div class="run-controls"><button id="run" class="primary">▶ 전체 실행</button><button id="step">↳ 한 단계</button><button id="stop" disabled>■ 중단</button></div><div class="view-controls"><button id="expand" aria-pressed="false">⤢ 확대</button><button id="fullscreen">전체화면</button><button id="reset">환경 리셋</button><button id="restore">예제 복원</button></div></div>
           <div class="status-row"><span id="status" role="status" aria-live="polite">준비됨 · 실행 시 Python을 불러옵니다</span><span id="position">LINE —</span></div>
+<section id="problems" class="problems" aria-label="실행 문제" aria-live="polite" hidden><div class="problem-heading">문제 · 1 <small>실행 시 확인된 오류</small></div><div class="problem-detail"><button id="problem-location" type="button" title="오류 줄로 이동"></button><strong id="problem-type"></strong><span id="problem-message"></span></div><pre id="problem-source"></pre></section>
           <div id="support-note" class="support-note" hidden></div>
           <div class="workbench"><div class="editor-pane"><div class="pane-title"><span>lesson.py</span><small>PYTHON</small></div><div class="editor-shell"><div id="gutter" aria-hidden="true"></div><textarea id="editor" aria-label="Python 코드 편집기" spellcheck="false" autocapitalize="off" autocorrect="off" wrap="off">a = 1
 a = 2

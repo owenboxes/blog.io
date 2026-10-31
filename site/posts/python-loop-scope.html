@@ -4,13 +4,14 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="지점별 매출을 집계하는 예제를 읽다가, 반복문 밖의 print(total)이 왜 반복문에서 다룬 값을 사용할 수 있는지 질문했다. total[branch]를 별도의 지역변수처럼 생각한 부분도…">
   <title>for문 밖에서 변수를 쓸 수 있는 이유가 궁금했다 — OWEN</title>
-  <link rel="stylesheet" href="../style.css?v=5edf70b1cfdb">
+  <link rel="stylesheet" href="../style.css?v=aa5c9f4bad7c">
   <script src="../coi-config.js"></script>
   <script src="../coi-serviceworker.js"></script>
   <script src="../dock.js" defer></script>
   <script src="../input-channel.js" defer></script>
-  <script src="../app.js?v=15c26aa2ff36" defer></script>
+  <script src="../app.js?v=0f6da4f4085e" defer></script>
   <script src="../catalog.js?v=947c77aa3c4e" defer></script>
+<script src="../editor-config.js" defer></script><script src="../edit-link.js" defer></script>
 </head>
 <body data-site-root="../" data-post-id="python-loop-scope" data-lab="python">
 <header class="site-header"><a class="brand" href="#" data-home>OWEN<span> / BUILD NOTES</span></a><nav aria-label="주 메뉴"><a href="#about">소개</a><a href="https://github.com/owenboxes" target="_blank" rel="noopener">GitHub ↗</a></nav></header>
@@ -34,21 +35,13 @@
 <details class="mobile-toc"><summary>이 글의 목차</summary><a href="#section-1">들여쓰기와 변수 범위를 혼동했다</a><a href="#section-2">이름과 키 접근을 구분하기</a><a href="#section-3">질문을 넓힌 지점</a></details>
 <details class="mobile-published"><summary>다른 글 보기 · 최근 등록순</summary><div id="mobile-published-posts"></div></details>
 
-<section id="section-1"><h2>들여쓰기와 변수 범위를 혼동했다</h2>
-<p>지점별 매출을 집계하는 예제를 읽다가, 반복문 밖의 <code>print(total)</code>이 왜 반복문에서 다룬 값을 사용할 수 있는지 질문했다. <code>total[branch]</code>를 별도의 지역변수처럼 생각한 부분도 있었다.</p>
-</section>
-<section id="section-2"><h2>이름과 키 접근을 구분하기</h2>
-<p>기존 TIL에 남은 AI 설명에서는 <code>total</code>이 딕셔너리를 가리키는 이름이고, <code>total[branch]</code>는 그 딕셔너리의 키에 접근하는 표현이라고 구분했다. 대괄호가 새 변수 범위를 만든다는 뜻은 아니다.</p>
-<p>또 일반적인 <code>for</code>, <code>if</code>, <code>while</code> 블록은 함수처럼 별도의 지역 스코프를 만들지 않는다고 설명을 받았다. 다만 함수·클래스·컴프리헨션 등 다른 문법의 범위를 모두 같은 것으로 일반화하지 않는다.</p>
-</section>
-<section id="section-3"><h2>질문을 넓힌 지점</h2>
-<p>첫 설명 뒤에는 함수 외에도 새로운 범위를 만드는 경우가 있는지 물었다. 코드를 다시 실행하거나 설명을 적용해 검증한 결과는 아직 없다. 따라서 이번 글은 스코프 문제를 해결했다는 후기보다, 들여쓰기와 변수 유효 범위를 구분하려고 한 질문 기록이다.</p>
-</section>
+<!-- editor-body:start --><section id="section-1"><h2>들여쓰기와 변수 범위를 혼동했다</h2><p>지점별 매출을 집계하는 예제를 읽다가, 반복문 밖의 <code>print(total)</code>이 왜 반복문에서 다룬 값을 사용할 수 있는지 질문했다. <code>total[branch]</code>를 별도의 지역변수처럼 생각한 부분도 있었다.</p></section><section id="section-2"><h2>이름과 키 접근을 구분하기</h2><p>기존 TIL에 남은 AI 설명에서는 <code>total</code>이 딕셔너리를 가리키는 이름이고, <code>total[branch]</code>는 그 딕셔너리의 키에 접근하는 표현이라고 구분했다. 대괄호가 새 변수 범위를 만든다는 뜻은 아니다.</p><p>또 일반적인 <code>for</code>, <code>if</code>, <code>while</code> 블록은 함수처럼 별도의 지역 스코프를 만들지 않는다고 설명을 받았다. 다만 함수·클래스·컴프리헨션 등 다른 문법의 범위를 모두 같은 것으로 일반화하지 않는다.</p></section><section id="section-3"><h2>질문을 넓힌 지점</h2><p>첫 설명 뒤에는 함수 외에도 새로운 범위를 만드는 경우가 있는지 물었다. 코드를 다시 실행하거나 설명을 적용해 검증한 결과는 아직 없다. 따라서 이번 글은 스코프 문제를 해결했다는 후기보다, 들여쓰기와 변수 유효 범위를 구분하려고 한 질문 기록이다.</p></section><!-- editor-body:end -->
 <div id="lab" class="lab">
         <div class="lab-head"><button id="toggle-lab" aria-expanded="false" aria-controls="lab-body"><span class="lab-icon">&gt;_</span><span>Python 실습실<small>직접 수정하고 한 줄씩 따라가 보세요</small></span><span id="chevron">＋</span></button></div>
         <div id="lab-body" hidden>
           <div class="toolbar"><div class="run-controls"><button id="run" class="primary">▶ 전체 실행</button><button id="step">↳ 한 단계</button><button id="stop" disabled>■ 중단</button></div><div class="view-controls"><button id="expand" aria-pressed="false">⤢ 확대</button><button id="fullscreen">전체화면</button><button id="reset">환경 리셋</button><button id="restore">예제 복원</button></div></div>
           <div class="status-row"><span id="status" role="status" aria-live="polite">준비됨 · 실행 시 Python을 불러옵니다</span><span id="position">LINE —</span></div>
+<section id="problems" class="problems" aria-label="실행 문제" aria-live="polite" hidden><div class="problem-heading">문제 · 1 <small>실행 시 확인된 오류</small></div><div class="problem-detail"><button id="problem-location" type="button" title="오류 줄로 이동"></button><strong id="problem-type"></strong><span id="problem-message"></span></div><pre id="problem-source"></pre></section>
           <div id="support-note" class="support-note" hidden></div>
           <div class="workbench"><div class="editor-pane"><div class="pane-title"><span>lesson.py</span><small>PYTHON</small></div><div class="editor-shell"><div id="gutter" aria-hidden="true"></div><textarea id="editor" aria-label="Python 코드 편집기" spellcheck="false" autocapitalize="off" autocorrect="off" wrap="off"></textarea></div></div>
           <div class="inspect-pane"><div class="pane-title">변수 <small>현재 멈춘 시점의 값</small></div><div id="variables" class="variables"><p class="empty">실행하면 변수의 변화가 여기에 나타납니다.</p></div><div class="pane-title console-title">실행 결과 <small>프로그램 출력 · 오류</small><button id="clear-output">지우기</button></div><pre id="output" aria-label="프로그램 출력 및 오류" tabindex="0"></pre><form id="console-input" hidden><span id="input-prompt"></span><label for="stdin">입력 대기 ›</label><input id="stdin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Python input 입력값"><button type="submit">입력 ↵</button><small>Enter로 전송 · 빈 입력도 가능</small></form><details id="input-history" hidden><summary>입력 기록 · 실행 결과와 별도</summary><pre id="input-log" aria-label="입력 안내 및 입력값 기록"></pre></details></div></div>

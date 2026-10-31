@@ -4,13 +4,14 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="문자열 출력 형식을 공부한 뒤 for·while을 작성하고, 컴프리헨션으로 변환·필터링·조건별 값을 만드는 실습을 했다. 수업 예시와 개인 작성 코드는 구분했고, 당시 실행 출력은 별도로 남기지…">
   <title>반복 종료 조건과 중첩 컴프리헨션의 순서를 읽기 — OWEN</title>
-  <link rel="stylesheet" href="../style.css?v=5edf70b1cfdb">
+  <link rel="stylesheet" href="../style.css?v=aa5c9f4bad7c">
   <script src="../coi-config.js"></script>
   <script src="../coi-serviceworker.js"></script>
   <script src="../dock.js" defer></script>
   <script src="../input-channel.js" defer></script>
-  <script src="../app.js?v=15c26aa2ff36" defer></script>
+  <script src="../app.js?v=0f6da4f4085e" defer></script>
   <script src="../catalog.js?v=947c77aa3c4e" defer></script>
+<script src="../editor-config.js" defer></script><script src="../edit-link.js" defer></script>
 </head>
 <body data-site-root="../" data-post-id="python-loops-and-comprehensions" data-lab="python">
 <header class="site-header"><a class="brand" href="#" data-home>OWEN<span> / BUILD NOTES</span></a><nav aria-label="주 메뉴"><a href="#about">소개</a><a href="https://github.com/owenboxes" target="_blank" rel="noopener">GitHub ↗</a></nav></header>
@@ -34,33 +35,19 @@
 <details class="mobile-toc"><summary>이 글의 목차</summary><a href="#section-1">같은 작업을 반복하는 코드에서 데이터 추출로</a><a href="#section-2">컴프리헨션의 if 위치</a><a href="#section-3">종료 문구와 실제 종료를 구분하기</a><a href="#section-4">반복 코드를 검토받으며 남긴 질문</a></details>
 <details class="mobile-published"><summary>다른 글 보기 · 최근 등록순</summary><div id="mobile-published-posts"></div></details>
 
-<section id="section-1"><h2>같은 작업을 반복하는 코드에서 데이터 추출로</h2>
-<p>문자열 출력 형식을 공부한 뒤 for·while을 작성하고, 컴프리헨션으로 변환·필터링·조건별 값을 만드는 실습을 했다. 수업 예시와 개인 작성 코드는 구분했고, 당시 실행 출력은 별도로 남기지 않았다.</p>
-</section>
-<section id="section-2"><h2>컴프리헨션의 if 위치</h2>
-<p>뒤쪽 if는 항목을 남길지 결정하는 필터이고, 앞쪽 if/else는 남길 항목의 값을 고르는 표현이다. 주문별 상품을 모으는 개인 코드에서는 주문을 먼저 꺼내야 그 주문의 items를 순회할 수 있었다.</p>
-<div class="static-code"><div>py</div><pre><code># 내 작성 코드를 이름만 읽기 쉽게 편집. 데이터 정의는 별도 필요하다.
+<!-- editor-body:start --><section id="section-1"><h2>같은 작업을 반복하는 코드에서 데이터 추출로</h2><p>문자열 출력 형식을 공부한 뒤 for·while을 작성하고, 컴프리헨션으로 변환·필터링·조건별 값을 만드는 실습을 했다. 수업 예시와 개인 작성 코드는 구분했고, 당시 실행 출력은 별도로 남기지 않았다.</p></section><section id="section-2"><h2>컴프리헨션의 if 위치</h2><p>뒤쪽 if는 항목을 남길지 결정하는 필터이고, 앞쪽 if/else는 남길 항목의 값을 고르는 표현이다. 주문별 상품을 모으는 개인 코드에서는 주문을 먼저 꺼내야 그 주문의 items를 순회할 수 있었다.</p><div class="static-code"><div>py</div><pre><code># 내 작성 코드를 이름만 읽기 쉽게 편집. 데이터 정의는 별도 필요하다.
 paid_products = [
     item[&quot;name&quot;]
     for order in orders
     if order[&quot;paid&quot;] == True
     for item in order[&quot;items&quot;]
-]</code></pre></div>
-<p>이 조각만 실행하면 orders가 정의되지 않았으므로 독립 실행 예제가 아니다. 실습에는 별도 교육용 데이터를 제공해야 한다.</p>
-</section>
-<section id="section-3"><h2>종료 문구와 실제 종료를 구분하기</h2>
-<p>쿠폰 번호를 최대 다섯 번 입력받는 코드와 비밀번호 코드를 작성했다. 기존 TIL의 AI 정적 점검에서는 쿠폰 코드가 정수 입력을 전제로 횟수 종료를 처리하지만 문자 입력 예외는 다루지 않는다고 구분했다.</p>
-<p>비밀번호 코드에는 성공 시 break가 없었고, ‘10분 잠금’ 문구에 대응하는 시간 측정·차단 구현도 없었다. 안내 출력만으로 실제 잠금을 구현했다고 말할 수는 없다. 남은 실습은 성공·실패의 종료 시점과 숫자가 아닌 입력을 분리해 확인하는 것이다.</p>
-</section>
-<section id="section-4"><h2>반복 코드를 검토받으며 남긴 질문</h2>
-<p>누적 while·for 연습 코드를 확인해 달라고 요청했고, 이어서 운동 챌린지와 저금통 풀이의 반복 종료 지점을 검토받으려 했다. 저금통 문제에서는 break 위치도 질문했다.</p>
-<p>빈 좌석 문제에서는 코드를 어디서 시작해야 할지 어려워 좌석 상태를 필터링하는 방식을 물었다. 이 과정은 질문과 풀이 검토 요청의 기록이다. 최종 수정본과 실행 결과가 확인되지 않아 해결한 경험으로 정리하지는 않는다.</p>
-</section>
+]</code></pre></div><p>이 조각만 실행하면 orders가 정의되지 않았으므로 독립 실행 예제가 아니다. 실습에는 별도 교육용 데이터를 제공해야 한다.</p></section><section id="section-3"><h2>종료 문구와 실제 종료를 구분하기</h2><p>쿠폰 번호를 최대 다섯 번 입력받는 코드와 비밀번호 코드를 작성했다. 기존 TIL의 AI 정적 점검에서는 쿠폰 코드가 정수 입력을 전제로 횟수 종료를 처리하지만 문자 입력 예외는 다루지 않는다고 구분했다.</p><p>비밀번호 코드에는 성공 시 break가 없었고, ‘10분 잠금’ 문구에 대응하는 시간 측정·차단 구현도 없었다. 안내 출력만으로 실제 잠금을 구현했다고 말할 수는 없다. 남은 실습은 성공·실패의 종료 시점과 숫자가 아닌 입력을 분리해 확인하는 것이다.</p></section><section id="section-4"><h2>반복 코드를 검토받으며 남긴 질문</h2><p>누적 while·for 연습 코드를 확인해 달라고 요청했고, 이어서 운동 챌린지와 저금통 풀이의 반복 종료 지점을 검토받으려 했다. 저금통 문제에서는 break 위치도 질문했다.</p><p>빈 좌석 문제에서는 코드를 어디서 시작해야 할지 어려워 좌석 상태를 필터링하는 방식을 물었다. 이 과정은 질문과 풀이 검토 요청의 기록이다. 최종 수정본과 실행 결과가 확인되지 않아 해결한 경험으로 정리하지는 않는다.</p></section><!-- editor-body:end -->
 <div id="lab" class="lab">
         <div class="lab-head"><button id="toggle-lab" aria-expanded="false" aria-controls="lab-body"><span class="lab-icon">&gt;_</span><span>Python 실습실<small>직접 수정하고 한 줄씩 따라가 보세요</small></span><span id="chevron">＋</span></button></div>
         <div id="lab-body" hidden>
           <div class="toolbar"><div class="run-controls"><button id="run" class="primary">▶ 전체 실행</button><button id="step">↳ 한 단계</button><button id="stop" disabled>■ 중단</button></div><div class="view-controls"><button id="expand" aria-pressed="false">⤢ 확대</button><button id="fullscreen">전체화면</button><button id="reset">환경 리셋</button><button id="restore">예제 복원</button></div></div>
           <div class="status-row"><span id="status" role="status" aria-live="polite">준비됨 · 실행 시 Python을 불러옵니다</span><span id="position">LINE —</span></div>
+<section id="problems" class="problems" aria-label="실행 문제" aria-live="polite" hidden><div class="problem-heading">문제 · 1 <small>실행 시 확인된 오류</small></div><div class="problem-detail"><button id="problem-location" type="button" title="오류 줄로 이동"></button><strong id="problem-type"></strong><span id="problem-message"></span></div><pre id="problem-source"></pre></section>
           <div id="support-note" class="support-note" hidden></div>
           <div class="workbench"><div class="editor-pane"><div class="pane-title"><span>lesson.py</span><small>PYTHON</small></div><div class="editor-shell"><div id="gutter" aria-hidden="true"></div><textarea id="editor" aria-label="Python 코드 편집기" spellcheck="false" autocapitalize="off" autocorrect="off" wrap="off"></textarea></div></div>
           <div class="inspect-pane"><div class="pane-title">변수 <small>현재 멈춘 시점의 값</small></div><div id="variables" class="variables"><p class="empty">실행하면 변수의 변화가 여기에 나타납니다.</p></div><div class="pane-title console-title">실행 결과 <small>프로그램 출력 · 오류</small><button id="clear-output">지우기</button></div><pre id="output" aria-label="프로그램 출력 및 오류" tabindex="0"></pre><form id="console-input" hidden><span id="input-prompt"></span><label for="stdin">입력 대기 ›</label><input id="stdin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Python input 입력값"><button type="submit">입력 ↵</button><small>Enter로 전송 · 빈 입력도 가능</small></form><details id="input-history" hidden><summary>입력 기록 · 실행 결과와 별도</summary><pre id="input-log" aria-label="입력 안내 및 입력값 기록"></pre></details></div></div>

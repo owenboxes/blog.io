@@ -4,13 +4,14 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Python의 변수 이름, int·float·str·bool, 비교·논리 연산과 문자열 출력 형식을 공부했다. 편집기인 VS Code와 Python 인터프리터도 구분했다.">
   <title>변수의 값과 화면에 표시하는 형식을 구분하기 — OWEN</title>
-  <link rel="stylesheet" href="../style.css?v=5edf70b1cfdb">
+  <link rel="stylesheet" href="../style.css?v=aa5c9f4bad7c">
   <script src="../coi-config.js"></script>
   <script src="../coi-serviceworker.js"></script>
   <script src="../dock.js" defer></script>
   <script src="../input-channel.js" defer></script>
-  <script src="../app.js?v=15c26aa2ff36" defer></script>
+  <script src="../app.js?v=0f6da4f4085e" defer></script>
   <script src="../catalog.js?v=947c77aa3c4e" defer></script>
+<script src="../editor-config.js" defer></script><script src="../edit-link.js" defer></script>
 </head>
 <body data-site-root="../" data-post-id="python-values-and-formatting" data-lab="python">
 <header class="site-header"><a class="brand" href="#" data-home>OWEN<span> / BUILD NOTES</span></a><nav aria-label="주 메뉴"><a href="#about">소개</a><a href="https://github.com/owenboxes" target="_blank" rel="noopener">GitHub ↗</a></nav></header>
@@ -34,28 +35,16 @@
 <details class="mobile-toc"><summary>이 글의 목차</summary><a href="#section-1">변수·자료형·연산자를 묶어 복습했다</a><a href="#section-2">0과 빈 값, 문자열을 다르게 보기</a><a href="#section-3">출력 형식은 원래 값을 바꾸지 않는다</a><a href="#section-4">질문과 수행 결과를 구분했다</a></details>
 <details class="mobile-published"><summary>다른 글 보기 · 최근 등록순</summary><div id="mobile-published-posts"></div></details>
 
-<section id="section-1"><h2>변수·자료형·연산자를 묶어 복습했다</h2>
-<p>Python의 변수 이름, int·float·str·bool, 비교·논리 연산과 문자열 출력 형식을 공부했다. 편집기인 VS Code와 Python 인터프리터도 구분했다.</p>
-</section>
-<section id="section-2"><h2>0과 빈 값, 문자열을 다르게 보기</h2>
-<p>기존 메모에는 참·거짓 판정이 뒤바뀐 부분이 있어 AI 보충 설명으로 정정했다. 숫자 0과 빈 리스트·빈 문자열은 거짓으로 판정되지만, 문자열 <code>&quot;0&quot;</code>과 리스트 <code>[0]</code>은 비어 있지 않으므로 참으로 판정된다. 정정된 표를 본 사실을 직접 실행해 확인한 결과로 바꾸지는 않는다.</p>
-</section>
-<section id="section-3"><h2>출력 형식은 원래 값을 바꾸지 않는다</h2>
-<p>학습 예시를 정리하면 다음 두 출력은 목적이 다르다.</p>
-<div class="static-code"><div>py</div><pre><code># TIL을 바탕으로 편집한 설명 예제. 당시 내 실행 로그는 아니다.
+<!-- editor-body:start --><section id="section-1"><h2>변수·자료형·연산자를 묶어 복습했다</h2><p>Python의 변수 이름, int·float·str·bool, 비교·논리 연산과 문자열 출력 형식을 공부했다. 편집기인 VS Code와 Python 인터프리터도 구분했다.</p></section><section id="section-2"><h2>0과 빈 값, 문자열을 다르게 보기</h2><p>기존 메모에는 참·거짓 판정이 뒤바뀐 부분이 있어 AI 보충 설명으로 정정했다. 숫자 0과 빈 리스트·빈 문자열은 거짓으로 판정되지만, 문자열 <code>&quot;0&quot;</code>과 리스트 <code>[0]</code>은 비어 있지 않으므로 참으로 판정된다. 정정된 표를 본 사실을 직접 실행해 확인한 결과로 바꾸지는 않는다.</p></section><section id="section-3"><h2>출력 형식은 원래 값을 바꾸지 않는다</h2><p>학습 예시를 정리하면 다음 두 출력은 목적이 다르다.</p><div class="static-code"><div>py</div><pre><code># TIL을 바탕으로 편집한 설명 예제. 당시 내 실행 로그는 아니다.
 avg = 79.753
 print(f&quot;{avg:.1f}&quot;)
-print(avg)</code></pre></div>
-<p>첫 줄은 표시 자릿수를 지정하고, 둘째 줄은 원래 변수 값을 출력한다. <code>.1f</code>를 사용했다고 avg 자체가 새 숫자로 대입되는 것은 아니다. 숫자 반올림은 언제나 ‘5 이상 올림’이라는 한 문장으로 일반화하지 않는다.</p>
-</section>
-<section id="section-4"><h2>질문과 수행 결과를 구분했다</h2>
-<p>중괄호의 의미와 분수 약분 방법도 질문했지만, 구현·채점 결과는 남아 있지 않다. 같은 날 네트워크 용어와 프로토콜을 질문한 기록은 있으나 실제 통신 실험을 한 기록은 아니다. 개인 성찰과 취업 관련 메모는 이 기술 글에서 제외했다.</p>
-</section>
+print(avg)</code></pre></div><p>첫 줄은 표시 자릿수를 지정하고, 둘째 줄은 원래 변수 값을 출력한다. <code>.1f</code>를 사용했다고 avg 자체가 새 숫자로 대입되는 것은 아니다. 숫자 반올림은 언제나 ‘5 이상 올림’이라는 한 문장으로 일반화하지 않는다.</p></section><section id="section-4"><h2>질문과 수행 결과를 구분했다</h2><p>중괄호의 의미와 분수 약분 방법도 질문했지만, 구현·채점 결과는 남아 있지 않다. 같은 날 네트워크 용어와 프로토콜을 질문한 기록은 있으나 실제 통신 실험을 한 기록은 아니다. 개인 성찰과 취업 관련 메모는 이 기술 글에서 제외했다.</p></section><!-- editor-body:end -->
 <div id="lab" class="lab">
         <div class="lab-head"><button id="toggle-lab" aria-expanded="false" aria-controls="lab-body"><span class="lab-icon">&gt;_</span><span>Python 실습실<small>직접 수정하고 한 줄씩 따라가 보세요</small></span><span id="chevron">＋</span></button></div>
         <div id="lab-body" hidden>
           <div class="toolbar"><div class="run-controls"><button id="run" class="primary">▶ 전체 실행</button><button id="step">↳ 한 단계</button><button id="stop" disabled>■ 중단</button></div><div class="view-controls"><button id="expand" aria-pressed="false">⤢ 확대</button><button id="fullscreen">전체화면</button><button id="reset">환경 리셋</button><button id="restore">예제 복원</button></div></div>
           <div class="status-row"><span id="status" role="status" aria-live="polite">준비됨 · 실행 시 Python을 불러옵니다</span><span id="position">LINE —</span></div>
+<section id="problems" class="problems" aria-label="실행 문제" aria-live="polite" hidden><div class="problem-heading">문제 · 1 <small>실행 시 확인된 오류</small></div><div class="problem-detail"><button id="problem-location" type="button" title="오류 줄로 이동"></button><strong id="problem-type"></strong><span id="problem-message"></span></div><pre id="problem-source"></pre></section>
           <div id="support-note" class="support-note" hidden></div>
           <div class="workbench"><div class="editor-pane"><div class="pane-title"><span>lesson.py</span><small>PYTHON</small></div><div class="editor-shell"><div id="gutter" aria-hidden="true"></div><textarea id="editor" aria-label="Python 코드 편집기" spellcheck="false" autocapitalize="off" autocorrect="off" wrap="off"></textarea></div></div>
           <div class="inspect-pane"><div class="pane-title">변수 <small>현재 멈춘 시점의 값</small></div><div id="variables" class="variables"><p class="empty">실행하면 변수의 변화가 여기에 나타납니다.</p></div><div class="pane-title console-title">실행 결과 <small>프로그램 출력 · 오류</small><button id="clear-output">지우기</button></div><pre id="output" aria-label="프로그램 출력 및 오류" tabindex="0"></pre><form id="console-input" hidden><span id="input-prompt"></span><label for="stdin">입력 대기 ›</label><input id="stdin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Python input 입력값"><button type="submit">입력 ↵</button><small>Enter로 전송 · 빈 입력도 가능</small></form><details id="input-history" hidden><summary>입력 기록 · 실행 결과와 별도</summary><pre id="input-log" aria-label="입력 안내 및 입력값 기록"></pre></details></div></div>

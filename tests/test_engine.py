@@ -32,6 +32,36 @@ class EngineTests(unittest.TestCase):
         self.assertIn('EOFError', self.run_code('input()')['error'])
         self.assertIn('SyntaxError', self.run_code('if :')['error'])
 
+    def test_runtime_error_points_to_student_line_inside_function(self):
+        r = self.run_code('def demo():\n    return missing_name\ndemo()')
+        self.assertEqual(r.get('diagnostic'), {
+            'kind': 'runtime', 'type': 'NameError', 'message': "name 'missing_name' is not defined",
+            'file': 'lesson.py', 'line': 2, 'column': None, 'source': '    return missing_name',
+        })
+
+    def test_syntax_error_reports_location_without_execution(self):
+        r = self.run_code('x = 1\nif :\n    print(x)')
+        d = r.get('diagnostic')
+        self.assertIsNotNone(d)
+        self.assertEqual((d['kind'], d['type'], d['file'], d['line'], d['column']), ('syntax', 'SyntaxError', 'lesson.py', 2, 4))
+        self.assertEqual(d['source'], 'if :')
+        self.assertEqual(self.steps, [])
+
+    def test_comprehension_scope_error_is_reported_not_auto_corrected(self):
+        code = 'orders = [{"paid": True, "items": [{"name": "책"}]}]\nresult = [\n    menu["items"] for menu in order\n    if order["paid"] == True\n    for order in orders\n]'
+        r = self.run_code(code)
+        self.assertEqual(r['diagnostic']['type'], 'NameError')
+        self.assertEqual(r['diagnostic']['line'], 3)
+        self.assertIn('order', r['diagnostic']['message'])
+        self.assertNotIn('result', r['variables'])
+        self.assertIsNone(self.run_code('print("정상")').get('diagnostic'))
+
+    def test_exception_with_broken_str_remains_a_student_error(self):
+        r = self.run_code('class Bad(Exception):\n    def __str__(self):\n        raise ValueError("broken str")\nraise Bad()')
+        self.assertEqual(r['diagnostic']['type'], 'Bad')
+        self.assertEqual(r['diagnostic']['line'], 4)
+        self.assertTrue(r['diagnostic']['message'])
+
     def test_infinite_loop_is_bounded(self):
         self.assertIn('실행 단계 제한', self.run_code('while True:\n    pass')['error'])
 
@@ -104,3 +134,4 @@ class EngineTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+

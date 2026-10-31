@@ -4,13 +4,14 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Git의 system·global·local 설정을 공부하면서 범위가 넓은 것과 우선 적용되는 것을 혼동했다. system은 회사 전체, global은 개인 계정, local은 특정 저장소에…">
   <title>Git 설정의 범위와 우선순위를 다르게 읽기 — OWEN</title>
-  <link rel="stylesheet" href="../style.css?v=5edf70b1cfdb">
+  <link rel="stylesheet" href="../style.css?v=aa5c9f4bad7c">
   <script src="../coi-config.js"></script>
   <script src="../coi-serviceworker.js"></script>
   <script src="../dock.js" defer></script>
   <script src="../input-channel.js" defer></script>
-  <script src="../app.js?v=15c26aa2ff36" defer></script>
+  <script src="../app.js?v=0f6da4f4085e" defer></script>
   <script src="../catalog.js?v=947c77aa3c4e" defer></script>
+<script src="../editor-config.js" defer></script><script src="../edit-link.js" defer></script>
 </head>
 <body data-site-root="../" data-post-id="git-config-scope" data-lab="off">
 <header class="site-header"><a class="brand" href="#" data-home>OWEN<span> / BUILD NOTES</span></a><nav aria-label="주 메뉴"><a href="#about">소개</a><a href="https://github.com/owenboxes" target="_blank" rel="noopener">GitHub ↗</a></nav></header>
@@ -34,26 +35,13 @@
 <details class="mobile-toc"><summary>이 글의 목차</summary><a href="#section-1">넓게 적용되는 설정이 항상 우선은 아니었다</a><a href="#section-2">작업 폴더·스테이징·커밋</a><a href="#section-3">확인되지 않은 문제는 별도로 남겼다</a></details>
 <details class="mobile-published"><summary>다른 글 보기 · 최근 등록순</summary><div id="mobile-published-posts"></div></details>
 
-<section id="section-1"><h2>넓게 적용되는 설정이 항상 우선은 아니었다</h2>
-<p>Git의 system·global·local 설정을 공부하면서 범위가 넓은 것과 우선 적용되는 것을 혼동했다. system은 회사 전체, global은 개인 계정, local은 특정 저장소에 비유해 다시 설명해 보았다.</p>
-<div class="table-scroll"><table><thead><tr><th>설정</th><th>적용 범위</th><th>이 셋 사이의 우선순위</th></tr></thead><tbody>
-<tr><td>system</td><td>시스템의 모든 사용자·저장소</td><td>낮음</td></tr>
-<tr><td>global</td><td>현재 OS 사용자의 여러 저장소</td><td>중간</td></tr>
-<tr><td>local</td><td>현재 저장소</td><td>높음</td></tr>
-</tbody></table></div>
-<p>기존 TIL의 AI 보충 설명에서는 같은 항목에 local 값이 있으면 그 값을 우선 사용한다고 구분했다. 다른 설정 파일을 지우거나 값을 가져온다는 뜻은 아니다. Git에는 다른 설정 출처도 있으므로 이 표를 모든 설정 출처의 전체 순서로 보지는 않는다.</p>
-</section>
-<section id="section-2"><h2>작업 폴더·스테이징·커밋</h2>
-<p>파일을 편집하는 것, 다음 커밋에 담을 변경을 고르는 것, 버전으로 기록하는 것을 나누어 정리했다. 복습 메모에는 설정 출처 출력과 작업 폴더 경계 확인 결과가 남아 있다. 개인정보·개인 경로가 포함된 실제 출력 전체는 이 글에 복제하지 않는다.</p>
-</section>
-<section id="section-3"><h2>확인되지 않은 문제는 별도로 남겼다</h2>
-<p>PowerShell에서 uv 설치 후 버전 확인 명령이 실행되지 않아 원인을 질문했다. PATH 문제는 당시 AI의 추정이었고 수정 성공은 확인되지 않았다. 이 문제를 Git 설정 학습의 해결 성과와 섞지 않는다. SSH와 PAT의 차이도 추가 확인 대상으로 남아 있다.</p>
-</section>
+<!-- editor-body:start --><section id="section-1"><h2>넓게 적용되는 설정이 항상 우선은 아니었다</h2><p>Git의 system·global·local 설정을 공부하면서 범위가 넓은 것과 우선 적용되는 것을 혼동했다. system은 회사 전체, global은 개인 계정, local은 특정 저장소에 비유해 다시 설명해 보았다.</p><div class="table-scroll"><table><tbody><tr><th>설정</th><th>적용 범위</th><th>이 셋 사이의 우선순위</th></tr><tr><td>system</td><td>시스템의 모든 사용자·저장소</td><td>낮음</td></tr><tr><td>global</td><td>현재 OS 사용자의 여러 저장소</td><td>중간</td></tr><tr><td>local</td><td>현재 저장소</td><td>높음</td></tr></tbody></table></div><p>기존 TIL의 AI 보충 설명에서는 같은 항목에 local 값이 있으면 그 값을 우선 사용한다고 구분했다. 다른 설정 파일을 지우거나 값을 가져온다는 뜻은 아니다. Git에는 다른 설정 출처도 있으므로 이 표를 모든 설정 출처의 전체 순서로 보지는 않는다.</p></section><section id="section-2"><h2>작업 폴더·스테이징·커밋</h2><p>파일을 편집하는 것, 다음 커밋에 담을 변경을 고르는 것, 버전으로 기록하는 것을 나누어 정리했다. 복습 메모에는 설정 출처 출력과 작업 폴더 경계 확인 결과가 남아 있다. 개인정보·개인 경로가 포함된 실제 출력 전체는 이 글에 복제하지 않는다.</p></section><section id="section-3"><h2>확인되지 않은 문제는 별도로 남겼다</h2><p>PowerShell에서 uv 설치 후 버전 확인 명령이 실행되지 않아 원인을 질문했다. PATH 문제는 당시 AI의 추정이었고 수정 성공은 확인되지 않았다. 이 문제를 Git 설정 학습의 해결 성과와 섞지 않는다. SSH와 PAT의 차이도 추가 확인 대상으로 남아 있다.</p></section><!-- editor-body:end -->
 <div id="lab" class="lab" hidden>
         <div class="lab-head"><button id="toggle-lab" aria-expanded="false" aria-controls="lab-body"><span class="lab-icon">&gt;_</span><span>Python 실습실<small>직접 수정하고 한 줄씩 따라가 보세요</small></span><span id="chevron">＋</span></button></div>
         <div id="lab-body" hidden>
           <div class="toolbar"><div class="run-controls"><button id="run" class="primary">▶ 전체 실행</button><button id="step">↳ 한 단계</button><button id="stop" disabled>■ 중단</button></div><div class="view-controls"><button id="expand" aria-pressed="false">⤢ 확대</button><button id="fullscreen">전체화면</button><button id="reset">환경 리셋</button><button id="restore">예제 복원</button></div></div>
           <div class="status-row"><span id="status" role="status" aria-live="polite">준비됨 · 실행 시 Python을 불러옵니다</span><span id="position">LINE —</span></div>
+<section id="problems" class="problems" aria-label="실행 문제" aria-live="polite" hidden><div class="problem-heading">문제 · 1 <small>실행 시 확인된 오류</small></div><div class="problem-detail"><button id="problem-location" type="button" title="오류 줄로 이동"></button><strong id="problem-type"></strong><span id="problem-message"></span></div><pre id="problem-source"></pre></section>
           <div id="support-note" class="support-note" hidden></div>
           <div class="workbench"><div class="editor-pane"><div class="pane-title"><span>lesson.py</span><small>PYTHON</small></div><div class="editor-shell"><div id="gutter" aria-hidden="true"></div><textarea id="editor" aria-label="Python 코드 편집기" spellcheck="false" autocapitalize="off" autocorrect="off" wrap="off"></textarea></div></div>
           <div class="inspect-pane"><div class="pane-title">변수 <small>현재 멈춘 시점의 값</small></div><div id="variables" class="variables"><p class="empty">실행하면 변수의 변화가 여기에 나타납니다.</p></div><div class="pane-title console-title">실행 결과 <small>프로그램 출력 · 오류</small><button id="clear-output">지우기</button></div><pre id="output" aria-label="프로그램 출력 및 오류" tabindex="0"></pre><form id="console-input" hidden><span id="input-prompt"></span><label for="stdin">입력 대기 ›</label><input id="stdin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Python input 입력값"><button type="submit">입력 ↵</button><small>Enter로 전송 · 빈 입력도 가능</small></form><details id="input-history" hidden><summary>입력 기록 · 실행 결과와 별도</summary><pre id="input-log" aria-label="입력 안내 및 입력값 기록"></pre></details></div></div>

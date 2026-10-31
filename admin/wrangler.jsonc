@@ -1,0 +1,13 @@
+{
+  "name": "blog-admin",
+  "main": "dist/worker.mjs",
+  "compatibility_date": "2026-10-31",
+  "workers_dev": true,
+  "vars": {
+    "GITHUB_CLIENT_ID": "SET_PUBLIC_CLIENT_ID",
+    "ALLOWED_USER_ID": "SET_NUMERIC_GITHUB_USER_ID",
+    "REPOSITORY": "OWNER/REPOSITORY",
+    "PUBLIC_SITE_URL": "https://OWNER.github.io/REPOSITORY/",
+    "ADMIN_ORIGIN": "https://WORKER.ACCOUNT.workers.dev"
+  }
+}

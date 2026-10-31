@@ -111,6 +111,8 @@ article > p,
 article section > :is(ul,ol,blockquote){margin-inline:auto}
 article section > :is(ul,ol){padding-inline:0;list-style-position:inside}
 article section > blockquote{max-width:34em}
+.problems{margin:0!important;padding:10px 14px!important;border-top:1px solid #d8b5b0;background:#fff3f0;color:#762f29;max-height:145px;overflow:auto;text-align:left!important}
+.problem-heading{font:600 12px/1.6 var(--sans)}.problem-heading small{font-weight:400;margin-left:8px;color:#8b625a}.problem-detail{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;font:12px/1.7 var(--mono)}#problem-location{border:0;padding:4px 0;color:#8d342c;text-decoration:underline;font:inherit}#problem-message{overflow-wrap:anywhere;white-space:pre-wrap}#problem-source{margin:4px 0 0;padding:5px 8px;white-space:pre;overflow:auto;font:12px/1.7 var(--mono);border-left:3px solid #b34137;background:#f8e4df}#gutter .error{background:#ad342c;color:white;border-radius:2px}
 @media(max-width:760px){
   article section > p:not(.section-kicker),
   article section > :is(ul,ol){font-size:15px}

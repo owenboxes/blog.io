@@ -4,13 +4,14 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="R&amp;D Lab 상태를 보다가 완료 작업은 표시되지만 프로젝트로 이어진 결과가 부족하다고 느꼈다. 완료 숫자만 보는 대신 어떤 산출물이 만들어졌는지, 어떤 기준으로 심화 작업으로 넘어가는지 점검을…">
   <title>완료 건수보다 실제 산출물과 사용량을 확인하고 싶었다 — OWEN</title>
-  <link rel="stylesheet" href="../style.css?v=5edf70b1cfdb">
+  <link rel="stylesheet" href="../style.css?v=aa5c9f4bad7c">
   <script src="../coi-config.js"></script>
   <script src="../coi-serviceworker.js"></script>
   <script src="../dock.js" defer></script>
   <script src="../input-channel.js" defer></script>
-  <script src="../app.js?v=15c26aa2ff36" defer></script>
+  <script src="../app.js?v=0f6da4f4085e" defer></script>
   <script src="../catalog.js?v=947c77aa3c4e" defer></script>
+<script src="../editor-config.js" defer></script><script src="../edit-link.js" defer></script>
 </head>
 <body data-site-root="../" data-post-id="agent-results-and-usage" data-lab="off">
 <header class="site-header"><a class="brand" href="#" data-home>OWEN<span> / BUILD NOTES</span></a><nav aria-label="주 메뉴"><a href="#about">소개</a><a href="https://github.com/owenboxes" target="_blank" rel="noopener">GitHub ↗</a></nav></header>
@@ -34,21 +35,13 @@
 <details class="mobile-toc"><summary>이 글의 목차</summary><a href="#section-1">완료 표시와 프로젝트 전환 사이</a><a href="#section-2">전달까지 끝나야 적용 여부를 확인할 수 있었다</a><a href="#section-3">아직 성과로 쓰지 않는 것</a></details>
 <details class="mobile-published"><summary>다른 글 보기 · 최근 등록순</summary><div id="mobile-published-posts"></div></details>
 
-<section id="section-1"><h2>완료 표시와 프로젝트 전환 사이</h2>
-<p>R&amp;D Lab 상태를 보다가 완료 작업은 표시되지만 프로젝트로 이어진 결과가 부족하다고 느꼈다. 완료 숫자만 보는 대신 어떤 산출물이 만들어졌는지, 어떤 기준으로 심화 작업으로 넘어가는지 점검을 요청했다.</p>
-<p>동시에 자동 운영이 개인 사용 여유를 모두 소진하지 않도록 사용량 제약을 정했다. 효율화 제안을 받았다는 사실과 실제 사용량이 줄었다는 결과는 구분해야 했다.</p>
-</section>
-<section id="section-2"><h2>전달까지 끝나야 적용 여부를 확인할 수 있었다</h2>
-<p>생성된 플러그인 파일을 내려받으려 했지만 반복해서 실패했다. 파일이 생성됐다는 안내만으로 내 환경에 설치되거나 실행됐다고 볼 수 없었다.</p>
-</section>
-<section id="section-3"><h2>아직 성과로 쓰지 않는 것</h2>
-<p>당시 AI가 제시한 사용량 분석 수치는 원본 로그로 다시 계산하지 못했다. 다운로드·설치 성공과 효율화 효과도 확인되지 않았다. 이 기록에서는 구체적인 사용량 개선 수치나 운영 성공을 주장하지 않는다. 관찰한 문제와 요청한 점검까지만 남긴다.</p>
-</section>
+<!-- editor-body:start --><section id="section-1"><h2>완료 표시와 프로젝트 전환 사이</h2><p>R&amp;D Lab 상태를 보다가 완료 작업은 표시되지만 프로젝트로 이어진 결과가 부족하다고 느꼈다. 완료 숫자만 보는 대신 어떤 산출물이 만들어졌는지, 어떤 기준으로 심화 작업으로 넘어가는지 점검을 요청했다.</p><p>동시에 자동 운영이 개인 사용 여유를 모두 소진하지 않도록 사용량 제약을 정했다. 효율화 제안을 받았다는 사실과 실제 사용량이 줄었다는 결과는 구분해야 했다.</p></section><section id="section-2"><h2>전달까지 끝나야 적용 여부를 확인할 수 있었다</h2><p>생성된 플러그인 파일을 내려받으려 했지만 반복해서 실패했다. 파일이 생성됐다는 안내만으로 내 환경에 설치되거나 실행됐다고 볼 수 없었다.</p></section><section id="section-3"><h2>아직 성과로 쓰지 않는 것</h2><p>당시 AI가 제시한 사용량 분석 수치는 원본 로그로 다시 계산하지 못했다. 다운로드·설치 성공과 효율화 효과도 확인되지 않았다. 이 기록에서는 구체적인 사용량 개선 수치나 운영 성공을 주장하지 않는다. 관찰한 문제와 요청한 점검까지만 남긴다.</p></section><!-- editor-body:end -->
 <div id="lab" class="lab" hidden>
         <div class="lab-head"><button id="toggle-lab" aria-expanded="false" aria-controls="lab-body"><span class="lab-icon">&gt;_</span><span>Python 실습실<small>직접 수정하고 한 줄씩 따라가 보세요</small></span><span id="chevron">＋</span></button></div>
         <div id="lab-body" hidden>
           <div class="toolbar"><div class="run-controls"><button id="run" class="primary">▶ 전체 실행</button><button id="step">↳ 한 단계</button><button id="stop" disabled>■ 중단</button></div><div class="view-controls"><button id="expand" aria-pressed="false">⤢ 확대</button><button id="fullscreen">전체화면</button><button id="reset">환경 리셋</button><button id="restore">예제 복원</button></div></div>
           <div class="status-row"><span id="status" role="status" aria-live="polite">준비됨 · 실행 시 Python을 불러옵니다</span><span id="position">LINE —</span></div>
+<section id="problems" class="problems" aria-label="실행 문제" aria-live="polite" hidden><div class="problem-heading">문제 · 1 <small>실행 시 확인된 오류</small></div><div class="problem-detail"><button id="problem-location" type="button" title="오류 줄로 이동"></button><strong id="problem-type"></strong><span id="problem-message"></span></div><pre id="problem-source"></pre></section>
           <div id="support-note" class="support-note" hidden></div>
           <div class="workbench"><div class="editor-pane"><div class="pane-title"><span>lesson.py</span><small>PYTHON</small></div><div class="editor-shell"><div id="gutter" aria-hidden="true"></div><textarea id="editor" aria-label="Python 코드 편집기" spellcheck="false" autocapitalize="off" autocorrect="off" wrap="off"></textarea></div></div>
           <div class="inspect-pane"><div class="pane-title">변수 <small>현재 멈춘 시점의 값</small></div><div id="variables" class="variables"><p class="empty">실행하면 변수의 변화가 여기에 나타납니다.</p></div><div class="pane-title console-title">실행 결과 <small>프로그램 출력 · 오류</small><button id="clear-output">지우기</button></div><pre id="output" aria-label="프로그램 출력 및 오류" tabindex="0"></pre><form id="console-input" hidden><span id="input-prompt"></span><label for="stdin">입력 대기 ›</label><input id="stdin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Python input 입력값"><button type="submit">입력 ↵</button><small>Enter로 전송 · 빈 입력도 가능</small></form><details id="input-history" hidden><summary>입력 기록 · 실행 결과와 별도</summary><pre id="input-log" aria-label="입력 안내 및 입력값 기록"></pre></details></div></div>

@@ -4,13 +4,14 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Hermes 기반 R&amp;D Lab을 구성하면서 PowerShell 설정 스크립트 오류와 프로필별 플러그인 불일치를 겪었다. 설정 단계를 다시 진행했고, 플러그인을 동기화한 뒤에는 UI가 표시된다고…">
   <title>에이전트 UI가 보이는 것과 연구가 돌아가는 것은 달랐다 — OWEN</title>
-  <link rel="stylesheet" href="../style.css?v=5edf70b1cfdb">
+  <link rel="stylesheet" href="../style.css?v=aa5c9f4bad7c">
   <script src="../coi-config.js"></script>
   <script src="../coi-serviceworker.js"></script>
   <script src="../dock.js" defer></script>
   <script src="../input-channel.js" defer></script>
-  <script src="../app.js?v=15c26aa2ff36" defer></script>
+  <script src="../app.js?v=0f6da4f4085e" defer></script>
   <script src="../catalog.js?v=947c77aa3c4e" defer></script>
+<script src="../editor-config.js" defer></script><script src="../edit-link.js" defer></script>
 </head>
 <body data-site-root="../" data-post-id="agent-ui-and-runtime" data-lab="off">
 <header class="site-header"><a class="brand" href="#" data-home>OWEN<span> / BUILD NOTES</span></a><nav aria-label="주 메뉴"><a href="#about">소개</a><a href="https://github.com/owenboxes" target="_blank" rel="noopener">GitHub ↗</a></nav></header>
@@ -34,21 +35,13 @@
 <details class="mobile-toc"><summary>이 글의 목차</summary><a href="#section-1">자율 연구 도구를 구성하며 만난 문제</a><a href="#section-2">오류를 구체적으로 남기기</a><a href="#section-3">확인 범위를 나누어 기록했다</a></details>
 <details class="mobile-published"><summary>다른 글 보기 · 최근 등록순</summary><div id="mobile-published-posts"></div></details>
 
-<section id="section-1"><h2>자율 연구 도구를 구성하며 만난 문제</h2>
-<p>Hermes 기반 R&amp;D Lab을 구성하면서 PowerShell 설정 스크립트 오류와 프로필별 플러그인 불일치를 겪었다. 설정 단계를 다시 진행했고, 플러그인을 동기화한 뒤에는 UI가 표시된다고 보고했다.</p>
-<p>다만 UI가 보인다는 것과 연구 흐름 전체가 정상 실행된다는 것은 다른 확인이었다. 탐색 결과가 있어도 기대했던 Probe·Deep Dive로 이어졌다는 근거는 아직 없었다.</p>
-</section>
-<section id="section-2"><h2>오류를 구체적으로 남기기</h2>
-<p>Cron 편집 명령을 실행했을 때 <code>unrecognized arguments</code> 오류를 확인했다. AI는 편집 대상의 ID나 이름을 지정하는 방식을 제안했지만, 수정 명령의 실행 성공은 기록에 남아 있지 않다. 버전에 민감한 명령이므로 이 글에서 검증된 설치 가이드로 제시하지 않는다.</p>
-</section>
-<section id="section-3"><h2>확인 범위를 나누어 기록했다</h2>
-<p>내가 확인·보고한 것은 설정 재시도, 프로필 동기화와 UI 표시, 명령 오류다. AI가 제시한 연구 구조나 수정 방법을 모두 적용했다고 쓰지는 않는다. 다음 확인 대상은 화면 유무가 아니라 연구 단계별 실행 로그와 실제 산출물이다.</p>
-</section>
+<!-- editor-body:start --><section id="section-1"><h2>자율 연구 도구를 구성하며 만난 문제</h2><p>Hermes 기반 R&amp;D Lab을 구성하면서 PowerShell 설정 스크립트 오류와 프로필별 플러그인 불일치를 겪었다. 설정 단계를 다시 진행했고, 플러그인을 동기화한 뒤에는 UI가 표시된다고 보고했다.</p><p>다만 UI가 보인다는 것과 연구 흐름 전체가 정상 실행된다는 것은 다른 확인이었다. 탐색 결과가 있어도 기대했던 Probe·Deep Dive로 이어졌다는 근거는 아직 없었다.</p></section><section id="section-2"><h2>오류를 구체적으로 남기기</h2><p>Cron 편집 명령을 실행했을 때 <code>unrecognized arguments</code> 오류를 확인했다. AI는 편집 대상의 ID나 이름을 지정하는 방식을 제안했지만, 수정 명령의 실행 성공은 기록에 남아 있지 않다. 버전에 민감한 명령이므로 이 글에서 검증된 설치 가이드로 제시하지 않는다.</p></section><section id="section-3"><h2>확인 범위를 나누어 기록했다</h2><p>내가 확인·보고한 것은 설정 재시도, 프로필 동기화와 UI 표시, 명령 오류다. AI가 제시한 연구 구조나 수정 방법을 모두 적용했다고 쓰지는 않는다. 다음 확인 대상은 화면 유무가 아니라 연구 단계별 실행 로그와 실제 산출물이다.</p></section><!-- editor-body:end -->
 <div id="lab" class="lab" hidden>
         <div class="lab-head"><button id="toggle-lab" aria-expanded="false" aria-controls="lab-body"><span class="lab-icon">&gt;_</span><span>Python 실습실<small>직접 수정하고 한 줄씩 따라가 보세요</small></span><span id="chevron">＋</span></button></div>
         <div id="lab-body" hidden>
           <div class="toolbar"><div class="run-controls"><button id="run" class="primary">▶ 전체 실행</button><button id="step">↳ 한 단계</button><button id="stop" disabled>■ 중단</button></div><div class="view-controls"><button id="expand" aria-pressed="false">⤢ 확대</button><button id="fullscreen">전체화면</button><button id="reset">환경 리셋</button><button id="restore">예제 복원</button></div></div>
           <div class="status-row"><span id="status" role="status" aria-live="polite">준비됨 · 실행 시 Python을 불러옵니다</span><span id="position">LINE —</span></div>
+<section id="problems" class="problems" aria-label="실행 문제" aria-live="polite" hidden><div class="problem-heading">문제 · 1 <small>실행 시 확인된 오류</small></div><div class="problem-detail"><button id="problem-location" type="button" title="오류 줄로 이동"></button><strong id="problem-type"></strong><span id="problem-message"></span></div><pre id="problem-source"></pre></section>
           <div id="support-note" class="support-note" hidden></div>
           <div class="workbench"><div class="editor-pane"><div class="pane-title"><span>lesson.py</span><small>PYTHON</small></div><div class="editor-shell"><div id="gutter" aria-hidden="true"></div><textarea id="editor" aria-label="Python 코드 편집기" spellcheck="false" autocapitalize="off" autocorrect="off" wrap="off"></textarea></div></div>
           <div class="inspect-pane"><div class="pane-title">변수 <small>현재 멈춘 시점의 값</small></div><div id="variables" class="variables"><p class="empty">실행하면 변수의 변화가 여기에 나타납니다.</p></div><div class="pane-title console-title">실행 결과 <small>프로그램 출력 · 오류</small><button id="clear-output">지우기</button></div><pre id="output" aria-label="프로그램 출력 및 오류" tabindex="0"></pre><form id="console-input" hidden><span id="input-prompt"></span><label for="stdin">입력 대기 ›</label><input id="stdin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Python input 입력값"><button type="submit">입력 ↵</button><small>Enter로 전송 · 빈 입력도 가능</small></form><details id="input-history" hidden><summary>입력 기록 · 실행 결과와 별도</summary><pre id="input-log" aria-label="입력 안내 및 입력값 기록"></pre></details></div></div>

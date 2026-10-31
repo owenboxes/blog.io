@@ -4,13 +4,14 @@
   <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="원소가 세 개인 리스트의 인덱스 3에 대입하면 새 항목이 생기는지 질문했다. 기존 TIL의 AI 정정에서는 일반 인덱스 대입은 기존 항목 수정이며 새 원소는 append나 extend로 추가한다고…">
   <title>리스트의 추가, 딕셔너리의 키, 입력 검증을 구분하기 — OWEN</title>
-  <link rel="stylesheet" href="../style.css?v=5edf70b1cfdb">
+  <link rel="stylesheet" href="../style.css?v=aa5c9f4bad7c">
   <script src="../coi-config.js"></script>
   <script src="../coi-serviceworker.js"></script>
   <script src="../dock.js" defer></script>
   <script src="../input-channel.js" defer></script>
-  <script src="../app.js?v=15c26aa2ff36" defer></script>
+  <script src="../app.js?v=0f6da4f4085e" defer></script>
   <script src="../catalog.js?v=947c77aa3c4e" defer></script>
+<script src="../editor-config.js" defer></script><script src="../edit-link.js" defer></script>
 </head>
 <body data-site-root="../" data-post-id="python-collections-and-input" data-lab="python">
 <header class="site-header"><a class="brand" href="#" data-home>OWEN<span> / BUILD NOTES</span></a><nav aria-label="주 메뉴"><a href="#about">소개</a><a href="https://github.com/owenboxes" target="_blank" rel="noopener">GitHub ↗</a></nav></header>
@@ -34,29 +35,13 @@
 <details class="mobile-toc"><summary>이 글의 목차</summary><a href="#section-1">리스트에서 기존 칸 수정과 추가는 다르다</a><a href="#section-2">딕셔너리에서 중복되지 않는 것은 키다</a><a href="#section-3">input의 문자열과 숫자 검증</a><a href="#section-4">과제 코드를 남기며 발견한 확인 과제</a></details>
 <details class="mobile-published"><summary>다른 글 보기 · 최근 등록순</summary><div id="mobile-published-posts"></div></details>
 
-<section id="section-1"><h2>리스트에서 기존 칸 수정과 추가는 다르다</h2>
-<p>원소가 세 개인 리스트의 인덱스 3에 대입하면 새 항목이 생기는지 질문했다. 기존 TIL의 AI 정정에서는 일반 인덱스 대입은 기존 항목 수정이며 새 원소는 append나 extend로 추가한다고 구분했다.</p>
-<div class="table-scroll"><table><thead><tr><th>표현</th><th>구분</th></tr></thead><tbody>
-<tr><td><code>items[i] = value</code></td><td>기존 위치의 값 변경</td></tr>
-<tr><td><code>items.append(value)</code></td><td>원소 하나 추가</td></tr>
-<tr><td><code>items.extend(values)</code></td><td>iterable의 원소들을 추가</td></tr>
-</tbody></table></div>
-</section>
-<section id="section-2"><h2>딕셔너리에서 중복되지 않는 것은 키다</h2>
-<p>서로 다른 키가 같은 값을 가질 수 있다는 점, <code>keys()</code>·<code>values()</code>·<code>items()</code>가 각각 뷰를 반환한다는 점을 정리했다. <code>get()</code>은 값을 반환하며 화면 출력 자체를 담당하지 않는다.</p>
-</section>
-<section id="section-3"><h2>input의 문자열과 숫자 검증</h2>
-<p><code>input()</code>의 반환값은 문자열이므로 숫자가 필요하면 별도로 변환한다. 문자열을 숫자로 바꾸는 단계의 실패와 변환한 숫자의 범위 검사는 다르다. 잘못된 입력 처리 방법을 질문했지만 수정·실행 결과까지 확인된 것은 아니다.</p>
-</section>
-<section id="section-4"><h2>과제 코드를 남기며 발견한 확인 과제</h2>
-<p>가위바위보·할인 계산·메뉴 선택 등의 코드가 TIL에 남아 있고, 가위바위보 판정을 반복 검수 요청한 기록도 있다. 다만 두 검수 사이의 정확한 코드 차이나 입력별 테스트 결과는 남아 있지 않다. 가위바위보의 잘못된 입력 처리와 반복문의 종료는 별도 실습에서 확인할 항목으로 둔다.</p>
-<p>Git 브랜치 병합에 대한 질문도 같은 날 남겼다. 브랜치 이름이 값의 우선권을 자동 결정한다는 규칙은 없으며, 실제 병합·충돌 해결 성공은 기록에서 확인되지 않았다.</p>
-</section>
+<!-- editor-body:start --><section id="section-1"><h2>리스트에서 기존 칸 수정과 추가는 다르다</h2><p>원소가 세 개인 리스트의 인덱스 3에 대입하면 새 항목이 생기는지 질문했다. 기존 TIL의 AI 정정에서는 일반 인덱스 대입은 기존 항목 수정이며 새 원소는 append나 extend로 추가한다고 구분했다.</p><div class="table-scroll"><table><tbody><tr><th>표현</th><th>구분</th></tr><tr><td><code>items[i] = value</code></td><td>기존 위치의 값 변경</td></tr><tr><td><code>items.append(value)</code></td><td>원소 하나 추가</td></tr><tr><td><code>items.extend(values)</code></td><td>iterable의 원소들을 추가</td></tr></tbody></table></div></section><section id="section-2"><h2>딕셔너리에서 중복되지 않는 것은 키다</h2><p>서로 다른 키가 같은 값을 가질 수 있다는 점, <code>keys()</code>·<code>values()</code>·<code>items()</code>가 각각 뷰를 반환한다는 점을 정리했다. <code>get()</code>은 값을 반환하며 화면 출력 자체를 담당하지 않는다.</p></section><section id="section-3"><h2>input의 문자열과 숫자 검증</h2><p><code>input()</code>의 반환값은 문자열이므로 숫자가 필요하면 별도로 변환한다. 문자열을 숫자로 바꾸는 단계의 실패와 변환한 숫자의 범위 검사는 다르다. 잘못된 입력 처리 방법을 질문했지만 수정·실행 결과까지 확인된 것은 아니다.</p></section><section id="section-4"><h2>과제 코드를 남기며 발견한 확인 과제</h2><p>가위바위보·할인 계산·메뉴 선택 등의 코드가 TIL에 남아 있고, 가위바위보 판정을 반복 검수 요청한 기록도 있다. 다만 두 검수 사이의 정확한 코드 차이나 입력별 테스트 결과는 남아 있지 않다. 가위바위보의 잘못된 입력 처리와 반복문의 종료는 별도 실습에서 확인할 항목으로 둔다.</p><p>Git 브랜치 병합에 대한 질문도 같은 날 남겼다. 브랜치 이름이 값의 우선권을 자동 결정한다는 규칙은 없으며, 실제 병합·충돌 해결 성공은 기록에서 확인되지 않았다.</p></section><!-- editor-body:end -->
 <div id="lab" class="lab">
         <div class="lab-head"><button id="toggle-lab" aria-expanded="false" aria-controls="lab-body"><span class="lab-icon">&gt;_</span><span>Python 실습실<small>직접 수정하고 한 줄씩 따라가 보세요</small></span><span id="chevron">＋</span></button></div>
         <div id="lab-body" hidden>
           <div class="toolbar"><div class="run-controls"><button id="run" class="primary">▶ 전체 실행</button><button id="step">↳ 한 단계</button><button id="stop" disabled>■ 중단</button></div><div class="view-controls"><button id="expand" aria-pressed="false">⤢ 확대</button><button id="fullscreen">전체화면</button><button id="reset">환경 리셋</button><button id="restore">예제 복원</button></div></div>
           <div class="status-row"><span id="status" role="status" aria-live="polite">준비됨 · 실행 시 Python을 불러옵니다</span><span id="position">LINE —</span></div>
+<section id="problems" class="problems" aria-label="실행 문제" aria-live="polite" hidden><div class="problem-heading">문제 · 1 <small>실행 시 확인된 오류</small></div><div class="problem-detail"><button id="problem-location" type="button" title="오류 줄로 이동"></button><strong id="problem-type"></strong><span id="problem-message"></span></div><pre id="problem-source"></pre></section>
           <div id="support-note" class="support-note" hidden></div>
           <div class="workbench"><div class="editor-pane"><div class="pane-title"><span>lesson.py</span><small>PYTHON</small></div><div class="editor-shell"><div id="gutter" aria-hidden="true"></div><textarea id="editor" aria-label="Python 코드 편집기" spellcheck="false" autocapitalize="off" autocorrect="off" wrap="off"></textarea></div></div>
           <div class="inspect-pane"><div class="pane-title">변수 <small>현재 멈춘 시점의 값</small></div><div id="variables" class="variables"><p class="empty">실행하면 변수의 변화가 여기에 나타납니다.</p></div><div class="pane-title console-title">실행 결과 <small>프로그램 출력 · 오류</small><button id="clear-output">지우기</button></div><pre id="output" aria-label="프로그램 출력 및 오류" tabindex="0"></pre><form id="console-input" hidden><span id="input-prompt"></span><label for="stdin">입력 대기 ›</label><input id="stdin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Python input 입력값"><button type="submit">입력 ↵</button><small>Enter로 전송 · 빈 입력도 가능</small></form><details id="input-history" hidden><summary>입력 기록 · 실행 결과와 별도</summary><pre id="input-log" aria-label="입력 안내 및 입력값 기록"></pre></details></div></div>

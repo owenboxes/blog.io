@@ -4,7 +4,7 @@ importScripts('./input-channel.js');
 let runtime;
 const loading = (async () => {
   runtime = await loadPyodide();
-  const response = await fetch('./engine.py');
+  const response = await fetch('./engine.py?v=c7bdde4d2b01');
   if (!response.ok) throw new Error('Python 실행 엔진을 불러오지 못했습니다.');
   await runtime.runPythonAsync(await response.text());
   postMessage({type: 'ready'});
@@ -60,3 +60,4 @@ onmessage = async ({data}) => {
     postMessage({type: 'error', message: String(error)});
   }
 };
+
