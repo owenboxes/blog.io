@@ -15,12 +15,22 @@ onmessage = async ({data}) => {
   try {
     await loading;
     const control = data.control ? new Int32Array(data.control) : null;
-    const step = (line, values) => {
-      if (!control || Atomics.load(control, 0) === 2) return;
+    let previousLine = null;
+    const pause = (line, variables, nextLine) => {
       Atomics.store(control, 0, 0);
-      postMessage({type: 'paused', line, variables: JSON.parse(values)});
+      postMessage({type: 'paused', line, nextLine, variables});
       if (Atomics.wait(control, 0, 0, 300000) === 'timed-out') {
         throw new Error('5분 동안 단계 실행이 없어 종료했습니다.');
+      }
+    };
+    const step = (line, values) => {
+      const executedLine = previousLine;
+      previousLine = null;
+      if (!control || Atomics.load(control, 0) === 2) return;
+      if (executedLine !== null) pause(executedLine, JSON.parse(values), line);
+      if (Atomics.load(control, 0) !== 2) {
+        previousLine = line;
+        postMessage({type:'executing', line});
       }
     };
     let sent = 0;
@@ -42,6 +52,9 @@ onmessage = async ({data}) => {
     const result = run(data.code, '', step, output, read, interaction);
     const converted = result.toJs({dict_converter: Object.fromEntries});
     result.destroy(); run.destroy();
+    if (!converted.error && previousLine !== null && control && Atomics.load(control, 0) !== 2) {
+      pause(previousLine, converted.variables, null);
+    }
     postMessage({type: 'done', ...converted});
   } catch (error) {
     postMessage({type: 'error', message: String(error)});

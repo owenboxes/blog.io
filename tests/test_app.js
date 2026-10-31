@@ -48,6 +48,11 @@ function checkApp() {
   assert(receiveInput(inputBuffer)==='영성', 'duplicate replaced input');
   first.onmessage({data:{type:'paused',line:2,variables:{name:"'영성'"}}});
   assert(paused && timer===null, 'next line did not pause');
+  assert(selectedLine===2 && $('editor').style.backgroundImage!=='none', 'stepped line not highlighted');
+  resume(2);
+  assert(selectedLine===null && $('editor').style.backgroundImage==='none', 'full run retained step highlight');
+  first.onmessage({data:{type:'executing',line:3}});
+  assert(selectedLine===null, 'late step event highlighted full run');
   first.onmessage({data:{type:'input-request'}});
   stop();
   assert(first.terminated && !waitingInput && inputBuffer===null && $('console-input').hidden, 'stop did not cancel input');

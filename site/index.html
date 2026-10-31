@@ -9,7 +9,7 @@
   <script src="coi-serviceworker.js"></script>
   <script src="dock.js" defer></script>
   <script src="input-channel.js" defer></script>
-  <script src="app.js?v=549d26ce32cb" defer></script>
+  <script src="app.js?v=8eeb3c2264e8" defer></script>
   <script src="catalog.js?v=cb4ad36f8c10" defer></script>
 </head>
 <body>
@@ -36,7 +36,7 @@
 for number in range(1, 4):
     total += number
 print(total)</code></pre></div><blockquote>같은 줄로 돌아오지만, 같은 상태로 돌아오는 것은 아닙니다.</blockquote></section>
-      <section id="loop"><p class="section-kicker">02 / FOLLOW THE CHANGE</p><h2>반복되는 줄, 달라지는 값</h2><p>처음에는 <code>total</code>이 0입니다. 첫 번째 반복에서 1을 더하고, 다음에는 2를 더하고, 마지막에는 3을 더합니다. 반복이 끝나면 합계 6을 출력합니다.</p><div class="value-strip"><div><small>START</small><b>0</b></div><span>→</span><div><small>+ 1</small><b>1</b></div><span>→</span><div><small>+ 2</small><b>3</b></div><span>→</span><div><small>+ 3</small><b>6</b></div></div><p>아래 실습창에서 <strong>한 단계</strong>를 누르면 실행할 줄 앞에서 멈춥니다. 강조된 줄은 <em>다음에 실행할 줄</em>이고, 변수 패널에는 그 직전까지 실행된 결과가 표시됩니다.</p></section>
+      <section id="loop"><p class="section-kicker">02 / FOLLOW THE CHANGE</p><h2>반복되는 줄, 달라지는 값</h2><p>처음에는 <code>total</code>이 0입니다. 첫 번째 반복에서 1을 더하고, 다음에는 2를 더하고, 마지막에는 3을 더합니다. 반복이 끝나면 합계 6을 출력합니다.</p><div class="value-strip"><div><small>START</small><b>0</b></div><span>→</span><div><small>+ 1</small><b>1</b></div><span>→</span><div><small>+ 2</small><b>3</b></div><span>→</span><div><small>+ 3</small><b>6</b></div></div><p>아래 실습창에서 <strong>한 단계</strong>를 누르면 실행 위치를 하나씩 진행하고 멈춥니다. 강조된 줄은 <em>방금 실행한 위치</em>이고, 변수 패널에는 현재 멈춘 시점의 값이 표시됩니다. 함수 호출은 함수 내부로 들어가며, 반복문은 같은 줄을 다시 방문할 수 있습니다. 전체 실행에서는 줄을 강조하지 않습니다.</p></section>
       <section id="practice"><p class="section-kicker">03 / TRY IT YOURSELF</p><h2>읽은 것을, 직접 움직여 보기</h2><p>숫자를 바꾸거나 조건을 추가해 보세요. 실습은 이 페이지 안에서만 진행되며 다른 기기와 동기화되지 않습니다.</p>
       <div id="lab" class="lab">
         <div class="lab-head"><button id="toggle-lab" aria-expanded="false" aria-controls="lab-body"><span class="lab-icon">&gt;_</span><span>Python 실습실<small>직접 수정하고 한 줄씩 따라가 보세요</small></span><span id="chevron">＋</span></button></div>
@@ -45,7 +45,7 @@ print(total)</code></pre></div><blockquote>같은 줄로 돌아오지만, 같은
           <div class="status-row"><span id="status" role="status" aria-live="polite">준비됨 · 실행 시 Python을 불러옵니다</span><span id="position">LINE —</span></div>
           <div id="support-note" class="support-note" hidden></div>
           <div class="workbench"><div class="editor-pane"><div class="pane-title"><span>lesson.py</span><small>PYTHON</small></div><div class="editor-shell"><div id="gutter" aria-hidden="true"></div><textarea id="editor" aria-label="Python 코드 편집기" spellcheck="false" autocapitalize="off" autocorrect="off" wrap="off"></textarea></div></div>
-          <div class="inspect-pane"><div class="pane-title">변수 <small>직전 단계까지의 값</small></div><div id="variables" class="variables"><p class="empty">실행하면 변수의 변화가 여기에 나타납니다.</p></div><div class="pane-title console-title">실행 결과 <small>프로그램 출력 · 오류</small><button id="clear-output">지우기</button></div><pre id="output" aria-label="프로그램 출력 및 오류" tabindex="0"></pre><form id="console-input" hidden><span id="input-prompt"></span><label for="stdin">입력 대기 ›</label><input id="stdin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Python input 입력값"><button type="submit">입력 ↵</button><small>Enter로 전송 · 빈 입력도 가능</small></form><details id="input-history" hidden><summary>입력 기록 · 실행 결과와 별도</summary><pre id="input-log" aria-label="입력 안내 및 입력값 기록"></pre></details></div></div>
+          <div class="inspect-pane"><div class="pane-title">변수 <small>현재 멈춘 시점의 값</small></div><div id="variables" class="variables"><p class="empty">실행하면 변수의 변화가 여기에 나타납니다.</p></div><div class="pane-title console-title">실행 결과 <small>프로그램 출력 · 오류</small><button id="clear-output">지우기</button></div><pre id="output" aria-label="프로그램 출력 및 오류" tabindex="0"></pre><form id="console-input" hidden><span id="input-prompt"></span><label for="stdin">입력 대기 ›</label><input id="stdin" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Python input 입력값"><button type="submit">입력 ↵</button><small>Enter로 전송 · 빈 입력도 가능</small></form><details id="input-history" hidden><summary>입력 기록 · 실행 결과와 별도</summary><pre id="input-log" aria-label="입력 안내 및 입력값 기록"></pre></details></div></div>
           <p class="lab-foot">실행 시간 10초 · 최대 20,000단계/출력 20,000자 · 환경 리셋은 코드를 지우지 않습니다. <span>Python powered by Pyodide</span></p>
         </div>
       </div></section>

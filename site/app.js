@@ -5,6 +5,7 @@ const lab = $('lab');
 let worker = null, control = null, active = false, paused = false;
 let timer = null, selectedLine = null, previousVars = {}, expanded = false;
 let inputBuffer = null, waitingInput = false;
+let stepMode = false;
 const canStep = self.crossOriginIsolated && typeof SharedArrayBuffer !== 'undefined';
 $('editor').value = example;
 
@@ -33,7 +34,7 @@ function gutter() {
   // The active stripe scrolls with the text, independently of the toolbar.
   $('editor').style.backgroundImage = selectedLine ? `linear-gradient(to bottom, transparent ${(selectedLine-1)*24+16}px, #f1dfb6 ${(selectedLine-1)*24+16}px, #f1dfb6 ${selectedLine*24+16}px, transparent ${selectedLine*24+16}px)` : 'none';
   $('editor').style.backgroundAttachment = 'local';
-  $('position').textContent = selectedLine ? `NEXT LINE ${selectedLine}` : 'LINE —';
+  $('position').textContent = selectedLine ? `LINE ${selectedLine}` : 'LINE —';
 }
 function variables(values) {
   const entries = Object.entries(values);
@@ -64,6 +65,8 @@ function stop(message = '실행 중단 · 작성한 코드는 유지했습니다
 }
 function resume(mode) {
   if (!control || !paused) return;
+  stepMode = mode === 1;
+  if (!stepMode) { selectedLine = null; gutter(); }
   Atomics.store(control, 0, mode);
   Atomics.notify(control, 0);
   paused = false; setControls(); armTimer();
@@ -76,9 +79,10 @@ function start(stepping) {
   if (!code.trim()) { status('실행할 코드를 입력해 주세요.'); return; }
   if (code.length > 50000) { status('첫 버전은 코드 50,000자까지 지원합니다.'); return; }
   active = true; paused = false; selectedLine = null; previousVars = {};
+  stepMode = stepping;
   clearConsole(); variables({}); gutter(); setControls();
   status('Python 실행환경 불러오는 중… 첫 실행은 잠시 걸릴 수 있습니다.');
-  const current = new Worker('./worker.js'); worker = current;
+  const current = new Worker('./worker.js?v=executed-step-1'); worker = current;
   // Initialization is allowed more time than student code execution.
   timer = setTimeout(() => stop('실행환경 로딩 시간 초과 · 인터넷 연결 후 다시 시도해 주세요.'), 60000);
   current.onerror = event => { if (worker !== current) return; stop('실행환경 로딩 실패 · 인터넷/CDN 연결을 확인해 주세요.'); $('output').textContent = event.message || 'Worker error'; };
@@ -103,11 +107,17 @@ function start(stepping) {
       status('입력 대기 · 값을 입력하고 Enter를 누르세요.');
       $('stdin').focus({preventScroll:true});
       $('stdin').scrollIntoView({block:'nearest'});
+    } else if (data.type === 'executing') {
+      if (!stepMode) return;
+      selectedLine = data.line; gutter();
+      status(`${data.line}번 줄 실행 중…`);
     } else if (data.type === 'paused') {
+      if (!stepMode) return;
       clearTimer(); paused = true; selectedLine = data.line; variables(data.variables);
       const top = (selectedLine-1)*24;
       if (top < $('editor').scrollTop || top > $('editor').scrollTop + $('editor').clientHeight-50) $('editor').scrollTop = Math.max(0, top-65);
-      gutter(); setControls(); status(`일시정지 · ${data.line}번 줄 실행 전입니다. 한 단계를 눌러 진행하세요.`);
+      gutter(); setControls();
+      status(data.nextLine === null ? `${data.line}번 줄 실행 완료 · 한 단계를 누르면 종료합니다.` : `${data.line}번 줄 실행 완료 · 다음 실행 위치: ${data.nextLine ?? '?'}번 줄`);
     } else if (data.type === 'stdout') {
       if ($('output').textContent.length < 20000) $('output').textContent += data.text;
       $('output').scrollTop = $('output').scrollHeight;

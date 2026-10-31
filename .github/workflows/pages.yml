@@ -26,6 +26,10 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: JavaScript tests
         run: node tests/run-js.cjs
+      - name: Install pinned Python runtime for integration tests
+        run: npm install --prefix "$RUNNER_TEMP/python-runtime" --no-save pyodide@0.27.7
+      - name: Real Pyodide worker integration tests
+        run: node tests/test_worker_pyodide.cjs "$RUNNER_TEMP/python-runtime/node_modules/pyodide"
   deploy:
     needs: verify
     runs-on: ubuntu-latest
