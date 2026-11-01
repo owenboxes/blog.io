@@ -202,7 +202,7 @@
           }
         ]
       },
-      "pageHash": "9qxpqUDZJO4UOhpDnLPGx8ezhLurci2clDdUDzJ3Yuw"
+      "pageHash": "71KeY8yBIcDTyk1oeWch8OqLz3_qvONTsBC6rce24TQ"
     },
     {
       "id": "python-data-exceptions",
@@ -318,7 +318,7 @@
           }
         ]
       },
-      "pageHash": "8DrONY9Mlix5pweVIbilVSByedpfJjIEay28D-1bhhA"
+      "pageHash": "VnKA9aHmzzhJGtiGcdXvZZAtPzTqnzD0V6bBzQ10Mbg"
     },
     {
       "id": "agent-ui-and-runtime",
@@ -410,7 +410,7 @@
           }
         ]
       },
-      "pageHash": "aiJ9Z59KwwufaV21xMJ-0iaGYEeP13MOXowpPi_McQM"
+      "pageHash": "qdPjrC-ysSczMaRtWNfFjQ44dHewk-iZ3i9qUJdk6Rc"
     },
     {
       "id": "agent-results-and-usage",
@@ -494,7 +494,7 @@
           }
         ]
       },
-      "pageHash": "uyQhLZuME9xUrVEzfWjOZocFzZm4dRD4pfc_P8Ff6q8"
+      "pageHash": "YTOw_f0c3cqfK9DmyV0wuYuiv6zt2kReOfbCsEnfBCg"
     },
     {
       "id": "application-flow",
@@ -587,7 +587,7 @@
           }
         ]
       },
-      "pageHash": "E1Bx6r1qoWxhCYxzPmK7fNbXUf7foHhKdpP5OuJOyks"
+      "pageHash": "Gm1Tj3Cu3dx2fFtIMCE-5QLv7DIgS3Pr8CUf-wIXl_s"
     },
     {
       "id": "python-loop-scope",
@@ -727,7 +727,7 @@
           }
         ]
       },
-      "pageHash": "WhkJ0gBX7ShxAp1FSrHUFLawfze0E_9w4HJ0eq5WqZE"
+      "pageHash": "7rd_3MsgRODeEhNGRDAPYAk7oXft_TF5M48HMg0L7L8"
     },
     {
       "id": "git-config-scope",
@@ -897,7 +897,7 @@
           }
         ]
       },
-      "pageHash": "qNDKcnjKI208SnKs_k2WLasuI12l0HuAcQ5t-lFTVMo"
+      "pageHash": "p5brUYk6x-GxCf1iC6L6juC9qTTpXivAGnaOQ7TczSU"
     },
     {
       "id": "practice-git-config",
@@ -1004,7 +1004,7 @@
           }
         ]
       },
-      "pageHash": "vPT-OGI-KyGzVIHHMBOu9ucNfyA8tHmA9ljw3dyolp0"
+      "pageHash": "fQRBAC4tDJGZWWIGOQvm3jUaNIl0GPckrSqE_IlYn_o"
     },
     {
       "id": "git-tracking-and-history",
@@ -1214,7 +1214,7 @@
           }
         ]
       },
-      "pageHash": "XWT4p8NDcIlHZIJVtBMpQR7S8KSQabkVMAj_23u0A1Y"
+      "pageHash": "-ONyn8C-ictNA6RGGfvX7leJxLo1dOt-3gogvjf4C2s"
     },
     {
       "id": "practice-git-history",
@@ -1356,7 +1356,7 @@
           }
         ]
       },
-      "pageHash": "b6U_hYxaQWQxM9SJkCCpcVQyhpI2UdjPwCYU0jlXz74"
+      "pageHash": "H8CjIB40RacAfiMMH2doXXn-rqwvIa3Wht1aJpbmwmY"
     },
     {
       "id": "python-values-and-formatting",
@@ -1488,7 +1488,7 @@
           }
         ]
       },
-      "pageHash": "MyxHELVsCYW9OftAxz6LKedrx_43xdcquhfcGYIxrZk"
+      "pageHash": "LJHFOUlXN1fOUhA-6mANiR4LfYm-h-8TPoA5f92pz_c"
     },
     {
       "id": "practice-python-values",
@@ -1597,7 +1597,7 @@
           }
         ]
       },
-      "pageHash": "kJmpeHO0w3AXsEnCeNIj5s3PblTUhjV-sRlH6JpQDmg"
+      "pageHash": "DqnBsORRFU-CUrDYLOwIT_sCTgMJCRr0SfPC5EzHU60"
     },
     {
       "id": "python-collections-and-input",
@@ -1798,7 +1798,7 @@
           }
         ]
       },
-      "pageHash": "7iP5e_PdEJMeEOzY2bHwQg-rWqTuO2Z_JdFTwA0WmAY"
+      "pageHash": "xCA9Bj87sfBpB2fYVWYkSp5uILWb7sgh-F4vgkLpGx0"
     },
     {
       "id": "practice-python-input",
@@ -1927,7 +1927,7 @@
           }
         ]
       },
-      "pageHash": "aI4dkcvYK3g-Cy2Zcht0IHb8YI5j2OI0-uyP9JGpMY4"
+      "pageHash": "gfESCsVdI5v7CrZ2fGovubee-jwfm7oWHt95Q3iqheY"
     },
     {
       "id": "python-loops-and-comprehensions",
@@ -2050,10 +2050,51 @@
                 "text": "빈 좌석 문제에서는 코드를 어디서 시작해야 할지 어려워 좌석 상태를 필터링하는 방식을 물었다. 이 과정은 질문과 풀이 검토 요청의 기록이다. 최종 수정본과 실행 결과가 확인되지 않아 해결한 경험으로 정리하지는 않는다."
               }
             ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": [
+              {
+                "type": "text",
+                "text": "컴프리헨션을 실행하다 만난 NameError"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "웹 Python 실습창에서 컴프리헨션을 실행하는 과정에 "
+              },
+              {
+                "type": "code",
+                "text": "order"
+              },
+              {
+                "type": "text",
+                "text": "와 관련된 NameError를 보고했다. 오류가 발생한 줄과 오류 종류를 더 쉽게 확인할 수 있는 표시도 요청했다."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "수정된 코드와 정상 실행 결과는 아직 확인하지 못했다. 따라서 이 경험은 오류를 발견하고 확인을 요청한 단계로 남긴다. 도구의 기능 개선과 내가 작성한 코드의 해결 여부도 구분한다."
+              }
+            ]
           }
         ]
       },
-      "pageHash": "2ynICNPQesPSt85PQao143m6kuGYy6-qGy2XxNnWQwo"
+      "pageHash": "J1z-WXdNaFIFgYdSFoR40X1nZwKxYniSEM6_RVs3j-M",
+      "updatedAt": "2026-11-01T01:05:39.939Z",
+      "lastOperation": {
+        "id": "e1d005f4-26dc-48eb-9f3b-7f17a22c9f7c",
+        "digest": "iclfJk4DaHOwg-A0AcYT8ZDtFOjGEuIigYr5aCUeBtU"
+      }
     },
     {
       "id": "practice-python-loops",
@@ -2165,10 +2206,43 @@
                 "text": "를 쓸 수 있는지 설명해 본다. TODO 상태의 코드가 정답인 것은 아니다."
               }
             ]
+          },
+          {
+            "type": "heading",
+            "level": 2,
+            "content": [
+              {
+                "type": "text",
+                "text": "오류를 보고 수정 결과를 따로 확인하기"
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "기존 주문·상품 추출 실습을 풀 때 오류가 발생하면 오류 종류, 줄 번호, 그 줄에서 사용한 변수 이름을 먼저 기록해 본다. 코드를 수정했다면 다시 실행한 출력은 오류 기록과 나누어 남긴다."
+              }
+            ]
+          },
+          {
+            "type": "paragraph",
+            "content": [
+              {
+                "type": "text",
+                "text": "이 항목은 복습을 위한 AI 제안이다. 오류 보고가 있었다는 사실을 실습 완료나 해결로 간주하지 않는다."
+              }
+            ]
           }
         ]
       },
-      "pageHash": "AL0SpWJPRAs3rcY_-KWKF4HUZikZvmAtbdhNIrL2LQg"
+      "pageHash": "1D8_m2xx4YRBeJ5-TCzfClLxR3zTfOGDpZ8f5O_VirM",
+      "updatedAt": "2026-11-01T01:05:39.939Z",
+      "lastOperation": {
+        "id": "7d97ee9b-6846-4392-b012-5ef4a424b136",
+        "digest": "Fpwhr5ybTCrqxLgMwd3qYt0bfZOqHfDOY0R0vbptQbA"
+      }
     }
   ]
 }

@@ -10,7 +10,7 @@
   <script src="../dock.js" defer></script>
   <script src="../input-channel.js" defer></script>
   <script src="../app.js?v=0f6da4f4085e" defer></script>
-  <script src="../catalog.js?v=947c77aa3c4e" defer></script>
+  <script src="../catalog.js?v=dfe5fad69700" defer></script>
 <script src="../editor-config.js" defer></script><script src="../edit-link.js" defer></script>
 </head>
 <body data-site-root="../" data-post-id="python-loops-and-comprehensions" data-lab="python">
@@ -26,13 +26,13 @@
     <p class="sample-note">학습 노트와 연습 문제를 구분해 읽을 수 있습니다. Git 실습은 PC 터미널에서 진행합니다.</p>
   </section>
   <div id="article-view" class="article-layout">
-    <aside class="toc"><a class="toc-home" href="#notes" data-home>← 글 목록</a><p>ON THIS PAGE</p><a href="#section-1">같은 작업을 반복하는 코드에서 데이터 추출로</a><a href="#section-2">컴프리헨션의 if 위치</a><a href="#section-3">종료 문구와 실제 종료를 구분하기</a><a href="#section-4">반복 코드를 검토받으며 남긴 질문</a><section class="published-navigation" aria-label="등록된 글"><p>PUBLISHED NOTES</p><small class="navigation-order">최근 등록순</small><div id="published-posts"></div></section></aside>
+    <aside class="toc"><a class="toc-home" href="#notes" data-home>← 글 목록</a><p>ON THIS PAGE</p><a href="#section-1">같은 작업을 반복하는 코드에서 데이터 추출로</a><a href="#section-2">컴프리헨션의 if 위치</a><a href="#section-3">종료 문구와 실제 종료를 구분하기</a><a href="#section-4">반복 코드를 검토받으며 남긴 질문</a><a href="#section-5">컴프리헨션을 실행하다 만난 NameError</a><section class="published-navigation" aria-label="등록된 글"><p>PUBLISHED NOTES</p><small class="navigation-order">최근 등록순</small><div id="published-posts"></div></section></aside>
     <article id="article">
 <a class="mobile-back" href="#notes" data-home>← 글 목록</a>
 <div class="post-meta">Python · LEARNING NOTES<span class="article-date">2026.10.30</span></div>
 <h1>반복 종료 조건과 중첩 컴프리헨션의 순서를 읽기</h1>
 <div class="author"><span class="avatar">O</span><span>문영성 <small>배우고 만드는 사람</small></span></div>
-<details class="mobile-toc"><summary>이 글의 목차</summary><a href="#section-1">같은 작업을 반복하는 코드에서 데이터 추출로</a><a href="#section-2">컴프리헨션의 if 위치</a><a href="#section-3">종료 문구와 실제 종료를 구분하기</a><a href="#section-4">반복 코드를 검토받으며 남긴 질문</a></details>
+<details class="mobile-toc"><summary>이 글의 목차</summary><a href="#section-1">같은 작업을 반복하는 코드에서 데이터 추출로</a><a href="#section-2">컴프리헨션의 if 위치</a><a href="#section-3">종료 문구와 실제 종료를 구분하기</a><a href="#section-4">반복 코드를 검토받으며 남긴 질문</a><a href="#section-5">컴프리헨션을 실행하다 만난 NameError</a></details>
 <details class="mobile-published"><summary>다른 글 보기 · 최근 등록순</summary><div id="mobile-published-posts"></div></details>
 
 <!-- editor-body:start --><section id="section-1"><h2>같은 작업을 반복하는 코드에서 데이터 추출로</h2><p>문자열 출력 형식을 공부한 뒤 for·while을 작성하고, 컴프리헨션으로 변환·필터링·조건별 값을 만드는 실습을 했다. 수업 예시와 개인 작성 코드는 구분했고, 당시 실행 출력은 별도로 남기지 않았다.</p></section><section id="section-2"><h2>컴프리헨션의 if 위치</h2><p>뒤쪽 if는 항목을 남길지 결정하는 필터이고, 앞쪽 if/else는 남길 항목의 값을 고르는 표현이다. 주문별 상품을 모으는 개인 코드에서는 주문을 먼저 꺼내야 그 주문의 items를 순회할 수 있었다.</p><div class="static-code"><div>py</div><pre><code># 내 작성 코드를 이름만 읽기 쉽게 편집. 데이터 정의는 별도 필요하다.
@@ -41,7 +41,7 @@ paid_products = [
     for order in orders
     if order[&quot;paid&quot;] == True
     for item in order[&quot;items&quot;]
-]</code></pre></div><p>이 조각만 실행하면 orders가 정의되지 않았으므로 독립 실행 예제가 아니다. 실습에는 별도 교육용 데이터를 제공해야 한다.</p></section><section id="section-3"><h2>종료 문구와 실제 종료를 구분하기</h2><p>쿠폰 번호를 최대 다섯 번 입력받는 코드와 비밀번호 코드를 작성했다. 기존 TIL의 AI 정적 점검에서는 쿠폰 코드가 정수 입력을 전제로 횟수 종료를 처리하지만 문자 입력 예외는 다루지 않는다고 구분했다.</p><p>비밀번호 코드에는 성공 시 break가 없었고, ‘10분 잠금’ 문구에 대응하는 시간 측정·차단 구현도 없었다. 안내 출력만으로 실제 잠금을 구현했다고 말할 수는 없다. 남은 실습은 성공·실패의 종료 시점과 숫자가 아닌 입력을 분리해 확인하는 것이다.</p></section><section id="section-4"><h2>반복 코드를 검토받으며 남긴 질문</h2><p>누적 while·for 연습 코드를 확인해 달라고 요청했고, 이어서 운동 챌린지와 저금통 풀이의 반복 종료 지점을 검토받으려 했다. 저금통 문제에서는 break 위치도 질문했다.</p><p>빈 좌석 문제에서는 코드를 어디서 시작해야 할지 어려워 좌석 상태를 필터링하는 방식을 물었다. 이 과정은 질문과 풀이 검토 요청의 기록이다. 최종 수정본과 실행 결과가 확인되지 않아 해결한 경험으로 정리하지는 않는다.</p></section><!-- editor-body:end -->
+]</code></pre></div><p>이 조각만 실행하면 orders가 정의되지 않았으므로 독립 실행 예제가 아니다. 실습에는 별도 교육용 데이터를 제공해야 한다.</p></section><section id="section-3"><h2>종료 문구와 실제 종료를 구분하기</h2><p>쿠폰 번호를 최대 다섯 번 입력받는 코드와 비밀번호 코드를 작성했다. 기존 TIL의 AI 정적 점검에서는 쿠폰 코드가 정수 입력을 전제로 횟수 종료를 처리하지만 문자 입력 예외는 다루지 않는다고 구분했다.</p><p>비밀번호 코드에는 성공 시 break가 없었고, ‘10분 잠금’ 문구에 대응하는 시간 측정·차단 구현도 없었다. 안내 출력만으로 실제 잠금을 구현했다고 말할 수는 없다. 남은 실습은 성공·실패의 종료 시점과 숫자가 아닌 입력을 분리해 확인하는 것이다.</p></section><section id="section-4"><h2>반복 코드를 검토받으며 남긴 질문</h2><p>누적 while·for 연습 코드를 확인해 달라고 요청했고, 이어서 운동 챌린지와 저금통 풀이의 반복 종료 지점을 검토받으려 했다. 저금통 문제에서는 break 위치도 질문했다.</p><p>빈 좌석 문제에서는 코드를 어디서 시작해야 할지 어려워 좌석 상태를 필터링하는 방식을 물었다. 이 과정은 질문과 풀이 검토 요청의 기록이다. 최종 수정본과 실행 결과가 확인되지 않아 해결한 경험으로 정리하지는 않는다.</p></section><section id="section-5"><h2>컴프리헨션을 실행하다 만난 NameError</h2><p>웹 Python 실습창에서 컴프리헨션을 실행하는 과정에 <code>order</code>와 관련된 NameError를 보고했다. 오류가 발생한 줄과 오류 종류를 더 쉽게 확인할 수 있는 표시도 요청했다.</p><p>수정된 코드와 정상 실행 결과는 아직 확인하지 못했다. 따라서 이 경험은 오류를 발견하고 확인을 요청한 단계로 남긴다. 도구의 기능 개선과 내가 작성한 코드의 해결 여부도 구분한다.</p></section><!-- editor-body:end -->
 <div id="lab" class="lab">
         <div class="lab-head"><button id="toggle-lab" aria-expanded="false" aria-controls="lab-body"><span class="lab-icon">&gt;_</span><span>Python 실습실<small>직접 수정하고 한 줄씩 따라가 보세요</small></span><span id="chevron">＋</span></button></div>
         <div id="lab-body" hidden>

@@ -10,7 +10,7 @@
   <script src="../dock.js" defer></script>
   <script src="../input-channel.js" defer></script>
   <script src="../app.js?v=0f6da4f4085e" defer></script>
-  <script src="../catalog.js?v=947c77aa3c4e" defer></script>
+  <script src="../catalog.js?v=dfe5fad69700" defer></script>
 <script src="../editor-config.js" defer></script><script src="../edit-link.js" defer></script>
 </head>
 <body data-site-root="../" data-post-id="practice-python-loops" data-lab="python">
@@ -26,13 +26,13 @@
     <p class="sample-note">현재 공개된 예시 글입니다. 노션 초안은 검토·발행 승인 전까지 공개하지 않습니다.</p>
   </section>
   <div id="article-view" class="article-layout">
-    <aside class="toc"><a class="toc-home" href="#notes" data-home>← 글 목록</a><p>ON THIS PAGE</p><a href="#section-1">실습 환경</a><a href="#section-2">1. 쿠폰 입력 경계값</a><a href="#section-3">2. 비밀번호 종료 조건 설계</a><a href="#section-4">3. for문을 먼저 쓰고 컴프리헨션으로 바꾸기</a><section class="published-navigation" aria-label="등록된 글"><p>PUBLISHED NOTES</p><small class="navigation-order">최근 등록순</small><div id="published-posts"></div></section></aside>
+    <aside class="toc"><a class="toc-home" href="#notes" data-home>← 글 목록</a><p>ON THIS PAGE</p><a href="#section-1">실습 환경</a><a href="#section-2">1. 쿠폰 입력 경계값</a><a href="#section-3">2. 비밀번호 종료 조건 설계</a><a href="#section-4">3. for문을 먼저 쓰고 컴프리헨션으로 바꾸기</a><a href="#section-5">오류를 보고 수정 결과를 따로 확인하기</a><section class="published-navigation" aria-label="등록된 글"><p>PUBLISHED NOTES</p><small class="navigation-order">최근 등록순</small><div id="published-posts"></div></section></aside>
     <article id="article">
 <a class="mobile-back" href="#notes" data-home>← 글 목록</a>
 <div class="post-meta">Python · PRACTICE<span class="article-date">2026.10.30</span></div>
 <h1>입력 횟수·반복 종료·중첩 컴프리헨션</h1>
 <div class="author"><span class="avatar">O</span><span>문영성 <small>배우고 만드는 사람</small></span></div>
-<details class="mobile-toc"><summary>이 글의 목차</summary><a href="#section-1">실습 환경</a><a href="#section-2">1. 쿠폰 입력 경계값</a><a href="#section-3">2. 비밀번호 종료 조건 설계</a><a href="#section-4">3. for문을 먼저 쓰고 컴프리헨션으로 바꾸기</a></details>
+<details class="mobile-toc"><summary>이 글의 목차</summary><a href="#section-1">실습 환경</a><a href="#section-2">1. 쿠폰 입력 경계값</a><a href="#section-3">2. 비밀번호 종료 조건 설계</a><a href="#section-4">3. for문을 먼저 쓰고 컴프리헨션으로 바꾸기</a><a href="#section-5">오류를 보고 수정 결과를 따로 확인하기</a></details>
 <details class="mobile-published"><summary>다른 글 보기 · 최근 등록순</summary><div id="mobile-published-posts"></div></details>
 <p class="practice-environment">웹 Python 실습 · AI가 제안한 연습 문제이며 작성자의 완료 기록이 아닙니다.</p>
 <!-- editor-body:start --><section id="section-1"><h2>실습 환경</h2><p>Python 실행창에서 문제를 나누어 풀고 무한 반복이 생기면 중단 버튼을 사용한다. 실제 인증·보안 시스템이나 결제 코드를 만드는 예제가 아니다.</p></section><section id="section-2"><h2>1. 쿠폰 입력 경계값</h2><p>TIL의 쿠폰 코드를 읽고 첫 시도 성공, 다섯 번째 성공, 다섯 번 실패, 문자 입력의 네 경우를 분리해 확인한다. 입력 횟수 증가 위치와 break에 도달하는 분기를 기록한다. 안내 문구만으로 실제 할인이 계산되는지 단정하지 않는다.</p></section><section id="section-3"><h2>2. 비밀번호 종료 조건 설계</h2><p>성공 시 종료와 정해진 실패 횟수에서 종료를 먼저 분리해 작성한다. ‘10분 잠금’이라는 출력과 실제 시간 기반 차단을 구분한다. 실제 계정 비밀번호는 입력하지 않는다. 완성 풀이를 본인의 수행 결과로 대신 기록하지 않는다.</p></section><section id="section-4"><h2>3. for문을 먼저 쓰고 컴프리헨션으로 바꾸기</h2><div class="static-code"><div>py</div><pre><code># AI가 만든 교육용 데이터. 실제 주문 데이터가 아니다.
@@ -42,7 +42,7 @@ orders = [
 ]
 result = []
 # TODO: 결제된 주문의 상품 이름만 result에 모으기
-print(result)</code></pre></div><p>먼저 일반 for문으로 완성하고, 같은 결과를 내는 컴프리헨션으로 바꾼다. <code>order</code>를 꺼내기 전에 <code>order[&quot;items&quot;]</code>를 쓸 수 있는지 설명해 본다. TODO 상태의 코드가 정답인 것은 아니다.</p></section><!-- editor-body:end -->
+print(result)</code></pre></div><p>먼저 일반 for문으로 완성하고, 같은 결과를 내는 컴프리헨션으로 바꾼다. <code>order</code>를 꺼내기 전에 <code>order[&quot;items&quot;]</code>를 쓸 수 있는지 설명해 본다. TODO 상태의 코드가 정답인 것은 아니다.</p></section><section id="section-5"><h2>오류를 보고 수정 결과를 따로 확인하기</h2><p>기존 주문·상품 추출 실습을 풀 때 오류가 발생하면 오류 종류, 줄 번호, 그 줄에서 사용한 변수 이름을 먼저 기록해 본다. 코드를 수정했다면 다시 실행한 출력은 오류 기록과 나누어 남긴다.</p><p>이 항목은 복습을 위한 AI 제안이다. 오류 보고가 있었다는 사실을 실습 완료나 해결로 간주하지 않는다.</p></section><!-- editor-body:end -->
 <div id="lab" class="lab">
         <div class="lab-head"><button id="toggle-lab" aria-expanded="false" aria-controls="lab-body"><span class="lab-icon">&gt;_</span><span>Python 실습실<small>직접 수정하고 한 줄씩 따라가 보세요</small></span><span id="chevron">＋</span></button></div>
         <div id="lab-body" hidden>
