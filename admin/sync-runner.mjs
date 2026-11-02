@@ -25,4 +25,4 @@ for(const post of db.posts){
 }
 updates.set('content/public-posts.json',JSON.stringify(db,null,2)+'\n');
 for(const [path,text]of updates)writeFileSync(resolve(root,path),text);
-console.log('Runner asset versions and sixteen canonical page hashes synchronized.');
+console.log('Runner asset versions and canonical page hashes synchronized.');

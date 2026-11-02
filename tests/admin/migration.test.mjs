@@ -5,9 +5,9 @@ import {readFileSync} from 'node:fs';
 import {fileURLToPath} from 'node:url';
 import {validateDocument,renderDocument} from '../../admin/shared/document.mjs';
 const root=fileURLToPath(new URL('../../',import.meta.url));
-test('all sixteen existing public documents migrate with identical normalized body text and code',()=>{
+test('all existing public documents migrate with identical normalized body text and code',()=>{
  const result=JSON.parse(execFileSync('python3',['admin/migrate.py','--check'],{cwd:root,encoding:'utf8'}));
- assert.equal(result.posts.length,16);
+ assert.equal(result.posts.length,JSON.parse(readFileSync(root+'content/public-posts.json','utf8')).posts.length);
  for(const post of result.posts){validateDocument(post.document);const html=renderDocument(post.document).html;
   const actual=execFileSync('python3',['admin/migrate.py','--text'],{cwd:root,input:html,encoding:'utf8'});
   assert.equal(actual,post.originalText,post.id);

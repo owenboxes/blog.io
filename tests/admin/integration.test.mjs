@@ -13,6 +13,7 @@ test('Worker bundle is importable and health checks do not expose credentials',a
  const anonymous=await worker.fetch(new Request(env.ADMIN_ORIGIN+'/admin?post=known'),env);const login=await anonymous.text();assert.ok(!login.includes('id="workspace"'));assert.match(login,/GitHub로 로그인/);
  const js=await worker.fetch(new Request(env.ADMIN_ORIGIN+'/assets/editor.js'),env);assert.equal(js.status,200);assert.match(js.headers.get('content-type'),/javascript/);
 });
-test('prepared sixteen pages retain a runner and resolve owner edit links without changing code execution',()=>{
- const result=JSON.parse(execFileSync(process.execPath,['admin/prepare.mjs','--check'],{cwd:root,encoding:'utf8'}));assert.equal(result.pages,16);assert.equal(result.labPreserved,16);assert.equal(result.links,16);
+test('prepared pages retain a runner and resolve owner edit links without changing code execution',()=>{
+ const count=JSON.parse(readFileSync(root+'content/public-posts.json','utf8')).posts.length;
+ const result=JSON.parse(execFileSync(process.execPath,['admin/prepare.mjs','--check'],{cwd:root,encoding:'utf8'}));assert.equal(result.pages,count);assert.equal(result.labPreserved,count);assert.equal(result.links,count);
 });
