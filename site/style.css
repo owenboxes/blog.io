@@ -97,19 +97,21 @@ article section > :is(ul,ol){
   font-size:16px;
 }
 article section > :is(ul,ol) li{font-size:inherit;line-height:2.15}
-/* Center article prose only: preserve code indentation, data tables and controls. */
+/* Article header and section titles stay centered; body prose reads left-aligned. */
 article > :is(h1,p),
 article section > :is(h2,h3,h4,p,ul,ol,blockquote){
-  text-align:center;
+  text-align:left;
   word-break:keep-all;
   overflow-wrap:normal;
   hyphens:none;
   line-break:strict;
   text-wrap:pretty;
 }
+article > :is(h1,p),
+article section > :is(h2,.section-kicker){text-align:center}
 article > p,
 article section > :is(ul,ol,blockquote){margin-inline:auto}
-article section > :is(ul,ol){padding-inline:0;list-style-position:inside}
+article section > :is(ul,ol){padding-inline:1.4em 0}
 article section > blockquote{max-width:34em}
 .problems{margin:0!important;padding:10px 14px!important;border-top:1px solid #d8b5b0;background:#fff3f0;color:#762f29;max-height:145px;overflow:auto;text-align:left!important}
 .problem-heading{font:600 12px/1.6 var(--sans)}.problem-heading small{font-weight:400;margin-left:8px;color:#8b625a}.problem-detail{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;font:12px/1.7 var(--mono)}#problem-location{border:0;padding:4px 0;color:#8d342c;text-decoration:underline;font:inherit}#problem-message{overflow-wrap:anywhere;white-space:pre-wrap}#problem-source{margin:4px 0 0;padding:5px 8px;white-space:pre;overflow:auto;font:12px/1.7 var(--mono);border-left:3px solid #b34137;background:#f8e4df}#gutter .error{background:#ad342c;color:white;border-radius:2px}
