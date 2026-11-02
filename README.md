@@ -33,6 +33,9 @@ The deploy job runs `python3 tools/build_pages.py site <out>` and uploads that c
 
 `robots.txt` is only honored at the domain root (`owenboxes.github.io/robots.txt`), so this project site does not ship one; submit `sitemap.xml` in Google Search Console instead.
 
+## Owner edit link
+`site/edit-link.js` hides the "글 수정 · 관리자 로그인" link from visitors. Open any page once with `?owner=on` to show it in that browser (stored in localStorage), and `?owner=off` to hide it again; the parameter is removed from the address bar. This only controls display: the editor origin in `site/editor-config.js` is still public, and the editor itself enforces the owner's GitHub login.
+
 ## Public article catalog
 Changed UI assets use `?v=<first 12 characters of SHA-256>` in `index.html`. Update the key when app.js, catalog.js or style.css changes; the deployment test rejects stale keys to prevent mixed cached versions after release.
 
