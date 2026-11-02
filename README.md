@@ -28,6 +28,11 @@ The Pages workflow tests Python and JavaScript, then uploads only `site/` as the
 
 Administrator authentication and automatic Notion publishing are not enabled. On 2026-10-31 the user approved publication of 10 learning notes and 5 practice articles, in addition to the original demo. Only the approved public bodies are stored under site/posts; internal sources and review metadata remain outside this repository. Learning records retain their execution/verification limits, and AI practice proposals are not claims of user completion. Client-side hiding is not privacy protection; raw/private TIL data must never be committed or deployed.
 
+## Search and sharing metadata
+The deploy job runs `python3 tools/build_pages.py site <out>` and uploads that copy instead of `site/` itself. It adds canonical links, Open Graph/Twitter card tags, BlogPosting JSON-LD, the favicon and RSS links to every catalogued page, and writes `feed.xml`, `sitemap.xml` and `404.html`. Values come from `content/public-posts.json`, so an editor publish refreshes them on the next deployment. Committed pages are not modified, which keeps the editor's `pageHash` checks valid. The build fails if `site/posts/` contains a page that is not a published catalog entry. The shared preview image is `site/og-image.png` (1200×630).
+
+`robots.txt` is only honored at the domain root (`owenboxes.github.io/robots.txt`), so this project site does not ship one; submit `sitemap.xml` in Google Search Console instead.
+
 ## Public article catalog
 Changed UI assets use `?v=<first 12 characters of SHA-256>` in `index.html`. Update the key when app.js, catalog.js or style.css changes; the deployment test rejects stale keys to prevent mixed cached versions after release.
 
