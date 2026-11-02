@@ -12,7 +12,7 @@ export function preparePage(html,document){
  return html.slice(0,start)+'<!-- editor-body:start -->'+renderDocument(document).html+'<!-- editor-body:end -->'+lab+html.slice(finish);
 }
 export async function planPublication(files,requested,operation){
- const db=JSON.parse(files['content/public-posts.json']);if(db.version!==1||!Array.isArray(db.posts)||db.posts.length>100)throw new HttpError(409,'글 원본 형식 오류');
+ const db=JSON.parse(files['content/public-posts.json']);if(db.version!==1||!Array.isArray(db.posts)||db.posts.length>500)throw new HttpError(409,'글 원본 형식 오류');
  const old=db.posts.find(p=>p.id===requested.id);if(!old)throw new HttpError(404,'등록된 글이 아닙니다.');
  for(const p of db.posts){const path=postPath(p);if(!files[path]||await sha256(files[path])!==p.pageHash)throw new HttpError(409,'공개 파일이 편집기 밖에서 변경됐습니다. 원본을 먼저 동기화해주세요.');}
  validateDocument(requested.document);if(typeof requested.title!=='string'||!requested.title.trim()||requested.title.length>200||typeof requested.summary!=='string'||requested.summary.length>1000)throw new HttpError(400,'제목 또는 요약 길이를 확인해주세요.');
